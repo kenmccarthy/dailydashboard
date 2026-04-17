@@ -10,20 +10,20 @@ const CARD_DEFS = [
   { id: 'proverb',     label: 'Irish proverb of the day' },
   { id: 'song',        label: '80s song of the day' },
   { id: 'weather',     label: 'Weather' },
-  { id: 'sun',         label: 'Sunrise & sunset' },
-  { id: 'moon',        label: 'Moon phase & day length' },
+  { id: 'sunrise',     label: 'Sunrise' },
+  { id: 'sunset',      label: 'Sunset' },
+  { id: 'moon',        label: 'Moon phase' },
+  { id: 'daylength',   label: 'Day length' },
   { id: 'progress',    label: 'Year progress' },
   { id: 'bankholiday', label: 'Bank holiday' },
-  { id: 'observances', label: 'Today\'s observances' },
+  { id: 'observances', label: "Today's observances" },
   { id: 'nasa',        label: 'NASA picture of the day' },
   { id: 'joke',        label: 'Joke of the day' },
   { id: 'news',        label: 'RTÉ headlines' },
   { id: 'onthisday',   label: 'About this day' },
 ];
 
-// Cards that are always visible and not shown in the order UI
-const ALWAYS_ON  = new Set(['quote','weather','sun','moon','progress']);
-// Cards excluded from reordering (fixed position)
+const ALWAYS_ON  = new Set(['quote','weather','sunrise','sunset','moon','daylength','progress']);
 const FIXED_TOP  = new Set(['header']);
 
 export function getCardOrder() {
