@@ -1,8 +1,8 @@
 // ── APP.JS — main orchestrator ──
 import { loadAllData, getData, getMoonPhase, renderQuote, renderFact,
-         renderMusicFact, renderSong, renderIrishWord, renderObservances,
-         renderBankHoliday, loadNASA, loadJoke, loadWordOfDay,
-         loadOnThisDay, loadNews, revealPunchline } from './cards.js';
+         renderMusicFact, renderSong, renderIrishWord, renderProverb,
+         renderObservances, renderBankHoliday, loadNASA, loadJoke,
+         loadWordOfDay, loadOnThisDay, loadNews, revealPunchline } from './cards.js';
 import { loadWeather, fmt } from './weather.js';
 import { populateCountrySelects, applyCardOrder, getToggle,
          saveSetup, saveSetup2, skipSetup2, openSettings,
@@ -67,6 +67,7 @@ async function init() {
   if (getToggle('music'))       renderMusicFact(doy);
   if (getToggle('song'))        renderSong(doy);
   if (getToggle('irish'))       renderIrishWord(doy);
+  if (getToggle('proverb'))     renderProverb(doy);
   renderObservances(now);
   renderBankHoliday(now);
 
@@ -86,7 +87,7 @@ async function init() {
 window.addEventListener('load', async () => {
   // Initialise default toggles on very first run
   if (!localStorage.getItem('dd_toggles_init')) {
-    ['fact','music','song','irish','nasa','joke','news','wotd','bankholiday','observances','onthisday'].forEach(k => {
+    ['fact','music','song','irish','proverb','nasa','joke','news','wotd','bankholiday','observances','onthisday'].forEach(k => {
       if (localStorage.getItem('dd_tog_' + k) === null) localStorage.setItem('dd_tog_' + k, 'true');
     });
     localStorage.setItem('dd_toggles_init', '1');

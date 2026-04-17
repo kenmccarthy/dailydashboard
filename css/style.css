@@ -418,3 +418,57 @@ body {
   margin: 16px 0 8px; display: block;
 }
 .settings-divider { border: none; border-top: 1px solid var(--border); margin: 16px 0 0; }
+
+/* ── RESPONSIVE MULTI-COLUMN GRID ── */
+/*
+  Strategy: CSS grid with auto-fill columns of minimum 340px.
+  Cards can be tagged as "wide" (span all columns) or default (span 1).
+  On mobile (<680px) everything is single column automatically.
+*/
+
+@media (min-width: 680px) {
+  body { padding: 20px 20px 80px; align-items: flex-start; }
+
+  .wrapper {
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 12px;
+    align-items: start;
+  }
+
+  /* Full-width cards that should always span all columns */
+  #section-header,
+  #section-news,
+  #section-onthisday {
+    grid-column: 1 / -1;
+  }
+
+  /* Sun row stays as its internal 2-col grid */
+  #section-sun {
+    grid-column: span 1;
+  }
+
+  /* Stats row (moon + day length) — let it span 1 col, its internal grid handles the 2 items */
+  #section-moon {
+    grid-column: span 1;
+  }
+}
+
+/* On very wide screens (3+ columns), give the header more breathing room */
+@media (min-width: 1100px) {
+  .wrapper { gap: 14px; }
+}
+
+/* ── IRISH PROVERB ── */
+.proverb-irish {
+  font-family: var(--serif); font-size: 16px; font-style: italic;
+  color: var(--text); line-height: 1.6; margin-bottom: 8px;
+}
+.proverb-english {
+  font-size: 14px; color: var(--text); line-height: 1.6;
+  border-top: 1px solid var(--border); padding-top: 8px; margin-bottom: 4px;
+}
+.proverb-literal {
+  font-size: 11px; color: var(--hint); font-style: italic; line-height: 1.5;
+}

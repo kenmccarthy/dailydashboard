@@ -4,7 +4,7 @@
 let DATA = {};
 
 export async function loadAllData() {
-  const files = ['quotes','facts','music_facts','songs_80s','irish_words','saints','un_days'];
+  const files = ['quotes','facts','music_facts','songs_80s','irish_words','saints','un_days','proverbs'];
   const results = await Promise.all(
     files.map(f => fetch(`data/${f}.json`).then(r => r.json()))
   );
@@ -100,6 +100,16 @@ export function renderIrishWord(doy) {
   document.getElementById('irish-pron').textContent = `/${w.pronunciation}/`;
   document.getElementById('irish-meaning').textContent = w.meaning;
   document.getElementById('irish-example').textContent = w.example;
+}
+
+// ── IRISH PROVERB ──
+export function renderProverb(doy) {
+  const proverbs = getData('proverbs');
+  const p = proverbs[(doy - 1) % proverbs.length];
+  if (!p) return;
+  document.getElementById('proverb-irish').textContent = p.irish;
+  document.getElementById('proverb-english').textContent = p.english;
+  document.getElementById('proverb-literal').textContent = `Literally: "${p.literal}"`;
 }
 
 // ── OBSERVANCES ──

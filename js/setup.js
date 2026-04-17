@@ -7,6 +7,7 @@ const CARD_DEFS = [
   { id: 'music',       label: 'Music fact of the day' },
   { id: 'wotd',        label: 'Word of the day (Wordnik)' },
   { id: 'irish',       label: 'Irish word of the day' },
+  { id: 'proverb',     label: 'Irish proverb of the day' },
   { id: 'song',        label: '80s song of the day' },
   { id: 'weather',     label: 'Weather' },
   { id: 'sun',         label: 'Sunrise & sunset' },
