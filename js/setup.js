@@ -20,8 +20,10 @@ const CARD_DEFS = [
   { id: 'onthisday',   label: 'About this day' },
 ];
 
-// Non-toggleable cards (always shown)
-const ALWAYS_ON = new Set(['quote','weather','sun','moon','progress']);
+// Cards that are always visible and not shown in the order UI
+const ALWAYS_ON  = new Set(['quote','weather','sun','moon','progress']);
+// Cards excluded from reordering (fixed position)
+const FIXED_TOP  = new Set(['header']);
 
 export function getCardOrder() {
   try {
@@ -45,13 +47,15 @@ function saveToggle(key, val) {
 export function applyCardOrder() {
   const order = getCardOrder();
   const wrapper = document.getElementById('main');
-  const footer = document.getElementById('footer-bar');
+  if (!wrapper) return;
   order.forEach(id => {
     const el = document.getElementById('section-' + id);
     if (!el) return;
     const visible = getToggle(id);
     el.style.display = visible ? '' : 'none';
-    wrapper.insertBefore(el, footer);
+    // appendChild moves the element to the end — calling it in order
+    // produces the correct sequence without needing insertBefore
+    wrapper.appendChild(el);
   });
 }
 
