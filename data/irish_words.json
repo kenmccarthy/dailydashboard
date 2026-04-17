@@ -1,0 +1,2192 @@
+[
+{
+"word": "Dia dhuit",
+"pronunciation": "dee-ah gwit",
+"meaning": "Hello (lit. 'God to you')",
+"example": "Dia dhuit, cén chaoi a bhfuil tú? — Hello, how are you?"
+},
+{
+"word": "Go raibh maith agat",
+"pronunciation": "guh rev mah agut",
+"meaning": "Thank you",
+"example": "Go raibh maith agat as do chabhair. — Thank you for your help."
+},
+{
+"word": "Slán",
+"pronunciation": "slawn",
+"meaning": "Goodbye / Safe",
+"example": "Slán leat! — Goodbye! (said to one leaving)"
+},
+{
+"word": "Craic",
+"pronunciation": "crack",
+"meaning": "Fun, good times, news",
+"example": "Cén chaoi a raibh an craic? — How was the craic?"
+},
+{
+"word": "Cúpla focal",
+"pronunciation": "koop-la fuk-ul",
+"meaning": "A few words",
+"example": "Tá cúpla focal agam. — I have a few words."
+},
+{
+"word": "Sláinte",
+"pronunciation": "slawn-cheh",
+"meaning": "Health / Cheers!",
+"example": "Sláinte! — Cheers! (toast before drinking)"
+},
+{
+"word": "Éire",
+"pronunciation": "air-eh",
+"meaning": "Ireland",
+"example": "Is álainn í Éire. — Ireland is beautiful."
+},
+{
+"word": "Gaeilge",
+"pronunciation": "gwale-geh",
+"meaning": "The Irish language",
+"example": "An bhfuil Gaeilge agat? — Do you have Irish?"
+},
+{
+"word": "Múinteoir",
+"pronunciation": "moon-chore",
+"meaning": "Teacher",
+"example": "Is múinteoir maith í Máire. — Mary is a good teacher."
+},
+{
+"word": "Scoil",
+"pronunciation": "skull",
+"meaning": "School",
+"example": "Téann sé ar scoil gach lá. — He goes to school every day."
+},
+{
+"word": "Leabhar",
+"pronunciation": "lyow-er",
+"meaning": "Book",
+"example": "Tá an leabhar ar an mbord. — The book is on the table."
+},
+{
+"word": "Uisce",
+"pronunciation": "ish-keh",
+"meaning": "Water",
+"example": "Uisce beatha — water of life (whiskey)"
+},
+{
+"word": "Grá",
+"pronunciation": "graw",
+"meaning": "Love",
+"example": "Tá grá agam duit. — I love you."
+},
+{
+"word": "Álainn",
+"pronunciation": "aw-lin",
+"meaning": "Beautiful",
+"example": "Is lá álainn é. — It is a beautiful day."
+},
+{
+"word": "Maith",
+"pronunciation": "mah",
+"meaning": "Good",
+"example": "Is maith liom tae. — I like tea."
+},
+{
+"word": "Buíochas",
+"pronunciation": "bwee-uh-khus",
+"meaning": "Thanks, gratitude",
+"example": "Buíochas le Dia. — Thanks be to God."
+},
+{
+"word": "Baile",
+"pronunciation": "bahl-yeh",
+"meaning": "Home / Town",
+"example": "Tá mé ag dul abhaile. — I am going home."
+},
+{
+"word": "Lá",
+"pronunciation": "law",
+"meaning": "Day",
+"example": "Lá maith — Good day"
+},
+{
+"word": "Oíche",
+"pronunciation": "ee-heh",
+"meaning": "Night",
+"example": "Oíche mhaith — Good night"
+},
+{
+"word": "Maidin",
+"pronunciation": "mah-jin",
+"meaning": "Morning",
+"example": "Maidin mhaith — Good morning"
+},
+{
+"word": "Tráthnóna",
+"pronunciation": "traw-no-na",
+"meaning": "Evening / Afternoon",
+"example": "Tráthnóna maith — Good evening"
+},
+{
+"word": "Teach",
+"pronunciation": "chakh",
+"meaning": "House",
+"example": "Teach mór — A big house"
+},
+{
+"word": "Carr",
+"pronunciation": "kar",
+"meaning": "Car",
+"example": "Tá carr nua agam. — I have a new car."
+},
+{
+"word": "Bóthar",
+"pronunciation": "boh-er",
+"meaning": "Road",
+"example": "Bothar mór — A big road"
+},
+{
+"word": "Abhainn",
+"pronunciation": "ow-in",
+"meaning": "River",
+"example": "An Abhainn Mhór — The River Mhór"
+},
+{
+"word": "Cnoc",
+"pronunciation": "k-nuk",
+"meaning": "Hill",
+"example": "Ar bharr an chnoic — On top of the hill"
+},
+{
+"word": "Farraige",
+"pronunciation": "far-ig-eh",
+"meaning": "Sea",
+"example": "Ag an bhfarraige — At the sea"
+},
+{
+"word": "Spéir",
+"pronunciation": "spare",
+"meaning": "Sky",
+"example": "Spéir ghorm — Blue sky"
+},
+{
+"word": "Grian",
+"pronunciation": "gree-an",
+"meaning": "Sun",
+"example": "Tá an ghrian ag taitneamh. — The sun is shining."
+},
+{
+"word": "Gealaigh",
+"pronunciation": "gyal-ee",
+"meaning": "Moon",
+"example": "Lán gealaí — Full moon"
+},
+{
+"word": "Réaltaí",
+"pronunciation": "rail-tee",
+"meaning": "Stars",
+"example": "Na réaltaí sa spéir — The stars in the sky"
+},
+{
+"word": "Féar",
+"pronunciation": "fare",
+"meaning": "Grass",
+"example": "Féar glas — Green grass"
+},
+{
+"word": "Crann",
+"pronunciation": "krawn",
+"meaning": "Tree",
+"example": "Crann mór darach — A big oak tree"
+},
+{
+"word": "Bláth",
+"pronunciation": "blaw",
+"meaning": "Flower",
+"example": "Bláthanna — Flowers"
+},
+{
+"word": "Bia",
+"pronunciation": "bee-ah",
+"meaning": "Food",
+"example": "Bia maith — Good food"
+},
+{
+"word": "Deoch",
+"pronunciation": "jokh",
+"meaning": "Drink",
+"example": "Deoch mhaith — A good drink"
+},
+{
+"word": "Arán",
+"pronunciation": "ah-rawn",
+"meaning": "Bread",
+"example": "Arán donn — Brown bread"
+},
+{
+"word": "Im",
+"pronunciation": "im",
+"meaning": "Butter",
+"example": "Arán agus im — Bread and butter"
+},
+{
+"word": "Tae",
+"pronunciation": "tay",
+"meaning": "Tea",
+"example": "Cupán tae — A cup of tea"
+},
+{
+"word": "Caife",
+"pronunciation": "kaf-eh",
+"meaning": "Coffee",
+"example": "Caife láidir — Strong coffee"
+},
+{
+"word": "Airgead",
+"pronunciation": "ar-ig-id",
+"meaning": "Money / Silver",
+"example": "Airgead tirim — Cash"
+},
+{
+"word": "Am",
+"pronunciation": "owm",
+"meaning": "Time",
+"example": "Cén t-am é? — What time is it?"
+},
+{
+"word": "Blian",
+"pronunciation": "blee-an",
+"meaning": "Year",
+"example": "Bliain nua — New year"
+},
+{
+"word": "Mí",
+"pronunciation": "mee",
+"meaning": "Month",
+"example": "An mhí seo — This month"
+},
+{
+"word": "Seachtain",
+"pronunciation": "shakh-tin",
+"meaning": "Week",
+"example": "An tseachtain seo chugainn — Next week"
+},
+{
+"word": "Inniu",
+"pronunciation": "in-yoo",
+"meaning": "Today",
+"example": "Inniu is dé hAoine é. — Today is Friday."
+},
+{
+"word": "Amárach",
+"pronunciation": "ah-mar-akh",
+"meaning": "Tomorrow",
+"example": "Feicfidh mé thú amárach. — I'll see you tomorrow."
+},
+{
+"word": "Inné",
+"pronunciation": "in-yay",
+"meaning": "Yesterday",
+"example": "Chuaigh mé ann inné. — I went there yesterday."
+},
+{
+"word": "Ceart",
+"pronunciation": "kyart",
+"meaning": "Right / Correct",
+"example": "Is ceart é. — It is correct."
+},
+{
+"word": "Fíor",
+"pronunciation": "fee-ur",
+"meaning": "True / Real",
+"example": "Scéal fíor — A true story"
+},
+{
+"word": "Bréagach",
+"pronunciation": "bray-gakh",
+"meaning": "False / Lying",
+"example": "Is bréagach é. — He is lying."
+},
+{
+"word": "Mór",
+"pronunciation": "more",
+"meaning": "Big / Great",
+"example": "Tá sé mór. — It is big."
+},
+{
+"word": "Beag",
+"pronunciation": "byug",
+"meaning": "Small / Little",
+"example": "Teach beag — A small house"
+},
+{
+"word": "Láidir",
+"pronunciation": "law-jir",
+"meaning": "Strong",
+"example": "Tá sé láidir. — He is strong."
+},
+{
+"word": "Lag",
+"pronunciation": "log",
+"meaning": "Weak",
+"example": "Tá sé lag. — He is weak."
+},
+{
+"word": "Tapa",
+"pronunciation": "top-ah",
+"meaning": "Quick / Fast",
+"example": "Rith go tapa — Run quickly"
+},
+{
+"word": "Mall",
+"pronunciation": "mawl",
+"meaning": "Slow",
+"example": "Bí mall — Be slow"
+},
+{
+"word": "Gorm",
+"pronunciation": "gur-um",
+"meaning": "Blue",
+"example": "Spéir ghorm — Blue sky"
+},
+{
+"word": "Dearg",
+"pronunciation": "dyar-ug",
+"meaning": "Red",
+"example": "Rós dearg — Red rose"
+},
+{
+"word": "Buí",
+"pronunciation": "bwee",
+"meaning": "Yellow",
+"example": "Bláth buí — Yellow flower"
+},
+{
+"word": "Glas",
+"pronunciation": "glos",
+"meaning": "Green / Grey-green",
+"example": "Féar glas — Green grass"
+},
+{
+"word": "Bán",
+"pronunciation": "bawn",
+"meaning": "White",
+"example": "Sneachta bán — White snow"
+},
+{
+"word": "Dubh",
+"pronunciation": "duv",
+"meaning": "Black",
+"example": "Cat dubh — Black cat"
+},
+{
+"word": "Donn",
+"pronunciation": "down",
+"meaning": "Brown",
+"example": "Capall donn — A brown horse"
+},
+{
+"word": "Liath",
+"pronunciation": "lee-ah",
+"meaning": "Grey",
+"example": "Madra liath — A grey dog"
+},
+{
+"word": "Beo",
+"pronunciation": "byoh",
+"meaning": "Alive / Living",
+"example": "Beo beathach — Full of life"
+},
+{
+"word": "Marbh",
+"pronunciation": "marv",
+"meaning": "Dead",
+"example": "Níl sé beo — He is not alive"
+},
+{
+"word": "Óg",
+"pronunciation": "ohg",
+"meaning": "Young",
+"example": "Duine óg — A young person"
+},
+{
+"word": "Sean",
+"pronunciation": "shan",
+"meaning": "Old",
+"example": "Seanduine — An old person"
+},
+{
+"word": "Fear",
+"pronunciation": "far",
+"meaning": "Man",
+"example": "Fear maith — A good man"
+},
+{
+"word": "Bean",
+"pronunciation": "ban",
+"meaning": "Woman",
+"example": "Bean mhaith — A good woman"
+},
+{
+"word": "Páiste",
+"pronunciation": "pawsh-teh",
+"meaning": "Child",
+"example": "Páistí beaga — Small children"
+},
+{
+"word": "Cara",
+"pronunciation": "kara",
+"meaning": "Friend",
+"example": "Mo chara — My friend"
+},
+{
+"word": "Namhaid",
+"pronunciation": "nav-id",
+"meaning": "Enemy",
+"example": "Ná bí i do namhaid — Don't be an enemy"
+},
+{
+"word": "Siopadóir",
+"pronunciation": "shup-ah-dore",
+"meaning": "Shopkeeper",
+"example": "An siopadóir cairdiúil — The friendly shopkeeper"
+},
+{
+"word": "Dochtúir",
+"pronunciation": "dokh-toor",
+"meaning": "Doctor",
+"example": "Téigh go dtí an dochtúir — Go to the doctor"
+},
+{
+"word": "Altra",
+"pronunciation": "al-tra",
+"meaning": "Nurse",
+"example": "Altra maith — A good nurse"
+},
+{
+"word": "Gardaí",
+"pronunciation": "gar-dee",
+"meaning": "Police (lit. 'guardians')",
+"example": "Glaoigh ar na Gardaí — Call the Guards"
+},
+{
+"word": "Rialtas",
+"pronunciation": "ree-ul-tus",
+"meaning": "Government",
+"example": "An Rialtas — The Government"
+},
+{
+"word": "Teanga",
+"pronunciation": "chang-ah",
+"meaning": "Language / Tongue",
+"example": "Teanga bheo — A living language"
+},
+{
+"word": "Ceol",
+"pronunciation": "kyohl",
+"meaning": "Music",
+"example": "Is breá liom ceol. — I love music."
+},
+{
+"word": "Amhrán",
+"pronunciation": "ow-rawn",
+"meaning": "Song",
+"example": "Amhrán maith — A good song"
+},
+{
+"word": "Damhsa",
+"pronunciation": "dow-sa",
+"meaning": "Dance",
+"example": "Damhsa ar an gclár — Dancing on the stage"
+},
+{
+"word": "Scéal",
+"pronunciation": "shkale",
+"meaning": "Story / News",
+"example": "Cén scéal? — What's the story?"
+},
+{
+"word": "Dráma",
+"pronunciation": "draw-ma",
+"meaning": "Drama / Play",
+"example": "Dráma maith — A good play"
+},
+{
+"word": "Léiriú",
+"pronunciation": "lay-roo",
+"meaning": "Performance / Depiction",
+"example": "Léiriú iontach — A wonderful performance"
+},
+{
+"word": "Ollscoil",
+"pronunciation": "ul-skull",
+"meaning": "University",
+"example": "Ag an ollscoil — At the university"
+},
+{
+"word": "Léachtóir",
+"pronunciation": "layakh-tore",
+"meaning": "Lecturer",
+"example": "Léachtóir cumasach — A skilled lecturer"
+},
+{
+"word": "Mac léinn",
+"pronunciation": "mock lane",
+"meaning": "Student",
+"example": "Mac léinn cáiliúil — A famous student"
+},
+{
+"word": "Teagasc",
+"pronunciation": "chag-ask",
+"meaning": "Teaching",
+"example": "Teagasc maith — Good teaching"
+},
+{
+"word": "Foghlaim",
+"pronunciation": "fow-lim",
+"meaning": "Learning",
+"example": "Foghlaim i gcónaí — Always learning"
+},
+{
+"word": "Eolas",
+"pronunciation": "oh-lus",
+"meaning": "Knowledge / Information",
+"example": "Eolas maith — Good knowledge"
+},
+{
+"word": "Ciall",
+"pronunciation": "keel",
+"meaning": "Sense / Wisdom",
+"example": "Bíodh ciall agat — Have sense"
+},
+{
+"word": "Intinn",
+"pronunciation": "in-tin",
+"meaning": "Mind / Intention",
+"example": "Intinn ghéar — Sharp mind"
+},
+{
+"word": "Croí",
+"pronunciation": "kree",
+"meaning": "Heart",
+"example": "Ó mo chroí — From my heart"
+},
+{
+"word": "Lámh",
+"pronunciation": "lawv",
+"meaning": "Hand",
+"example": "Lámh láidir — Strong hand"
+},
+{
+"word": "Cos",
+"pronunciation": "kus",
+"meaning": "Foot / Leg",
+"example": "Ar mo chosa — On my feet"
+},
+{
+"word": "Ceann",
+"pronunciation": "kyawn",
+"meaning": "Head / One",
+"example": "Os cionn mo chinn — Above my head"
+},
+{
+"word": "Súil",
+"pronunciation": "sool",
+"meaning": "Eye / Hope",
+"example": "Súile gorma — Blue eyes"
+},
+{
+"word": "Cluas",
+"pronunciation": "kloos",
+"meaning": "Ear",
+"example": "Cluas le héisteacht — Ear for listening"
+},
+{
+"word": "Béal",
+"pronunciation": "bail",
+"meaning": "Mouth",
+"example": "Bí i do thost — Be quiet (lit. 'keep your mouth')"
+},
+{
+"word": "Srón",
+"pronunciation": "srone",
+"meaning": "Nose",
+"example": "Srón fada — A long nose"
+},
+{
+"word": "Glór",
+"pronunciation": "glore",
+"meaning": "Voice",
+"example": "Glór álainn — A beautiful voice"
+},
+{
+"word": "Focal",
+"pronunciation": "fuk-ul",
+"meaning": "Word",
+"example": "Focal maith — A good word"
+},
+{
+"word": "Abairt",
+"pronunciation": "ab-irt",
+"meaning": "Sentence",
+"example": "Abairt ghairid — A short sentence"
+},
+{
+"word": "Litir",
+"pronunciation": "lit-ir",
+"meaning": "Letter (alphabet/post)",
+"example": "Litreacha an aibítre — Letters of the alphabet"
+},
+{
+"word": "Uimhir",
+"pronunciation": "iv-ir",
+"meaning": "Number",
+"example": "Uimhir a haon — Number one"
+},
+{
+"word": "Dath",
+"pronunciation": "dah",
+"meaning": "Colour",
+"example": "Cén dath é? — What colour is it?"
+},
+{
+"word": "Méar",
+"pronunciation": "mare",
+"meaning": "Finger",
+"example": "Méar ordóige — Thumb (lit. 'lord's finger')"
+},
+{
+"word": "Neart",
+"pronunciation": "nyart",
+"meaning": "Strength / Plenty",
+"example": "Neart lámh — Strength of hand"
+},
+{
+"word": "Dóchas",
+"pronunciation": "doe-khus",
+"meaning": "Hope",
+"example": "Tá dóchas agam. — I have hope."
+},
+{
+"word": "Áthas",
+"pronunciation": "aw-hus",
+"meaning": "Joy / Happiness",
+"example": "Lán d'áthas — Full of joy"
+},
+{
+"word": "Brón",
+"pronunciation": "brone",
+"meaning": "Sadness / Sorrow",
+"example": "Tá brón orm. — I am sad."
+},
+{
+"word": "Eagla",
+"pronunciation": "ag-la",
+"meaning": "Fear",
+"example": "Tá eagla orm. — I am afraid."
+},
+{
+"word": "Fearg",
+"pronunciation": "fyar-ug",
+"meaning": "Anger",
+"example": "Tá fearg orm. — I am angry."
+},
+{
+"word": "Iontas",
+"pronunciation": "un-tus",
+"meaning": "Wonder / Surprise",
+"example": "Iontas mór — A great wonder"
+},
+{
+"word": "Suaimhneas",
+"pronunciation": "soo-iv-nus",
+"meaning": "Peace / Calm",
+"example": "Suaimhneas síoraí — Eternal peace"
+},
+{
+"word": "Misneach",
+"pronunciation": "mish-nakh",
+"meaning": "Courage / Morale",
+"example": "Misneach maith — Good courage"
+},
+{
+"word": "Onóir",
+"pronunciation": "un-ore",
+"meaning": "Honour",
+"example": "Le honóir — With honour"
+},
+{
+"word": "Dílis",
+"pronunciation": "jee-lish",
+"meaning": "Faithful / Loyal",
+"example": "Cara dílis — A faithful friend"
+},
+{
+"word": "Fírinne",
+"pronunciation": "fee-rin-eh",
+"meaning": "Truth",
+"example": "An fhírinne — The truth"
+},
+{
+"word": "Cothrom",
+"pronunciation": "ku-hrum",
+"meaning": "Fair / Equal / Balance",
+"example": "Cothrom na Féinne — Fair play"
+},
+{
+"word": "Ceart",
+"pronunciation": "kyart",
+"meaning": "Justice / Right",
+"example": "Ag lorg cearta — Seeking rights"
+},
+{
+"word": "Síocháin",
+"pronunciation": "shee-khawn",
+"meaning": "Peace",
+"example": "Síocháin agus grá — Peace and love"
+},
+{
+"word": "Cogadh",
+"pronunciation": "kug-ah",
+"meaning": "War",
+"example": "Deireadh le cogadh — End to war"
+},
+{
+"word": "Cabhair",
+"pronunciation": "kow-ir",
+"meaning": "Help / Aid",
+"example": "An féidir leat cabhrú liom? — Can you help me?"
+},
+{
+"word": "Comhar",
+"pronunciation": "koh-ur",
+"meaning": "Cooperation",
+"example": "Ag obair i gcomhar — Working together"
+},
+{
+"word": "Muintir",
+"pronunciation": "mwin-tir",
+"meaning": "People / Community / Family",
+"example": "Muintir na hÉireann — The Irish people"
+},
+{
+"word": "Pobal",
+"pronunciation": "pub-ul",
+"meaning": "Community / Public",
+"example": "Pobal beag — A small community"
+},
+{
+"word": "Náisiún",
+"pronunciation": "naw-shoon",
+"meaning": "Nation",
+"example": "Ár náisiún — Our nation"
+},
+{
+"word": "Cultúr",
+"pronunciation": "kul-toor",
+"meaning": "Culture",
+"example": "Cultúr na hÉireann — Irish culture"
+},
+{
+"word": "Oidhreacht",
+"pronunciation": "oy-rakhd",
+"meaning": "Heritage",
+"example": "Oidhreacht Ghaelach — Gaelic heritage"
+},
+{
+"word": "Seanchas",
+"pronunciation": "shan-akhus",
+"meaning": "Lore / Tradition / Old knowledge",
+"example": "Seanchas ár sinsear — The lore of our ancestors"
+},
+{
+"word": "Draíocht",
+"pronunciation": "dree-ukht",
+"meaning": "Magic / Enchantment",
+"example": "Tír na draíochta — Land of magic"
+},
+{
+"word": "Sí",
+"pronunciation": "shee",
+"meaning": "Fairy mound / Fairy",
+"example": "Daoine sí — Fairy people"
+},
+{
+"word": "Bean sí",
+"pronunciation": "ban shee",
+"meaning": "Banshee (woman of the fairy mound)",
+"example": "Caoineadh na mná sí — The crying of the banshee"
+},
+{
+"word": "Ceilteach",
+"pronunciation": "kel-tyakh",
+"meaning": "Celtic",
+"example": "Oidhreacht Cheilteach — Celtic heritage"
+},
+{
+"word": "Gaeltacht",
+"pronunciation": "gwale-takhd",
+"meaning": "Irish-speaking region",
+"example": "Sa Ghaeltacht — In the Gaeltacht"
+},
+{
+"word": "Samhradh",
+"pronunciation": "sow-ra",
+"meaning": "Summer",
+"example": "Lá samhraidh — A summer's day"
+},
+{
+"word": "Fómhar",
+"pronunciation": "foh-ur",
+"meaning": "Autumn / Harvest",
+"example": "Fómhar maith — A good harvest"
+},
+{
+"word": "Geimhreadh",
+"pronunciation": "gyev-ra",
+"meaning": "Winter",
+"example": "Oíche gheimhridh — A winter's night"
+},
+{
+"word": "Earrach",
+"pronunciation": "ar-rakh",
+"meaning": "Spring",
+"example": "Earrach na beatha — Spring of life"
+},
+{
+"word": "Báisteach",
+"pronunciation": "bawsh-tyakh",
+"meaning": "Rain",
+"example": "Tá báisteach ann. — It is raining."
+},
+{
+"word": "Gaoth",
+"pronunciation": "gwee",
+"meaning": "Wind",
+"example": "Gaoth láidir — Strong wind"
+},
+{
+"word": "Sneachta",
+"pronunciation": "shnyakhta",
+"meaning": "Snow",
+"example": "Sneachta bán — White snow"
+},
+{
+"word": "Scamall",
+"pronunciation": "skam-ul",
+"meaning": "Cloud",
+"example": "Scamaill dhorcha — Dark clouds"
+},
+{
+"word": "Tintreach",
+"pronunciation": "chin-trakh",
+"meaning": "Lightning",
+"example": "Tintreach agus toirneach — Lightning and thunder"
+},
+{
+"word": "Toirneach",
+"pronunciation": "tur-nakh",
+"meaning": "Thunder",
+"example": "Fuaim na toirní — The sound of thunder"
+},
+{
+"word": "Solas",
+"pronunciation": "sul-us",
+"meaning": "Light",
+"example": "Solas an lae — The light of day"
+},
+{
+"word": "Dorchacht",
+"pronunciation": "dur-akhd",
+"meaning": "Darkness",
+"example": "Sa dorchacht — In the darkness"
+},
+{
+"word": "Teas",
+"pronunciation": "chas",
+"meaning": "Heat / Warmth",
+"example": "Teas na gréine — The heat of the sun"
+},
+{
+"word": "Fuacht",
+"pronunciation": "foo-ukhd",
+"meaning": "Cold",
+"example": "Tá fuacht ann. — It is cold."
+},
+{
+"word": "Moill",
+"pronunciation": "mwil",
+"meaning": "Delay",
+"example": "Gan mhoill — Without delay"
+},
+{
+"word": "Deifir",
+"pronunciation": "def-ir",
+"meaning": "Hurry / Haste",
+"example": "Tá deifir orm. — I am in a hurry."
+},
+{
+"word": "Ar ais",
+"pronunciation": "er ash",
+"meaning": "Back / Again",
+"example": "Tá mé ar ais. — I am back."
+},
+{
+"word": "Ar aghaidh",
+"pronunciation": "er eye",
+"meaning": "Forward / Ahead",
+"example": "Ar aghaidh leat! — Forward you go!"
+},
+{
+"word": "In aice",
+"pronunciation": "in ak-eh",
+"meaning": "Near / Beside",
+"example": "In aice leis an scoil — Near the school"
+},
+{
+"word": "I bhfad",
+"pronunciation": "ih wod",
+"meaning": "Far / Long",
+"example": "I bhfad uaim — Far from me"
+},
+{
+"word": "Anseo",
+"pronunciation": "an-shuh",
+"meaning": "Here",
+"example": "Tá mé anseo. — I am here."
+},
+{
+"word": "Ansin",
+"pronunciation": "an-shin",
+"meaning": "There",
+"example": "Tá sé ansin. — It is there."
+},
+{
+"word": "Thuas",
+"pronunciation": "hoo-us",
+"meaning": "Above / Up",
+"example": "Thuas sa spéir — Up in the sky"
+},
+{
+"word": "Thíos",
+"pronunciation": "hee-us",
+"meaning": "Below / Down",
+"example": "Thíos staighre — Downstairs"
+},
+{
+"word": "Taobh istigh",
+"pronunciation": "teev ish-tee",
+"meaning": "Inside",
+"example": "Taobh istigh den teach — Inside the house"
+},
+{
+"word": "Taobh amuigh",
+"pronunciation": "teev am-wee",
+"meaning": "Outside",
+"example": "Taobh amuigh den teach — Outside the house"
+},
+{
+"word": "Idir",
+"pronunciation": "id-ir",
+"meaning": "Between / Among",
+"example": "Idir mé agus tú — Between me and you"
+},
+{
+"word": "Le chéile",
+"pronunciation": "leh khay-leh",
+"meaning": "Together",
+"example": "Ag obair le chéile — Working together"
+},
+{
+"word": "Thar",
+"pronunciation": "har",
+"meaning": "Over / Past / Beyond",
+"example": "Thar sáile — Beyond the sea (abroad)"
+},
+{
+"word": "Faoi",
+"pronunciation": "fwee",
+"meaning": "Under / About",
+"example": "Faoi bhun — Under the base"
+},
+{
+"word": "Ar",
+"pronunciation": "er",
+"meaning": "On / At (preposition)",
+"example": "Ar an mbord — On the table"
+},
+{
+"word": "Ag",
+"pronunciation": "eg",
+"meaning": "At / By (verbal noun particle)",
+"example": "Ag obair — Working"
+},
+{
+"word": "As",
+"pronunciation": "os",
+"meaning": "Out of / From",
+"example": "As Éire — From Ireland"
+},
+{
+"word": "Ó",
+"pronunciation": "oh",
+"meaning": "From / Since",
+"example": "Ó shin — Since then"
+},
+{
+"word": "Go",
+"pronunciation": "guh",
+"meaning": "To / Until / That",
+"example": "Go Baile Átha Cliath — To Dublin"
+},
+{
+"word": "Le",
+"pronunciation": "leh",
+"meaning": "With / For (preposition)",
+"example": "Le grá — With love"
+},
+{
+"word": "Má",
+"pronunciation": "maw",
+"meaning": "If",
+"example": "Má tá tú ann — If you are there"
+},
+{
+"word": "Ach",
+"pronunciation": "akh",
+"meaning": "But / Only",
+"example": "Ach níl sé ann. — But he is not there."
+},
+{
+"word": "Agus",
+"pronunciation": "ah-gus",
+"meaning": "And",
+"example": "Tae agus arán — Tea and bread"
+},
+{
+"word": "Nó",
+"pronunciation": "no",
+"meaning": "Or",
+"example": "Tae nó caife — Tea or coffee"
+},
+{
+"word": "Mar",
+"pronunciation": "mar",
+"meaning": "Because / As / Like",
+"example": "Mar is maith liom — Because I like it"
+},
+{
+"word": "Cé",
+"pronunciation": "kay",
+"meaning": "Who / What / Though",
+"example": "Cé thú féin? — Who are you?"
+},
+{
+"word": "Cad",
+"pronunciation": "kod",
+"meaning": "What",
+"example": "Cad atá ar siúl? — What is happening?"
+},
+{
+"word": "Cathain",
+"pronunciation": "ka-hin",
+"meaning": "When",
+"example": "Cathain atá sé? — When is it?"
+},
+{
+"word": "Cá",
+"pronunciation": "kaw",
+"meaning": "Where",
+"example": "Cá bhfuil tú? — Where are you?"
+},
+{
+"word": "Conas",
+"pronunciation": "kun-us",
+"meaning": "How",
+"example": "Conas atá tú? — How are you?"
+},
+{
+"word": "Cén fáth",
+"pronunciation": "kayn faw",
+"meaning": "Why",
+"example": "Cén fáth? — Why?"
+},
+{
+"word": "Cé mhéad",
+"pronunciation": "kay vayd",
+"meaning": "How much / How many",
+"example": "Cé mhéad atá sé? — How much is it?"
+},
+{
+"word": "Níl",
+"pronunciation": "neel",
+"meaning": "Is not (negative of 'is')",
+"example": "Níl mé anseo. — I am not here."
+},
+{
+"word": "Tá",
+"pronunciation": "taw",
+"meaning": "Is / Am / Are (present tense of 'to be')",
+"example": "Tá lá maith ann. — It is a fine day."
+},
+{
+"word": "Bhí",
+"pronunciation": "vee",
+"meaning": "Was / Were (past tense of 'to be')",
+"example": "Bhí mé ann. — I was there."
+},
+{
+"word": "Beidh",
+"pronunciation": "beh",
+"meaning": "Will be (future of 'to be')",
+"example": "Beidh mé ar ais. — I will be back."
+},
+{
+"word": "Féidir",
+"pronunciation": "fay-jir",
+"meaning": "Possible / Can",
+"example": "Is féidir liom — I can"
+},
+{
+"word": "Caithfidh",
+"pronunciation": "ka-hee",
+"meaning": "Must / Will have to",
+"example": "Caithfidh mé imeacht. — I must leave."
+},
+{
+"word": "Déanfaidh",
+"pronunciation": "jain-ee",
+"meaning": "Will do / Will make",
+"example": "Déanfaidh sé cúis. — It will do."
+},
+{
+"word": "Thosaigh",
+"pronunciation": "hus-ee",
+"meaning": "Started / Began",
+"example": "Thosaigh sé ar maidin. — It started in the morning."
+},
+{
+"word": "Críochnaigh",
+"pronunciation": "kree-nee",
+"meaning": "Finished / Ended",
+"example": "Críochnaigh an obair. — Finish the work."
+},
+{
+"word": "Lean",
+"pronunciation": "lan",
+"meaning": "Follow / Continue",
+"example": "Lean ar aghaidh. — Continue on."
+},
+{
+"word": "Ná",
+"pronunciation": "naw",
+"meaning": "Don't (negative imperative)",
+"example": "Ná bí buartha. — Don't worry."
+},
+{
+"word": "Seo",
+"pronunciation": "shuh",
+"meaning": "This / Here (demonstrative)",
+"example": "Seo é. — This is it."
+},
+{
+"word": "Sin",
+"pronunciation": "shin",
+"meaning": "That / There (demonstrative)",
+"example": "Sin é. — That's it."
+},
+{
+"word": "Féin",
+"pronunciation": "fain",
+"meaning": "Self / Own / Even",
+"example": "Mé féin — Myself"
+},
+{
+"word": "Fós",
+"pronunciation": "fohs",
+"meaning": "Yet / Still",
+"example": "Fós ann — Still there"
+},
+{
+"word": "Cheana",
+"pronunciation": "khyana",
+"meaning": "Already",
+"example": "Cheana féin — Already"
+},
+{
+"word": "Arís",
+"pronunciation": "a-reesh",
+"meaning": "Again",
+"example": "Arís eile — Once again"
+},
+{
+"word": "Níos mó",
+"pronunciation": "neece mo",
+"meaning": "More / Bigger",
+"example": "Níos mó airgid — More money"
+},
+{
+"word": "Níos lú",
+"pronunciation": "neece loo",
+"meaning": "Less / Smaller",
+"example": "Níos lú ama — Less time"
+},
+{
+"word": "An-mhaith",
+"pronunciation": "un-wah",
+"meaning": "Very good / Excellent",
+"example": "An-mhaith ar fad! — Excellent altogether!"
+},
+{
+"word": "Go hiontach",
+"pronunciation": "guh hyun-takh",
+"meaning": "Wonderfully / Brilliantly",
+"example": "D'éirigh go hiontach leat. — You did wonderfully."
+},
+{
+"word": "Míle buíochas",
+"pronunciation": "mee-leh bwee-akhus",
+"meaning": "A thousand thanks",
+"example": "Míle buíochas duit — A thousand thanks to you"
+},
+{
+"word": "Tá fáilte romhat",
+"pronunciation": "taw fawl-cheh row-it",
+"meaning": "You are welcome",
+"example": "Tá fáilte romhat i gcónaí. — You are always welcome."
+},
+{
+"word": "Fáilte",
+"pronunciation": "fawl-cheh",
+"meaning": "Welcome",
+"example": "Céad míle fáilte — A hundred thousand welcomes"
+},
+{
+"word": "Póg",
+"pronunciation": "pohg",
+"meaning": "Kiss",
+"example": "Póg mo thóin — Kiss my backside (mild expression)"
+},
+{
+"word": "Cuideachta",
+"pronunciation": "kwij-akhta",
+"meaning": "Company / Companions",
+"example": "I gcuideachta chairde — In the company of friends"
+},
+{
+"word": "Comhluadar",
+"pronunciation": "koh-loo-uh-dur",
+"meaning": "Company / Fellowship",
+"example": "Comhluadar maith — Good company"
+},
+{
+"word": "Cairdeas",
+"pronunciation": "kar-jus",
+"meaning": "Friendship",
+"example": "Cairdeas buan — Lasting friendship"
+},
+{
+"word": "Carthanas",
+"pronunciation": "kar-hun-us",
+"meaning": "Charity / Love of neighbours",
+"example": "Carthanas Críostaí — Christian charity"
+},
+{
+"word": "Meas",
+"pronunciation": "mas",
+"meaning": "Respect / Esteem",
+"example": "Meas mór agam ort — I have great respect for you"
+},
+{
+"word": "Bua",
+"pronunciation": "boo-ah",
+"meaning": "Victory / Gift / Talent",
+"example": "Bua na cainte — The gift of speech"
+},
+{
+"word": "Cluiche",
+"pronunciation": "klih-heh",
+"meaning": "Game / Match",
+"example": "Cluiche mór — A big match"
+},
+{
+"word": "Liathróid",
+"pronunciation": "lee-ah-rode",
+"meaning": "Ball",
+"example": "Liathróid cispheile — Basketball"
+},
+{
+"word": "Peil",
+"pronunciation": "pel",
+"meaning": "Football (Gaelic)",
+"example": "Peil Ghaelach — Gaelic football"
+},
+{
+"word": "Iomáint",
+"pronunciation": "im-awnt",
+"meaning": "Hurling",
+"example": "Cluiche iomána — A hurling match"
+},
+{
+"word": "Camán",
+"pronunciation": "kam-awn",
+"meaning": "Hurley stick",
+"example": "Camán agus sliotar — Hurley and ball"
+},
+{
+"word": "Sliotar",
+"pronunciation": "shlit-ur",
+"meaning": "Hurling ball",
+"example": "Sliotar sa líon — Sliotar in the net"
+},
+{
+"word": "Cumann Lúthchleas Gael",
+"pronunciation": "kum-an loo-khlus gale",
+"meaning": "GAA — Gaelic Athletic Association",
+"example": "CLG — Lúthchleasaíocht Ghaelach — Gaelic games"
+},
+{
+"word": "Foireann",
+"pronunciation": "fur-an",
+"meaning": "Team",
+"example": "Foireann mhaith — A good team"
+},
+{
+"word": "Bainisteoir",
+"pronunciation": "ban-ish-tore",
+"meaning": "Manager",
+"example": "Bainisteoir na foirne — The team manager"
+},
+{
+"word": "Imreoir",
+"pronunciation": "im-rore",
+"meaning": "Player",
+"example": "Imreoir maith — A good player"
+},
+{
+"word": "Cúl",
+"pronunciation": "kool",
+"meaning": "Goal (GAA)",
+"example": "Cúl iontach — A great goal"
+},
+{
+"word": "Pointe",
+"pronunciation": "poin-cheh",
+"meaning": "Point (GAA)",
+"example": "Pointe breá — A fine point"
+},
+{
+"word": "Corn",
+"pronunciation": "kurn",
+"meaning": "Cup / Trophy / Horn",
+"example": "An Corn Uile-Éireann — The All-Ireland Cup"
+},
+{
+"word": "Samhain",
+"pronunciation": "sow-in",
+"meaning": "November / Halloween (Celtic festival)",
+"example": "Oíche Shamhna — Halloween night"
+},
+{
+"word": "Imbolc",
+"pronunciation": "im-ulk",
+"meaning": "Spring festival (1 Feb) — feast of St. Brigid",
+"example": "Lá Imbolc — Spring day"
+},
+{
+"word": "Bealtaine",
+"pronunciation": "byawl-tin-eh",
+"meaning": "May / May Day (Celtic summer festival)",
+"example": "Mí na Bealtaine — The month of May"
+},
+{
+"word": "Lughnasadh",
+"pronunciation": "loon-uh-suh",
+"meaning": "Harvest festival (August) — named after god Lugh",
+"example": "Féile Lughnasadh — Lughnasadh festival"
+},
+{
+"word": "Tuath",
+"pronunciation": "too-ah",
+"meaning": "Territory / People / Tribe (ancient)",
+"example": "Na Tuatha Dé Danann — The tribes of the goddess Danu"
+},
+{
+"word": "Filí",
+"pronunciation": "fill-ee",
+"meaning": "Poet / Seer (plural)",
+"example": "Na filí ársa — The ancient poets"
+},
+{
+"word": "Dán",
+"pronunciation": "dawn",
+"meaning": "Poem / Fate / Gift",
+"example": "Dán álainn — A beautiful poem"
+},
+{
+"word": "Nádúr",
+"pronunciation": "naw-dure",
+"meaning": "Nature",
+"example": "Nádúr na cruinne — The nature of the universe"
+},
+{
+"word": "Domhan",
+"pronunciation": "dow-an",
+"meaning": "World / Earth",
+"example": "Ar fud an domhain — Throughout the world"
+},
+{
+"word": "Cruinne",
+"pronunciation": "krin-eh",
+"meaning": "Universe / World",
+"example": "An chruinne mhór — The great universe"
+},
+{
+"word": "Cruthú",
+"pronunciation": "kruh-hoo",
+"meaning": "Creation / Proof",
+"example": "Cruthú na cruinne — The creation of the universe"
+},
+{
+"word": "Deireadh",
+"pronunciation": "jer-ah",
+"meaning": "End",
+"example": "Deireadh seachtaine — Weekend (lit. 'end of week')"
+},
+{
+"word": "Tús",
+"pronunciation": "toose",
+"meaning": "Beginning / Start",
+"example": "Ó thús — From the beginning"
+},
+{
+"word": "Lár",
+"pronunciation": "lawr",
+"meaning": "Middle / Centre / Floor",
+"example": "I lár na cathrach — In the centre of the city"
+},
+{
+"word": "Mórtas",
+"pronunciation": "more-tus",
+"meaning": "Pride / Boasting",
+"example": "Mórtas cine — Ethnic pride"
+},
+{
+"word": "Bród",
+"pronunciation": "brode",
+"meaning": "Pride (positive)",
+"example": "Tá bród orm. — I am proud."
+},
+{
+"word": "Náire",
+"pronunciation": "naw-reh",
+"meaning": "Shame / Embarrassment",
+"example": "Náire ort! — Shame on you!"
+},
+{
+"word": "Buachaill",
+"pronunciation": "boo-akhil",
+"meaning": "Boy",
+"example": "Buachaill maith — A good boy"
+},
+{
+"word": "Cailín",
+"pronunciation": "kah-leen",
+"meaning": "Girl",
+"example": "Cailín álainn — A beautiful girl"
+},
+{
+"word": "Teaghlach",
+"pronunciation": "chye-lakh",
+"meaning": "Family / Household",
+"example": "Teaghlach maith — A good family"
+},
+{
+"word": "Máthair",
+"pronunciation": "maw-hir",
+"meaning": "Mother",
+"example": "Mo mháthair — My mother"
+},
+{
+"word": "Athair",
+"pronunciation": "ah-hir",
+"meaning": "Father",
+"example": "M'athair — My father"
+},
+{
+"word": "Deartháir",
+"pronunciation": "jar-haw-ir",
+"meaning": "Brother",
+"example": "Mo dheartháir — My brother"
+},
+{
+"word": "Deirfiúr",
+"pronunciation": "jer-fyoor",
+"meaning": "Sister",
+"example": "Mo dheirfiúr — My sister"
+},
+{
+"word": "Seanathair",
+"pronunciation": "shan-ah-hir",
+"meaning": "Grandfather",
+"example": "Mo sheanathair — My grandfather"
+},
+{
+"word": "Seanmháthair",
+"pronunciation": "shan-waw-hir",
+"meaning": "Grandmother",
+"example": "Mo sheanmháthair — My grandmother"
+},
+{
+"word": "Uncail",
+"pronunciation": "un-kil",
+"meaning": "Uncle",
+"example": "M'uncail — My uncle"
+},
+{
+"word": "Aintín",
+"pronunciation": "an-teen",
+"meaning": "Aunt",
+"example": "M'aintín — My aunt"
+},
+{
+"word": "Dia dhuit",
+"pronunciation": "dee-ah gwit",
+"meaning": "Hello (lit. 'God to you')",
+"example": "Dia dhuit, cén chaoi a bhfuil tú? — Hello, how are you?"
+},
+{
+"word": "Go raibh maith agat",
+"pronunciation": "guh rev mah agut",
+"meaning": "Thank you",
+"example": "Go raibh maith agat as do chabhair. — Thank you for your help."
+},
+{
+"word": "Slán",
+"pronunciation": "slawn",
+"meaning": "Goodbye / Safe",
+"example": "Slán leat! — Goodbye! (said to one leaving)"
+},
+{
+"word": "Craic",
+"pronunciation": "crack",
+"meaning": "Fun, good times, news",
+"example": "Cén chaoi a raibh an craic? — How was the craic?"
+},
+{
+"word": "Cúpla focal",
+"pronunciation": "koop-la fuk-ul",
+"meaning": "A few words",
+"example": "Tá cúpla focal agam. — I have a few words."
+},
+{
+"word": "Sláinte",
+"pronunciation": "slawn-cheh",
+"meaning": "Health / Cheers!",
+"example": "Sláinte! — Cheers! (toast before drinking)"
+},
+{
+"word": "Éire",
+"pronunciation": "air-eh",
+"meaning": "Ireland",
+"example": "Is álainn í Éire. — Ireland is beautiful."
+},
+{
+"word": "Gaeilge",
+"pronunciation": "gwale-geh",
+"meaning": "The Irish language",
+"example": "An bhfuil Gaeilge agat? — Do you have Irish?"
+},
+{
+"word": "Múinteoir",
+"pronunciation": "moon-chore",
+"meaning": "Teacher",
+"example": "Is múinteoir maith í Máire. — Mary is a good teacher."
+},
+{
+"word": "Scoil",
+"pronunciation": "skull",
+"meaning": "School",
+"example": "Téann sé ar scoil gach lá. — He goes to school every day."
+},
+{
+"word": "Leabhar",
+"pronunciation": "lyow-er",
+"meaning": "Book",
+"example": "Tá an leabhar ar an mbord. — The book is on the table."
+},
+{
+"word": "Uisce",
+"pronunciation": "ish-keh",
+"meaning": "Water",
+"example": "Uisce beatha — water of life (whiskey)"
+},
+{
+"word": "Grá",
+"pronunciation": "graw",
+"meaning": "Love",
+"example": "Tá grá agam duit. — I love you."
+},
+{
+"word": "Álainn",
+"pronunciation": "aw-lin",
+"meaning": "Beautiful",
+"example": "Is lá álainn é. — It is a beautiful day."
+},
+{
+"word": "Maith",
+"pronunciation": "mah",
+"meaning": "Good",
+"example": "Is maith liom tae. — I like tea."
+},
+{
+"word": "Buíochas",
+"pronunciation": "bwee-uh-khus",
+"meaning": "Thanks, gratitude",
+"example": "Buíochas le Dia. — Thanks be to God."
+},
+{
+"word": "Baile",
+"pronunciation": "bahl-yeh",
+"meaning": "Home / Town",
+"example": "Tá mé ag dul abhaile. — I am going home."
+},
+{
+"word": "Lá",
+"pronunciation": "law",
+"meaning": "Day",
+"example": "Lá maith — Good day"
+},
+{
+"word": "Oíche",
+"pronunciation": "ee-heh",
+"meaning": "Night",
+"example": "Oíche mhaith — Good night"
+},
+{
+"word": "Maidin",
+"pronunciation": "mah-jin",
+"meaning": "Morning",
+"example": "Maidin mhaith — Good morning"
+},
+{
+"word": "Tráthnóna",
+"pronunciation": "traw-no-na",
+"meaning": "Evening / Afternoon",
+"example": "Tráthnóna maith — Good evening"
+},
+{
+"word": "Teach",
+"pronunciation": "chakh",
+"meaning": "House",
+"example": "Teach mór — A big house"
+},
+{
+"word": "Carr",
+"pronunciation": "kar",
+"meaning": "Car",
+"example": "Tá carr nua agam. — I have a new car."
+},
+{
+"word": "Bóthar",
+"pronunciation": "boh-er",
+"meaning": "Road",
+"example": "Bothar mór — A big road"
+},
+{
+"word": "Abhainn",
+"pronunciation": "ow-in",
+"meaning": "River",
+"example": "An Abhainn Mhór — The River Mhór"
+},
+{
+"word": "Cnoc",
+"pronunciation": "k-nuk",
+"meaning": "Hill",
+"example": "Ar bharr an chnoic — On top of the hill"
+},
+{
+"word": "Farraige",
+"pronunciation": "far-ig-eh",
+"meaning": "Sea",
+"example": "Ag an bhfarraige — At the sea"
+},
+{
+"word": "Spéir",
+"pronunciation": "spare",
+"meaning": "Sky",
+"example": "Spéir ghorm — Blue sky"
+},
+{
+"word": "Grian",
+"pronunciation": "gree-an",
+"meaning": "Sun",
+"example": "Tá an ghrian ag taitneamh. — The sun is shining."
+},
+{
+"word": "Gealaigh",
+"pronunciation": "gyal-ee",
+"meaning": "Moon",
+"example": "Lán gealaí — Full moon"
+},
+{
+"word": "Réaltaí",
+"pronunciation": "rail-tee",
+"meaning": "Stars",
+"example": "Na réaltaí sa spéir — The stars in the sky"
+},
+{
+"word": "Féar",
+"pronunciation": "fare",
+"meaning": "Grass",
+"example": "Féar glas — Green grass"
+},
+{
+"word": "Crann",
+"pronunciation": "krawn",
+"meaning": "Tree",
+"example": "Crann mór darach — A big oak tree"
+},
+{
+"word": "Bláth",
+"pronunciation": "blaw",
+"meaning": "Flower",
+"example": "Bláthanna — Flowers"
+},
+{
+"word": "Bia",
+"pronunciation": "bee-ah",
+"meaning": "Food",
+"example": "Bia maith — Good food"
+},
+{
+"word": "Deoch",
+"pronunciation": "jokh",
+"meaning": "Drink",
+"example": "Deoch mhaith — A good drink"
+},
+{
+"word": "Arán",
+"pronunciation": "ah-rawn",
+"meaning": "Bread",
+"example": "Arán donn — Brown bread"
+},
+{
+"word": "Im",
+"pronunciation": "im",
+"meaning": "Butter",
+"example": "Arán agus im — Bread and butter"
+},
+{
+"word": "Tae",
+"pronunciation": "tay",
+"meaning": "Tea",
+"example": "Cupán tae — A cup of tea"
+},
+{
+"word": "Caife",
+"pronunciation": "kaf-eh",
+"meaning": "Coffee",
+"example": "Caife láidir — Strong coffee"
+},
+{
+"word": "Airgead",
+"pronunciation": "ar-ig-id",
+"meaning": "Money / Silver",
+"example": "Airgead tirim — Cash"
+},
+{
+"word": "Am",
+"pronunciation": "owm",
+"meaning": "Time",
+"example": "Cén t-am é? — What time is it?"
+},
+{
+"word": "Blian",
+"pronunciation": "blee-an",
+"meaning": "Year",
+"example": "Bliain nua — New year"
+},
+{
+"word": "Mí",
+"pronunciation": "mee",
+"meaning": "Month",
+"example": "An mhí seo — This month"
+},
+{
+"word": "Seachtain",
+"pronunciation": "shakh-tin",
+"meaning": "Week",
+"example": "An tseachtain seo chugainn — Next week"
+},
+{
+"word": "Inniu",
+"pronunciation": "in-yoo",
+"meaning": "Today",
+"example": "Inniu is dé hAoine é. — Today is Friday."
+},
+{
+"word": "Amárach",
+"pronunciation": "ah-mar-akh",
+"meaning": "Tomorrow",
+"example": "Feicfidh mé thú amárach. — I'll see you tomorrow."
+},
+{
+"word": "Inné",
+"pronunciation": "in-yay",
+"meaning": "Yesterday",
+"example": "Chuaigh mé ann inné. — I went there yesterday."
+},
+{
+"word": "Ceart",
+"pronunciation": "kyart",
+"meaning": "Right / Correct",
+"example": "Is ceart é. — It is correct."
+},
+{
+"word": "Fíor",
+"pronunciation": "fee-ur",
+"meaning": "True / Real",
+"example": "Scéal fíor — A true story"
+},
+{
+"word": "Bréagach",
+"pronunciation": "bray-gakh",
+"meaning": "False / Lying",
+"example": "Is bréagach é. — He is lying."
+},
+{
+"word": "Mór",
+"pronunciation": "more",
+"meaning": "Big / Great",
+"example": "Tá sé mór. — It is big."
+},
+{
+"word": "Beag",
+"pronunciation": "byug",
+"meaning": "Small / Little",
+"example": "Teach beag — A small house"
+},
+{
+"word": "Láidir",
+"pronunciation": "law-jir",
+"meaning": "Strong",
+"example": "Tá sé láidir. — He is strong."
+},
+{
+"word": "Lag",
+"pronunciation": "log",
+"meaning": "Weak",
+"example": "Tá sé lag. — He is weak."
+},
+{
+"word": "Tapa",
+"pronunciation": "top-ah",
+"meaning": "Quick / Fast",
+"example": "Rith go tapa — Run quickly"
+},
+{
+"word": "Mall",
+"pronunciation": "mawl",
+"meaning": "Slow",
+"example": "Bí mall — Be slow"
+},
+{
+"word": "Gorm",
+"pronunciation": "gur-um",
+"meaning": "Blue",
+"example": "Spéir ghorm — Blue sky"
+},
+{
+"word": "Dearg",
+"pronunciation": "dyar-ug",
+"meaning": "Red",
+"example": "Rós dearg — Red rose"
+},
+{
+"word": "Buí",
+"pronunciation": "bwee",
+"meaning": "Yellow",
+"example": "Bláth buí — Yellow flower"
+},
+{
+"word": "Glas",
+"pronunciation": "glos",
+"meaning": "Green / Grey-green",
+"example": "Féar glas — Green grass"
+},
+{
+"word": "Bán",
+"pronunciation": "bawn",
+"meaning": "White",
+"example": "Sneachta bán — White snow"
+},
+{
+"word": "Dubh",
+"pronunciation": "duv",
+"meaning": "Black",
+"example": "Cat dubh — Black cat"
+},
+{
+"word": "Donn",
+"pronunciation": "down",
+"meaning": "Brown",
+"example": "Capall donn — A brown horse"
+},
+{
+"word": "Liath",
+"pronunciation": "lee-ah",
+"meaning": "Grey",
+"example": "Madra liath — A grey dog"
+},
+{
+"word": "Beo",
+"pronunciation": "byoh",
+"meaning": "Alive / Living",
+"example": "Beo beathach — Full of life"
+},
+{
+"word": "Marbh",
+"pronunciation": "marv",
+"meaning": "Dead",
+"example": "Níl sé beo — He is not alive"
+},
+{
+"word": "Óg",
+"pronunciation": "ohg",
+"meaning": "Young",
+"example": "Duine óg — A young person"
+},
+{
+"word": "Sean",
+"pronunciation": "shan",
+"meaning": "Old",
+"example": "Seanduine — An old person"
+},
+{
+"word": "Fear",
+"pronunciation": "far",
+"meaning": "Man",
+"example": "Fear maith — A good man"
+},
+{
+"word": "Bean",
+"pronunciation": "ban",
+"meaning": "Woman",
+"example": "Bean mhaith — A good woman"
+},
+{
+"word": "Páiste",
+"pronunciation": "pawsh-teh",
+"meaning": "Child",
+"example": "Páistí beaga — Small children"
+},
+{
+"word": "Cara",
+"pronunciation": "kara",
+"meaning": "Friend",
+"example": "Mo chara — My friend"
+},
+{
+"word": "Namhaid",
+"pronunciation": "nav-id",
+"meaning": "Enemy",
+"example": "Ná bí i do namhaid — Don't be an enemy"
+},
+{
+"word": "Siopadóir",
+"pronunciation": "shup-ah-dore",
+"meaning": "Shopkeeper",
+"example": "An siopadóir cairdiúil — The friendly shopkeeper"
+},
+{
+"word": "Dochtúir",
+"pronunciation": "dokh-toor",
+"meaning": "Doctor",
+"example": "Téigh go dtí an dochtúir — Go to the doctor"
+},
+{
+"word": "Altra",
+"pronunciation": "al-tra",
+"meaning": "Nurse",
+"example": "Altra maith — A good nurse"
+},
+{
+"word": "Gardaí",
+"pronunciation": "gar-dee",
+"meaning": "Police (lit. 'guardians')",
+"example": "Glaoigh ar na Gardaí — Call the Guards"
+},
+{
+"word": "Rialtas",
+"pronunciation": "ree-ul-tus",
+"meaning": "Government",
+"example": "An Rialtas — The Government"
+},
+{
+"word": "Teanga",
+"pronunciation": "chang-ah",
+"meaning": "Language / Tongue",
+"example": "Teanga bheo — A living language"
+},
+{
+"word": "Ceol",
+"pronunciation": "kyohl",
+"meaning": "Music",
+"example": "Is breá liom ceol. — I love music."
+},
+{
+"word": "Amhrán",
+"pronunciation": "ow-rawn",
+"meaning": "Song",
+"example": "Amhrán maith — A good song"
+},
+{
+"word": "Damhsa",
+"pronunciation": "dow-sa",
+"meaning": "Dance",
+"example": "Damhsa ar an gclár — Dancing on the stage"
+},
+{
+"word": "Scéal",
+"pronunciation": "shkale",
+"meaning": "Story / News",
+"example": "Cén scéal? — What's the story?"
+},
+{
+"word": "Dráma",
+"pronunciation": "draw-ma",
+"meaning": "Drama / Play",
+"example": "Dráma maith — A good play"
+},
+{
+"word": "Léiriú",
+"pronunciation": "lay-roo",
+"meaning": "Performance / Depiction",
+"example": "Léiriú iontach — A wonderful performance"
+},
+{
+"word": "Ollscoil",
+"pronunciation": "ul-skull",
+"meaning": "University",
+"example": "Ag an ollscoil — At the university"
+},
+{
+"word": "Léachtóir",
+"pronunciation": "layakh-tore",
+"meaning": "Lecturer",
+"example": "Léachtóir cumasach — A skilled lecturer"
+},
+{
+"word": "Mac léinn",
+"pronunciation": "mock lane",
+"meaning": "Student",
+"example": "Mac léinn cáiliúil — A famous student"
+},
+{
+"word": "Teagasc",
+"pronunciation": "chag-ask",
+"meaning": "Teaching",
+"example": "Teagasc maith — Good teaching"
+},
+{
+"word": "Foghlaim",
+"pronunciation": "fow-lim",
+"meaning": "Learning",
+"example": "Foghlaim i gcónaí — Always learning"
+},
+{
+"word": "Eolas",
+"pronunciation": "oh-lus",
+"meaning": "Knowledge / Information",
+"example": "Eolas maith — Good knowledge"
+},
+{
+"word": "Ciall",
+"pronunciation": "keel",
+"meaning": "Sense / Wisdom",
+"example": "Bíodh ciall agat — Have sense"
+},
+{
+"word": "Intinn",
+"pronunciation": "in-tin",
+"meaning": "Mind / Intention",
+"example": "Intinn ghéar — Sharp mind"
+},
+{
+"word": "Croí",
+"pronunciation": "kree",
+"meaning": "Heart",
+"example": "Ó mo chroí — From my heart"
+},
+{
+"word": "Lámh",
+"pronunciation": "lawv",
+"meaning": "Hand",
+"example": "Lámh láidir — Strong hand"
+},
+{
+"word": "Cos",
+"pronunciation": "kus",
+"meaning": "Foot / Leg",
+"example": "Ar mo chosa — On my feet"
+},
+{
+"word": "Ceann",
+"pronunciation": "kyawn",
+"meaning": "Head / One",
+"example": "Os cionn mo chinn — Above my head"
+},
+{
+"word": "Súil",
+"pronunciation": "sool",
+"meaning": "Eye / Hope",
+"example": "Súile gorma — Blue eyes"
+},
+{
+"word": "Cluas",
+"pronunciation": "kloos",
+"meaning": "Ear",
+"example": "Cluas le héisteacht — Ear for listening"
+},
+{
+"word": "Béal",
+"pronunciation": "bail",
+"meaning": "Mouth",
+"example": "Bí i do thost — Be quiet (lit. 'keep your mouth')"
+},
+{
+"word": "Srón",
+"pronunciation": "srone",
+"meaning": "Nose",
+"example": "Srón fada — A long nose"
+},
+{
+"word": "Glór",
+"pronunciation": "glore",
+"meaning": "Voice",
+"example": "Glór álainn — A beautiful voice"
+},
+{
+"word": "Focal",
+"pronunciation": "fuk-ul",
+"meaning": "Word",
+"example": "Focal maith — A good word"
+},
+{
+"word": "Abairt",
+"pronunciation": "ab-irt",
+"meaning": "Sentence",
+"example": "Abairt ghairid — A short sentence"
+},
+{
+"word": "Litir",
+"pronunciation": "lit-ir",
+"meaning": "Letter (alphabet/post)",
+"example": "Litreacha an aibítre — Letters of the alphabet"
+},
+{
+"word": "Uimhir",
+"pronunciation": "iv-ir",
+"meaning": "Number",
+"example": "Uimhir a haon — Number one"
+}
+]

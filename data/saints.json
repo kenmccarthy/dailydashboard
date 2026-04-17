@@ -1,0 +1,1466 @@
+{
+"01-01": {
+"saint": "Mary, Mother of God",
+"note": "Solemnity"
+},
+"01-02": {
+"saint": "Sts. Basil the Great & Gregory Nazianzen",
+"note": "Memorial"
+},
+"01-03": {
+"saint": "Most Holy Name of Jesus",
+"note": "Optional memorial"
+},
+"01-04": {
+"saint": "St. Elizabeth Ann Seton",
+"note": "Memorial"
+},
+"01-05": {
+"saint": "St. John Neumann",
+"note": "Memorial"
+},
+"01-06": {
+"saint": "St. André Bessette",
+"note": "Optional memorial"
+},
+"01-07": {
+"saint": "St. Raymond of Peñafort",
+"note": "Optional memorial"
+},
+"01-08": {
+"saint": "St. Apollinaris",
+"note": "Optional memorial"
+},
+"01-09": {
+"saint": "St. Adrian of Canterbury",
+"note": "Optional memorial"
+},
+"01-10": {
+"saint": "St. William of Bourges",
+"note": "Optional memorial"
+},
+"01-11": {
+"saint": "St. Hyginus",
+"note": "Optional memorial"
+},
+"01-12": {
+"saint": "St. Marguerite Bourgeoys",
+"note": "Memorial"
+},
+"01-13": {
+"saint": "St. Hilary of Poitiers",
+"note": "Memorial"
+},
+"01-14": {
+"saint": "St. Kentigern",
+"note": "Optional memorial"
+},
+"01-15": {
+"saint": "St. Paul the First Hermit",
+"note": "Optional memorial"
+},
+"01-16": {
+"saint": "St. Berard & Companions",
+"note": "Optional memorial"
+},
+"01-17": {
+"saint": "St. Anthony of Egypt",
+"note": "Memorial"
+},
+"01-18": {
+"saint": "St. Prisca",
+"note": "Optional memorial"
+},
+"01-19": {
+"saint": "St. Marius & Companions",
+"note": "Optional memorial"
+},
+"01-20": {
+"saint": "St. Fabian & St. Sebastian",
+"note": "Memorial"
+},
+"01-21": {
+"saint": "St. Agnes",
+"note": "Memorial"
+},
+"01-22": {
+"saint": "St. Vincent of Saragossa",
+"note": "Memorial"
+},
+"01-23": {
+"saint": "St. Marianne Cope",
+"note": "Optional memorial"
+},
+"01-24": {
+"saint": "St. Francis de Sales",
+"note": "Memorial"
+},
+"01-25": {
+"saint": "Conversion of St. Paul",
+"note": "Feast"
+},
+"01-26": {
+"saint": "Sts. Timothy & Titus",
+"note": "Memorial"
+},
+"01-27": {
+"saint": "St. Angela Merici",
+"note": "Memorial"
+},
+"01-28": {
+"saint": "St. Thomas Aquinas",
+"note": "Memorial"
+},
+"01-29": {
+"saint": "St. Gildas the Wise",
+"note": "Optional memorial"
+},
+"01-30": {
+"saint": "St. Mutien-Marie Wiaux",
+"note": "Optional memorial"
+},
+"01-31": {
+"saint": "St. John Bosco",
+"note": "Memorial"
+},
+"02-01": {
+"saint": "St. Brigid of Ireland",
+"note": "Feast — Patroness of Ireland"
+},
+"02-02": {
+"saint": "Presentation of the Lord",
+"note": "Feast"
+},
+"02-03": {
+"saint": "St. Blaise & St. Ansgar",
+"note": "Optional memorial"
+},
+"02-04": {
+"saint": "St. Joseph of Leonissa",
+"note": "Optional memorial"
+},
+"02-05": {
+"saint": "St. Agatha",
+"note": "Memorial"
+},
+"02-06": {
+"saint": "Sts. Paul Miki & Companions",
+"note": "Memorial"
+},
+"02-07": {
+"saint": "St. Colette",
+"note": "Optional memorial"
+},
+"02-08": {
+"saint": "St. Jerome Emiliani & St. Josephine Bakhita",
+"note": "Optional memorial"
+},
+"02-09": {
+"saint": "St. Apollonia",
+"note": "Optional memorial"
+},
+"02-10": {
+"saint": "St. Scholastica",
+"note": "Memorial"
+},
+"02-11": {
+"saint": "Our Lady of Lourdes",
+"note": "Optional memorial"
+},
+"02-12": {
+"saint": "St. Julian the Hospitaller",
+"note": "Optional memorial"
+},
+"02-13": {
+"saint": "St. Catherine dei Ricci",
+"note": "Optional memorial"
+},
+"02-14": {
+"saint": "Sts. Cyril & Methodius",
+"note": "Memorial"
+},
+"02-15": {
+"saint": "St. Claude de la Colombière",
+"note": "Optional memorial"
+},
+"02-16": {
+"saint": "St. Gilbert of Sempringham",
+"note": "Optional memorial"
+},
+"02-17": {
+"saint": "Seven Holy Founders of the Servites",
+"note": "Memorial"
+},
+"02-18": {
+"saint": "St. Flavian",
+"note": "Optional memorial"
+},
+"02-19": {
+"saint": "St. Conrad of Piacenza",
+"note": "Optional memorial"
+},
+"02-20": {
+"saint": "St. Jacinta & Francisco Marto",
+"note": "Optional memorial"
+},
+"02-21": {
+"saint": "St. Peter Damian",
+"note": "Memorial"
+},
+"02-22": {
+"saint": "Chair of St. Peter",
+"note": "Feast"
+},
+"02-23": {
+"saint": "St. Polycarp",
+"note": "Memorial"
+},
+"02-24": {
+"saint": "St. Praetextatus",
+"note": "Optional memorial"
+},
+"02-25": {
+"saint": "St. Walburga",
+"note": "Optional memorial"
+},
+"02-26": {
+"saint": "St. Porphyry of Gaza",
+"note": "Optional memorial"
+},
+"02-27": {
+"saint": "St. Gabriel of Our Lady of Sorrows",
+"note": "Optional memorial"
+},
+"02-28": {
+"saint": "St. Hilary of Arles",
+"note": "Optional memorial"
+},
+"02-29": {
+"saint": "St. Oswald of Worcester",
+"note": "Optional memorial (leap year)"
+},
+"03-01": {
+"saint": "St. David of Wales",
+"note": "Memorial — Patron of Wales"
+},
+"03-02": {
+"saint": "St. Chad",
+"note": "Optional memorial"
+},
+"03-03": {
+"saint": "St. Katharine Drexel",
+"note": "Optional memorial"
+},
+"03-04": {
+"saint": "St. Casimir",
+"note": "Memorial"
+},
+"03-05": {
+"saint": "St. John Joseph of the Cross",
+"note": "Optional memorial"
+},
+"03-06": {
+"saint": "Sts. Perpetua & Felicity",
+"note": "Memorial"
+},
+"03-07": {
+"saint": "Sts. Perpetua & Felicity",
+"note": "Memorial"
+},
+"03-08": {
+"saint": "St. John of God",
+"note": "Memorial"
+},
+"03-09": {
+"saint": "St. Frances of Rome",
+"note": "Memorial"
+},
+"03-10": {
+"saint": "St. John Ogilvie",
+"note": "Optional memorial"
+},
+"03-11": {
+"saint": "St. Eulogius of Córdoba",
+"note": "Optional memorial"
+},
+"03-12": {
+"saint": "St. Luigi Orione",
+"note": "Optional memorial"
+},
+"03-13": {
+"saint": "St. Rodrigo",
+"note": "Optional memorial"
+},
+"03-14": {
+"saint": "St. Mathilda",
+"note": "Optional memorial"
+},
+"03-15": {
+"saint": "St. Louise de Marillac",
+"note": "Memorial"
+},
+"03-16": {
+"saint": "St. Clement Mary Hofbauer",
+"note": "Optional memorial"
+},
+"03-17": {
+"saint": "St. Patrick",
+"note": "Solemnity — Patron of Ireland"
+},
+"03-18": {
+"saint": "St. Cyril of Jerusalem",
+"note": "Memorial"
+},
+"03-19": {
+"saint": "St. Joseph",
+"note": "Solemnity — Patron of the Universal Church"
+},
+"03-20": {
+"saint": "St. Cuthbert",
+"note": "Optional memorial"
+},
+"03-21": {
+"saint": "St. Nicholas of Flüe",
+"note": "Optional memorial"
+},
+"03-22": {
+"saint": "St. Lea of Rome",
+"note": "Optional memorial"
+},
+"03-23": {
+"saint": "St. Turibius of Mogrovejo",
+"note": "Memorial"
+},
+"03-24": {
+"saint": "St. Oscar Romero",
+"note": "Optional memorial"
+},
+"03-25": {
+"saint": "Annunciation of the Lord",
+"note": "Solemnity"
+},
+"03-26": {
+"saint": "St. Braulio of Zaragoza",
+"note": "Optional memorial"
+},
+"03-27": {
+"saint": "St. Rupert of Salzburg",
+"note": "Optional memorial"
+},
+"03-28": {
+"saint": "St. Gontran",
+"note": "Optional memorial"
+},
+"03-29": {
+"saint": "St. Berthold",
+"note": "Optional memorial"
+},
+"03-30": {
+"saint": "St. John Climacus",
+"note": "Optional memorial"
+},
+"03-31": {
+"saint": "St. Benjamin",
+"note": "Optional memorial"
+},
+"04-01": {
+"saint": "St. Hugh of Grenoble",
+"note": "Optional memorial"
+},
+"04-02": {
+"saint": "St. Francis of Paola",
+"note": "Optional memorial"
+},
+"04-03": {
+"saint": "St. Richard of Chichester",
+"note": "Optional memorial"
+},
+"04-04": {
+"saint": "St. Isidore of Seville",
+"note": "Optional memorial"
+},
+"04-05": {
+"saint": "St. Vincent Ferrer",
+"note": "Memorial"
+},
+"04-06": {
+"saint": "St. Peter of Verona",
+"note": "Optional memorial"
+},
+"04-07": {
+"saint": "St. John Baptist de la Salle",
+"note": "Memorial"
+},
+"04-08": {
+"saint": "St. Julie Billiart",
+"note": "Optional memorial"
+},
+"04-09": {
+"saint": "St. Casilda",
+"note": "Optional memorial"
+},
+"04-10": {
+"saint": "St. Michael de Sanctis",
+"note": "Optional memorial"
+},
+"04-11": {
+"saint": "St. Stanislaus",
+"note": "Memorial"
+},
+"04-12": {
+"saint": "St. Julius I",
+"note": "Optional memorial"
+},
+"04-13": {
+"saint": "St. Martin I",
+"note": "Optional memorial"
+},
+"04-14": {
+"saint": "St. Lydwine of Schiedam",
+"note": "Optional memorial"
+},
+"04-15": {
+"saint": "St. Damien of Molokai",
+"note": "Optional memorial"
+},
+"04-16": {
+"saint": "St. Bernadette Soubirous",
+"note": "Optional memorial"
+},
+"04-17": {
+"saint": "St. Stephen Harding",
+"note": "Optional memorial"
+},
+"04-18": {
+"saint": "St. Apollonius",
+"note": "Optional memorial"
+},
+"04-19": {
+"saint": "St. Leo IX",
+"note": "Optional memorial"
+},
+"04-20": {
+"saint": "St. Agnes of Montepulciano",
+"note": "Optional memorial"
+},
+"04-21": {
+"saint": "St. Anselm of Canterbury",
+"note": "Memorial"
+},
+"04-22": {
+"saint": "St. Theodore of Sykeon",
+"note": "Optional memorial"
+},
+"04-23": {
+"saint": "St. George",
+"note": "Optional memorial — Patron of England"
+},
+"04-24": {
+"saint": "St. Fidelis of Sigmaringen",
+"note": "Memorial"
+},
+"04-25": {
+"saint": "St. Mark the Evangelist",
+"note": "Feast"
+},
+"04-26": {
+"saint": "Our Lady of Good Counsel",
+"note": "Optional memorial"
+},
+"04-27": {
+"saint": "St. Zita",
+"note": "Optional memorial"
+},
+"04-28": {
+"saint": "St. Peter Chanel & St. Louis Grignion de Montfort",
+"note": "Memorial"
+},
+"04-29": {
+"saint": "St. Catherine of Siena",
+"note": "Memorial — Doctor of the Church"
+},
+"04-30": {
+"saint": "St. Pius V",
+"note": "Optional memorial"
+},
+"05-01": {
+"saint": "St. Joseph the Worker",
+"note": "Optional memorial"
+},
+"05-02": {
+"saint": "St. Athanasius",
+"note": "Memorial"
+},
+"05-03": {
+"saint": "Sts. Philip & James",
+"note": "Feast"
+},
+"05-04": {
+"saint": "Bl. Michael Giedroyc",
+"note": "Optional memorial"
+},
+"05-05": {
+"saint": "St. Hilary of Arles",
+"note": "Optional memorial"
+},
+"05-06": {
+"saint": "St. Marian & James",
+"note": "Optional memorial"
+},
+"05-07": {
+"saint": "Bl. Rose Venerini",
+"note": "Optional memorial"
+},
+"05-08": {
+"saint": "St. Peter of Tarentaise",
+"note": "Optional memorial"
+},
+"05-09": {
+"saint": "St. Pachomius",
+"note": "Optional memorial"
+},
+"05-10": {
+"saint": "St. John of Ávila & St. Damien de Veuster",
+"note": "Optional memorial"
+},
+"05-11": {
+"saint": "St. Ignatius of Laconi",
+"note": "Optional memorial"
+},
+"05-12": {
+"saint": "Sts. Nereus, Achilleus & Pancras",
+"note": "Memorial"
+},
+"05-13": {
+"saint": "Our Lady of Fátima",
+"note": "Optional memorial"
+},
+"05-14": {
+"saint": "St. Matthias",
+"note": "Feast"
+},
+"05-15": {
+"saint": "St. Isidore the Farmer",
+"note": "Memorial"
+},
+"05-16": {
+"saint": "St. Andrew Bobola",
+"note": "Optional memorial"
+},
+"05-17": {
+"saint": "St. Paschal Baylon",
+"note": "Optional memorial"
+},
+"05-18": {
+"saint": "St. John I",
+"note": "Optional memorial"
+},
+"05-19": {
+"saint": "St. Celestine V",
+"note": "Optional memorial"
+},
+"05-20": {
+"saint": "St. Bernardine of Siena",
+"note": "Memorial"
+},
+"05-21": {
+"saint": "St. Christopher Magallanes & Companions",
+"note": "Memorial"
+},
+"05-22": {
+"saint": "St. Rita of Cascia",
+"note": "Memorial"
+},
+"05-23": {
+"saint": "St. John Baptist Rossi",
+"note": "Optional memorial"
+},
+"05-24": {
+"saint": "St. David I of Scotland",
+"note": "Optional memorial"
+},
+"05-25": {
+"saint": "St. Bede the Venerable & St. Gregory VII",
+"note": "Optional memorial"
+},
+"05-26": {
+"saint": "St. Philip Neri",
+"note": "Memorial"
+},
+"05-27": {
+"saint": "St. Augustine of Canterbury",
+"note": "Optional memorial"
+},
+"05-28": {
+"saint": "St. Germanus of Paris",
+"note": "Optional memorial"
+},
+"05-29": {
+"saint": "St. Paul VI",
+"note": "Optional memorial"
+},
+"05-30": {
+"saint": "St. Joan of Arc",
+"note": "Memorial"
+},
+"05-31": {
+"saint": "Visitation of the Blessed Virgin Mary",
+"note": "Feast"
+},
+"06-01": {
+"saint": "St. Justin Martyr",
+"note": "Memorial"
+},
+"06-02": {
+"saint": "Sts. Marcellinus & Peter",
+"note": "Optional memorial"
+},
+"06-03": {
+"saint": "Sts. Charles Lwanga & Companions",
+"note": "Memorial"
+},
+"06-04": {
+"saint": "St. Francis Caracciolo",
+"note": "Optional memorial"
+},
+"06-05": {
+"saint": "St. Boniface",
+"note": "Memorial"
+},
+"06-06": {
+"saint": "St. Norbert",
+"note": "Memorial"
+},
+"06-07": {
+"saint": "Bl. Anne of St. Bartholomew",
+"note": "Optional memorial"
+},
+"06-08": {
+"saint": "St. William of York",
+"note": "Optional memorial"
+},
+"06-09": {
+"saint": "St. Columba (Colmcille)",
+"note": "Feast — Irish monk, founded Iona"
+},
+"06-10": {
+"saint": "Bl. Edward Oldcorne",
+"note": "Optional memorial"
+},
+"06-11": {
+"saint": "St. Barnabas",
+"note": "Memorial"
+},
+"06-12": {
+"saint": "St. John of Sahagún",
+"note": "Optional memorial"
+},
+"06-13": {
+"saint": "St. Anthony of Padua",
+"note": "Memorial — Doctor of the Church"
+},
+"06-14": {
+"saint": "St. Methodius I of Constantinople",
+"note": "Optional memorial"
+},
+"06-15": {
+"saint": "St. Vitus",
+"note": "Optional memorial"
+},
+"06-16": {
+"saint": "St. John Francis Regis",
+"note": "Optional memorial"
+},
+"06-17": {
+"saint": "St. Albert Chmielowski",
+"note": "Optional memorial"
+},
+"06-18": {
+"saint": "St. Ephrem",
+"note": "Memorial"
+},
+"06-19": {
+"saint": "St. Romuald",
+"note": "Memorial"
+},
+"06-20": {
+"saint": "St. Silverius",
+"note": "Optional memorial"
+},
+"06-21": {
+"saint": "St. Aloysius Gonzaga",
+"note": "Memorial"
+},
+"06-22": {
+"saint": "Sts. John Fisher & Thomas More",
+"note": "Memorial"
+},
+"06-23": {
+"saint": "St. Joseph Cafasso",
+"note": "Optional memorial"
+},
+"06-24": {
+"saint": "Nativity of St. John the Baptist",
+"note": "Solemnity"
+},
+"06-25": {
+"saint": "St. William of Vercelli",
+"note": "Optional memorial"
+},
+"06-26": {
+"saint": "St. Josemaría Escrivá",
+"note": "Optional memorial"
+},
+"06-27": {
+"saint": "St. Cyril of Alexandria",
+"note": "Memorial"
+},
+"06-28": {
+"saint": "St. Irenaeus",
+"note": "Memorial"
+},
+"06-29": {
+"saint": "Sts. Peter & Paul",
+"note": "Solemnity"
+},
+"06-30": {
+"saint": "First Martyrs of Rome",
+"note": "Optional memorial"
+},
+"07-01": {
+"saint": "Bl. Junípero Serra",
+"note": "Optional memorial"
+},
+"07-02": {
+"saint": "St. Oliver Plunkett",
+"note": "Feast — Irish martyr"
+},
+"07-03": {
+"saint": "St. Thomas the Apostle",
+"note": "Feast"
+},
+"07-04": {
+"saint": "St. Elizabeth of Portugal",
+"note": "Optional memorial"
+},
+"07-05": {
+"saint": "St. Anthony Zaccaria",
+"note": "Optional memorial"
+},
+"07-06": {
+"saint": "St. Maria Goretti",
+"note": "Optional memorial"
+},
+"07-07": {
+"saint": "Bl. Peter To Rot",
+"note": "Optional memorial"
+},
+"07-08": {
+"saint": "St. Aquila & Priscilla",
+"note": "Optional memorial"
+},
+"07-09": {
+"saint": "Sts. Augustine Zhao Rong & Companions",
+"note": "Memorial"
+},
+"07-10": {
+"saint": "St. Veronica Giuliani",
+"note": "Optional memorial"
+},
+"07-11": {
+"saint": "St. Benedict",
+"note": "Feast — Patron of Europe"
+},
+"07-12": {
+"saint": "St. John Jones",
+"note": "Optional memorial"
+},
+"07-13": {
+"saint": "St. Henry II",
+"note": "Optional memorial"
+},
+"07-14": {
+"saint": "St. Kateri Tekakwitha",
+"note": "Memorial"
+},
+"07-15": {
+"saint": "St. Bonaventure",
+"note": "Memorial — Doctor of the Church"
+},
+"07-16": {
+"saint": "Our Lady of Mount Carmel",
+"note": "Optional memorial"
+},
+"07-17": {
+"saint": "Bl. Ceslaus",
+"note": "Optional memorial"
+},
+"07-18": {
+"saint": "St. Camillus de Lellis",
+"note": "Optional memorial"
+},
+"07-19": {
+"saint": "St. Macrina the Younger",
+"note": "Optional memorial"
+},
+"07-20": {
+"saint": "St. Apollinaris",
+"note": "Optional memorial"
+},
+"07-21": {
+"saint": "St. Lawrence of Brindisi",
+"note": "Optional memorial"
+},
+"07-22": {
+"saint": "St. Mary Magdalene",
+"note": "Feast"
+},
+"07-23": {
+"saint": "St. Bridget of Sweden",
+"note": "Memorial — Patron of Europe"
+},
+"07-24": {
+"saint": "St. Sharbel Makhlūf",
+"note": "Optional memorial"
+},
+"07-25": {
+"saint": "St. James the Apostle",
+"note": "Feast"
+},
+"07-26": {
+"saint": "Sts. Joachim & Anne",
+"note": "Memorial — Parents of Mary"
+},
+"07-27": {
+"saint": "St. Pantaleon",
+"note": "Optional memorial"
+},
+"07-28": {
+"saint": "Sts. Nazarius, Celsus, Victor I & Innocent I",
+"note": "Optional memorial"
+},
+"07-29": {
+"saint": "Sts. Martha, Mary & Lazarus",
+"note": "Memorial"
+},
+"07-30": {
+"saint": "St. Peter Chrysologus",
+"note": "Memorial"
+},
+"07-31": {
+"saint": "St. Ignatius of Loyola",
+"note": "Memorial"
+},
+"08-01": {
+"saint": "St. Alphonsus Liguori",
+"note": "Memorial"
+},
+"08-02": {
+"saint": "St. Eusebius of Vercelli & St. Peter Julian Eymard",
+"note": "Optional memorial"
+},
+"08-03": {
+"saint": "St. Lydia Purpuraria",
+"note": "Optional memorial"
+},
+"08-04": {
+"saint": "St. John Vianney",
+"note": "Memorial — Patron of Parish Priests"
+},
+"08-05": {
+"saint": "Dedication of the Basilica of St. Mary Major",
+"note": "Optional memorial"
+},
+"08-06": {
+"saint": "Transfiguration of the Lord",
+"note": "Feast"
+},
+"08-07": {
+"saint": "Sts. Sixtus II & Companions & St. Cajetan",
+"note": "Optional memorial"
+},
+"08-08": {
+"saint": "St. Dominic",
+"note": "Memorial"
+},
+"08-09": {
+"saint": "St. Teresa Benedicta of the Cross (Edith Stein)",
+"note": "Memorial"
+},
+"08-10": {
+"saint": "St. Lawrence",
+"note": "Feast"
+},
+"08-11": {
+"saint": "St. Clare of Assisi",
+"note": "Memorial"
+},
+"08-12": {
+"saint": "St. Jane Frances de Chantal",
+"note": "Optional memorial"
+},
+"08-13": {
+"saint": "Sts. Pontian & Hippolytus",
+"note": "Optional memorial"
+},
+"08-14": {
+"saint": "St. Maximilian Mary Kolbe",
+"note": "Memorial"
+},
+"08-15": {
+"saint": "Assumption of the Blessed Virgin Mary",
+"note": "Solemnity"
+},
+"08-16": {
+"saint": "St. Stephen of Hungary",
+"note": "Optional memorial"
+},
+"08-17": {
+"saint": "St. Hyacinth",
+"note": "Optional memorial"
+},
+"08-18": {
+"saint": "St. Helena",
+"note": "Optional memorial"
+},
+"08-19": {
+"saint": "St. John Eudes",
+"note": "Optional memorial"
+},
+"08-20": {
+"saint": "St. Bernard of Clairvaux",
+"note": "Memorial — Doctor of the Church"
+},
+"08-21": {
+"saint": "St. Pius X",
+"note": "Memorial"
+},
+"08-22": {
+"saint": "Queenship of the Blessed Virgin Mary",
+"note": "Memorial"
+},
+"08-23": {
+"saint": "St. Rose of Lima",
+"note": "Memorial"
+},
+"08-24": {
+"saint": "St. Bartholomew the Apostle",
+"note": "Feast"
+},
+"08-25": {
+"saint": "St. Louis IX & St. Joseph Calasanz",
+"note": "Optional memorial"
+},
+"08-26": {
+"saint": "St. Elizabeth Bichier des Ages",
+"note": "Optional memorial"
+},
+"08-27": {
+"saint": "St. Monica",
+"note": "Memorial"
+},
+"08-28": {
+"saint": "St. Augustine of Hippo",
+"note": "Memorial — Doctor of the Church"
+},
+"08-29": {
+"saint": "Passion of St. John the Baptist",
+"note": "Memorial"
+},
+"08-30": {
+"saint": "St. Margaret Ward",
+"note": "Optional memorial"
+},
+"08-31": {
+"saint": "St. Aidan of Lindisfarne",
+"note": "Optional memorial"
+},
+"09-01": {
+"saint": "St. Giles",
+"note": "Optional memorial"
+},
+"09-02": {
+"saint": "Bl. Margaret of Louvain",
+"note": "Optional memorial"
+},
+"09-03": {
+"saint": "St. Gregory the Great",
+"note": "Memorial — Doctor of the Church"
+},
+"09-04": {
+"saint": "St. Rosalia",
+"note": "Optional memorial"
+},
+"09-05": {
+"saint": "St. Teresa of Calcutta",
+"note": "Optional memorial"
+},
+"09-06": {
+"saint": "St. Magnus of Füssen",
+"note": "Optional memorial"
+},
+"09-07": {
+"saint": "St. Regina",
+"note": "Optional memorial"
+},
+"09-08": {
+"saint": "Nativity of the Blessed Virgin Mary",
+"note": "Feast"
+},
+"09-09": {
+"saint": "St. Peter Claver",
+"note": "Memorial"
+},
+"09-10": {
+"saint": "St. Pulcheria",
+"note": "Optional memorial"
+},
+"09-11": {
+"saint": "St. John Gabriel Perboyre",
+"note": "Optional memorial"
+},
+"09-12": {
+"saint": "Most Holy Name of Mary",
+"note": "Optional memorial"
+},
+"09-13": {
+"saint": "St. John Chrysostom",
+"note": "Memorial — Doctor of the Church"
+},
+"09-14": {
+"saint": "Exaltation of the Holy Cross",
+"note": "Feast"
+},
+"09-15": {
+"saint": "Our Lady of Sorrows",
+"note": "Memorial"
+},
+"09-16": {
+"saint": "Sts. Cornelius & Cyprian",
+"note": "Memorial"
+},
+"09-17": {
+"saint": "St. Robert Bellarmine & St. Hildegard of Bingen",
+"note": "Memorial"
+},
+"09-18": {
+"saint": "St. Joseph of Cupertino",
+"note": "Optional memorial"
+},
+"09-19": {
+"saint": "St. Januarius",
+"note": "Optional memorial"
+},
+"09-20": {
+"saint": "Sts. Andrew Kim Tae-gŏn, Paul Chŏng Ha-sang & Companions",
+"note": "Memorial"
+},
+"09-21": {
+"saint": "St. Matthew the Apostle",
+"note": "Feast"
+},
+"09-22": {
+"saint": "St. Maurice & Companions",
+"note": "Optional memorial"
+},
+"09-23": {
+"saint": "St. Pius of Pietrelcina (Padre Pio)",
+"note": "Memorial"
+},
+"09-24": {
+"saint": "Our Lady of Walsingham",
+"note": "Optional memorial"
+},
+"09-25": {
+"saint": "St. Finbarr of Cork",
+"note": "Optional memorial — Patron of Cork"
+},
+"09-26": {
+"saint": "Sts. Cosmas & Damian",
+"note": "Optional memorial"
+},
+"09-27": {
+"saint": "St. Vincent de Paul",
+"note": "Memorial"
+},
+"09-28": {
+"saint": "St. Wenceslaus & St. Lawrence Ruiz",
+"note": "Memorial"
+},
+"09-29": {
+"saint": "Sts. Michael, Gabriel & Raphael",
+"note": "Feast — Archangels"
+},
+"09-30": {
+"saint": "St. Jerome",
+"note": "Memorial — Doctor of the Church"
+},
+"10-01": {
+"saint": "St. Thérèse of Lisieux",
+"note": "Memorial — Doctor of the Church"
+},
+"10-02": {
+"saint": "Guardian Angels",
+"note": "Memorial"
+},
+"10-03": {
+"saint": "St. Thomas Cantelupe",
+"note": "Optional memorial"
+},
+"10-04": {
+"saint": "St. Francis of Assisi",
+"note": "Memorial — Patron of Ecology"
+},
+"10-05": {
+"saint": "St. Faustina Kowalska",
+"note": "Optional memorial"
+},
+"10-06": {
+"saint": "St. Bruno & Bl. Marie Rose Durocher",
+"note": "Optional memorial"
+},
+"10-07": {
+"saint": "Our Lady of the Rosary",
+"note": "Memorial"
+},
+"10-08": {
+"saint": "St. Pelagia the Penitent",
+"note": "Optional memorial"
+},
+"10-09": {
+"saint": "Sts. Denis & Companions & St. John Leonardi",
+"note": "Optional memorial"
+},
+"10-10": {
+"saint": "St. Francis Borgia",
+"note": "Optional memorial"
+},
+"10-11": {
+"saint": "St. John XXIII",
+"note": "Optional memorial"
+},
+"10-12": {
+"saint": "Our Lady of the Pillar",
+"note": "Optional memorial"
+},
+"10-13": {
+"saint": "St. Edward the Confessor",
+"note": "Optional memorial"
+},
+"10-14": {
+"saint": "St. Callixtus I",
+"note": "Memorial"
+},
+"10-15": {
+"saint": "St. Teresa of Ávila",
+"note": "Memorial — Doctor of the Church"
+},
+"10-16": {
+"saint": "St. Hedwig & St. Margaret Mary Alacoque",
+"note": "Optional memorial"
+},
+"10-17": {
+"saint": "St. Ignatius of Antioch",
+"note": "Memorial"
+},
+"10-18": {
+"saint": "St. Luke the Evangelist",
+"note": "Feast"
+},
+"10-19": {
+"saint": "Sts. John de Brébeuf, Isaac Jogues & Companions",
+"note": "Memorial"
+},
+"10-20": {
+"saint": "St. Paul of the Cross",
+"note": "Memorial"
+},
+"10-21": {
+"saint": "St. Hilarion",
+"note": "Optional memorial"
+},
+"10-22": {
+"saint": "St. John Paul II",
+"note": "Optional memorial"
+},
+"10-23": {
+"saint": "St. John of Capistrano",
+"note": "Optional memorial"
+},
+"10-24": {
+"saint": "St. Anthony Mary Claret",
+"note": "Optional memorial"
+},
+"10-25": {
+"saint": "Forty Martyrs of England & Wales",
+"note": "Optional memorial"
+},
+"10-26": {
+"saint": "St. Evaristus",
+"note": "Optional memorial"
+},
+"10-27": {
+"saint": "Bl. Bartholomew of Vicenza",
+"note": "Optional memorial"
+},
+"10-28": {
+"saint": "Sts. Simon & Jude",
+"note": "Feast"
+},
+"10-29": {
+"saint": "St. Narcissus of Jerusalem",
+"note": "Optional memorial"
+},
+"10-30": {
+"saint": "St. Alphonsus Rodriguez",
+"note": "Optional memorial"
+},
+"10-31": {
+"saint": "St. Wolfgang",
+"note": "Optional memorial"
+},
+"11-01": {
+"saint": "All Saints",
+"note": "Solemnity"
+},
+"11-02": {
+"saint": "All Souls",
+"note": "All Souls' Day — commemoration"
+},
+"11-03": {
+"saint": "St. Martin de Porres",
+"note": "Memorial"
+},
+"11-04": {
+"saint": "St. Charles Borromeo",
+"note": "Memorial"
+},
+"11-05": {
+"saint": "St. Zechariah & Elizabeth",
+"note": "Optional memorial"
+},
+"11-06": {
+"saint": "St. Leonard of Noblac",
+"note": "Optional memorial"
+},
+"11-07": {
+"saint": "St. Willibrord",
+"note": "Optional memorial"
+},
+"11-08": {
+"saint": "Bl. John Duns Scotus",
+"note": "Optional memorial"
+},
+"11-09": {
+"saint": "Dedication of the Lateran Basilica",
+"note": "Feast"
+},
+"11-10": {
+"saint": "St. Leo the Great",
+"note": "Memorial — Doctor of the Church"
+},
+"11-11": {
+"saint": "St. Martin of Tours",
+"note": "Memorial"
+},
+"11-12": {
+"saint": "St. Josaphat",
+"note": "Memorial"
+},
+"11-13": {
+"saint": "St. Frances Xavier Cabrini",
+"note": "Memorial"
+},
+"11-14": {
+"saint": "St. Laurence O'Toole",
+"note": "Optional memorial — Archbishop of Dublin"
+},
+"11-15": {
+"saint": "St. Albert the Great",
+"note": "Memorial — Doctor of the Church"
+},
+"11-16": {
+"saint": "St. Margaret of Scotland & St. Gertrude the Great",
+"note": "Optional memorial"
+},
+"11-17": {
+"saint": "St. Elizabeth of Hungary",
+"note": "Memorial"
+},
+"11-18": {
+"saint": "Dedication of the Basilicas of Sts. Peter & Paul",
+"note": "Optional memorial"
+},
+"11-19": {
+"saint": "St. Mechthild of Magdeburg",
+"note": "Optional memorial"
+},
+"11-20": {
+"saint": "St. Edmund the Martyr",
+"note": "Optional memorial"
+},
+"11-21": {
+"saint": "Presentation of the Blessed Virgin Mary",
+"note": "Memorial"
+},
+"11-22": {
+"saint": "St. Cecilia",
+"note": "Memorial — Patron of Music"
+},
+"11-23": {
+"saint": "St. Clement I & St. Columbanus",
+"note": "Optional memorial"
+},
+"11-24": {
+"saint": "St. Andrew Dũng-Lạc & Companions",
+"note": "Memorial"
+},
+"11-25": {
+"saint": "St. Catherine of Alexandria",
+"note": "Optional memorial"
+},
+"11-26": {
+"saint": "St. Sylvester Gozzolini",
+"note": "Optional memorial"
+},
+"11-27": {
+"saint": "St. Francesco Antonio Fasani",
+"note": "Optional memorial"
+},
+"11-28": {
+"saint": "St. Catherine Labouré",
+"note": "Optional memorial"
+},
+"11-29": {
+"saint": "Bl. Francis of Lucera",
+"note": "Optional memorial"
+},
+"11-30": {
+"saint": "St. Andrew the Apostle",
+"note": "Feast — Patron of Scotland"
+},
+"12-01": {
+"saint": "St. Edmund Campion",
+"note": "Optional memorial"
+},
+"12-02": {
+"saint": "St. Bibiana",
+"note": "Optional memorial"
+},
+"12-03": {
+"saint": "St. Francis Xavier",
+"note": "Memorial — Patron of Missions"
+},
+"12-04": {
+"saint": "St. John Damascene",
+"note": "Memorial — Doctor of the Church"
+},
+"12-05": {
+"saint": "St. Sabas",
+"note": "Optional memorial"
+},
+"12-06": {
+"saint": "St. Nicholas of Myra",
+"note": "Memorial"
+},
+"12-07": {
+"saint": "St. Ambrose",
+"note": "Memorial — Doctor of the Church"
+},
+"12-08": {
+"saint": "Immaculate Conception of the Blessed Virgin Mary",
+"note": "Solemnity"
+},
+"12-09": {
+"saint": "St. Juan Diego Cuauhtlatoatzin",
+"note": "Optional memorial"
+},
+"12-10": {
+"saint": "Our Lady of Loreto",
+"note": "Optional memorial"
+},
+"12-11": {
+"saint": "St. Damasus I",
+"note": "Optional memorial"
+},
+"12-12": {
+"saint": "Our Lady of Guadalupe",
+"note": "Feast"
+},
+"12-13": {
+"saint": "St. Lucy",
+"note": "Memorial"
+},
+"12-14": {
+"saint": "St. John of the Cross",
+"note": "Memorial — Doctor of the Church"
+},
+"12-15": {
+"saint": "St. Mary di Rosa",
+"note": "Optional memorial"
+},
+"12-16": {
+"saint": "St. Adelaide",
+"note": "Optional memorial"
+},
+"12-17": {
+"saint": "St. Lazarus",
+"note": "Optional memorial"
+},
+"12-18": {
+"saint": "St. Flannan of Killaloe",
+"note": "Optional memorial — Irish bishop"
+},
+"12-19": {
+"saint": "St. Anastasius I",
+"note": "Optional memorial"
+},
+"12-20": {
+"saint": "St. Dominic of Silos",
+"note": "Optional memorial"
+},
+"12-21": {
+"saint": "St. Peter Canisius",
+"note": "Optional memorial"
+},
+"12-22": {
+"saint": "St. Frances Xavier Cabrini",
+"note": "Optional memorial"
+},
+"12-23": {
+"saint": "St. John of Kanty",
+"note": "Optional memorial"
+},
+"12-24": {
+"saint": "Christmas Eve — Vigil of the Nativity",
+"note": "Vigil"
+},
+"12-25": {
+"saint": "Nativity of the Lord (Christmas)",
+"note": "Solemnity"
+},
+"12-26": {
+"saint": "St. Stephen, First Martyr",
+"note": "Feast"
+},
+"12-27": {
+"saint": "St. John the Apostle & Evangelist",
+"note": "Feast"
+},
+"12-28": {
+"saint": "Holy Innocents",
+"note": "Feast"
+},
+"12-29": {
+"saint": "St. Thomas Becket",
+"note": "Memorial"
+},
+"12-30": {
+"saint": "The Holy Family",
+"note": "Feast"
+},
+"12-31": {
+"saint": "St. Sylvester I",
+"note": "Optional memorial"
+}
+}
