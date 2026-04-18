@@ -27,7 +27,6 @@ body {
 .wrapper {
   width: 100%; max-width: 560px;
   display: flex; flex-direction: column; gap: 10px;
-  /* On mobile: single column flex, constrained to readable width */
 }
 
 /* ── SETUP ── */
@@ -153,6 +152,19 @@ body {
 .w-stat-val { font-size: 14px; font-weight: 500; color: var(--text); margin-top: 2px; }
 
 /* ── SUN ROW ── */
+.sun-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sun-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 14px 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sun-icon-svg { width: 28px; height: 28px; flex-shrink: 0; opacity: 0.7; }
+.sun-label { font-size: 10px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.sun-time { font-size: 18px; font-weight: 400; color: var(--text); margin-top: 1px; font-family: var(--serif); }
+.sun-sub { font-size: 10px; color: var(--hint); margin-top: 1px; }
+
+/* ── STATS ROW ── */
+.stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .stat-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--r); padding: 14px 16px;
@@ -410,29 +422,6 @@ body {
 }
 .settings-divider { border: none; border-top: 1px solid var(--border); margin: 16px 0 0; }
 
-/* ── RESPONSIVE MULTI-COLUMN GRID ── */
-@media (min-width: 900px) {
-  body {
-    padding: 20px 24px 80px;
-    align-items: flex-start;
-  }
-
-  .wrapper {
-    max-width: 1200px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    align-items: start;
-  }
-}
-
-@media (min-width: 1400px) {
-  .wrapper {
-    grid-template-columns: 1fr 1fr 1fr;
-    max-width: 1600px;
-  }
-}
 
 /* ── IRISH PROVERB ── */
 .proverb-irish {

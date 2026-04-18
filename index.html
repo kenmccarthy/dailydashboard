@@ -193,35 +193,51 @@
     </div>
   </div>
 
-  <!-- Sunrise -->
-  <div id="section-sunrise" class="stat-card">
-    <div class="sun-label">Sunrise</div>
-    <div class="sun-time" id="sun-rise">—</div>
-    <div class="sun-sub">dawn</div>
-  </div>
-
-  <!-- Sunset -->
-  <div id="section-sunset" class="stat-card">
-    <div class="sun-label">Sunset</div>
-    <div class="sun-time" id="sun-set">—</div>
-    <div class="sun-sub">dusk</div>
-  </div>
-
-  <!-- Moon Phase -->
-  <div id="section-moon" class="stat-card">
-    <div class="stat-label">Moon phase</div>
-    <div class="stat-main" id="moon-display">
-      <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.3"/></svg>
-      <span>—</span>
+  <!-- Sunrise & Sunset -->
+  <div id="section-sun" class="sun-row">
+    <div class="sun-card">
+      <svg class="sun-icon-svg" viewBox="0 0 28 28" fill="none">
+        <path d="M14 8v-4M14 24v-2M6 14H2M26 14h-2M8.5 8.5L6 6M21.5 21.5l-1.8-1.8M8.5 19.5L6 22M21.5 8.5l-1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="5" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M2 22h24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M8 18l6-6 6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <div class="sun-label">Sunrise</div>
+        <div class="sun-time" id="sun-rise">—</div>
+        <div class="sun-sub">dawn</div>
+      </div>
     </div>
-    <div class="stat-sub" id="moon-sub">—</div>
+    <div class="sun-card">
+      <svg class="sun-icon-svg" viewBox="0 0 28 28" fill="none">
+        <path d="M14 8v-4M14 24v-2M6 14H2M26 14h-2M8.5 8.5L6 6M21.5 21.5l-1.8-1.8M8.5 19.5L6 22M21.5 8.5l-1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="5" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M2 22h24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M8 16l6 6 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <div class="sun-label">Sunset</div>
+        <div class="sun-time" id="sun-set">—</div>
+        <div class="sun-sub">dusk</div>
+      </div>
+    </div>
   </div>
 
-  <!-- Day Length -->
-  <div id="section-daylength" class="stat-card">
-    <div class="stat-label">Day length</div>
-    <div class="stat-main" id="day-length">—</div>
-    <div class="stat-sub" id="day-length-sub">of daylight</div>
+  <!-- Moon & Day Length -->
+  <div id="section-moon" class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">Moon phase</div>
+      <div class="stat-main" id="moon-display">
+        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.3"/></svg>
+        <span>—</span>
+      </div>
+      <div class="stat-sub" id="moon-sub">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Day length</div>
+      <div class="stat-main" id="day-length">—</div>
+      <div class="stat-sub" id="day-length-sub">of daylight</div>
+    </div>
   </div>
 
   <!-- Year Progress -->
