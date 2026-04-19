@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" data-accent="amber">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f5f3ef">
+<meta name="theme-color" content="#f9f7f4">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Daily Dashboard">
 <title>Daily Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,343 +14,277 @@
 </head>
 <body>
 
-<!-- ══ SETUP STEP 1: Location ══ -->
+<!-- ══ SETUP STEP 1 ══ -->
 <div id="setup">
   <div class="setup-card">
     <div class="setup-logo">Daily Dashboard</div>
-    <div class="setup-steps">
-      <div class="setup-step active"></div>
-      <div class="setup-step"></div>
-    </div>
+    <div class="setup-steps"><div class="setup-step active"></div><div class="setup-step"></div></div>
     <div class="setup-sub">Step 1 of 2 — Your location for weather and sunrise times.</div>
     <label class="setup-label" for="country-input">Country</label>
     <select class="setup-select" id="country-input"></select>
     <label class="setup-label" for="city-input">City or town</label>
     <input class="setup-input" id="city-input" type="text" placeholder="e.g. Waterford, Dublin, Cork…" autocomplete="off">
-    <div class="setup-hint">Stored locally in your browser. Never sent anywhere except weather APIs.</div>
+    <div class="setup-hint">Stored locally in your browser only.</div>
     <button class="setup-btn" onclick="saveSetup()">Continue →</button>
     <div class="setup-err" id="setup-err"></div>
   </div>
 </div>
 
-<!-- ══ SETUP STEP 2: API Keys ══ -->
-<div id="setup2" style="display:none; position:fixed; inset:0; background:var(--bg); align-items:center; justify-content:center; padding:24px; z-index:100;">
+<!-- ══ SETUP STEP 2 ══ -->
+<div id="setup2">
   <div class="setup-card">
     <div class="setup-logo">Daily Dashboard</div>
-    <div class="setup-steps">
-      <div class="setup-step"></div>
-      <div class="setup-step active"></div>
-    </div>
+    <div class="setup-steps"><div class="setup-step"></div><div class="setup-step active"></div></div>
     <div class="setup-sub">Step 2 of 2 — Optional API keys for Word of the Day and NASA Picture of the Day.</div>
     <label class="setup-label" for="setup-wordnik">Wordnik API key</label>
     <input class="setup-input" id="setup-wordnik" type="text" placeholder="Paste your Wordnik API key…" autocomplete="off">
-    <div class="setup-hint">Free key at <a href="https://developer.wordnik.com" target="_blank" style="color:var(--muted)">developer.wordnik.com</a></div>
+    <div class="setup-hint">Free at <a href="https://developer.wordnik.com" target="_blank" style="color:var(--muted)">developer.wordnik.com</a></div>
     <label class="setup-label" for="setup-nasa">NASA API key</label>
     <input class="setup-input" id="setup-nasa" type="text" placeholder="Paste your NASA API key…" autocomplete="off">
-    <div class="setup-hint">Free key at <a href="https://api.nasa.gov" target="_blank" style="color:var(--muted)">api.nasa.gov</a></div>
+    <div class="setup-hint">Free at <a href="https://api.nasa.gov" target="_blank" style="color:var(--muted)">api.nasa.gov</a></div>
     <button class="setup-btn" onclick="saveSetup2()">Finish setup</button>
-    <button class="setup-skip" onclick="skipSetup2()">Skip for now — add keys in Settings later</button>
+    <button class="setup-skip" onclick="skipSetup2()">Skip — add keys in Settings later</button>
   </div>
 </div>
 
 <!-- ══ SETTINGS PANEL ══ -->
 <div id="settings-panel">
   <div class="settings-modal">
-    <button class="settings-close" onclick="closeSettings()">✕</button>
-    <div class="settings-title">Settings</div>
 
-    <span class="settings-section-title">Location</span>
-    <div class="settings-row">
-      <label class="setup-label" for="settings-country">Country</label>
-      <select class="setup-select" id="settings-country"></select>
-    </div>
-    <div class="settings-row">
-      <label class="setup-label" for="settings-city">City or town</label>
-      <input class="setup-input" id="settings-city" type="text" style="margin-bottom:0">
+    <div class="settings-header">
+      <div class="settings-title">Settings</div>
+      <button class="settings-close" onclick="closeSettings()">✕</button>
     </div>
 
-    <hr class="settings-divider">
-    <span class="settings-section-title">API keys</span>
-    <div class="settings-row">
-      <label class="setup-label" for="settings-wordnik">Wordnik (Word of the Day)</label>
-      <input class="setup-input" id="settings-wordnik" type="text" placeholder="Paste your Wordnik API key…" style="margin-bottom:4px">
-      <div style="font-size:11px;color:var(--hint)">Free at <a href="https://developer.wordnik.com" target="_blank" style="color:var(--muted)">developer.wordnik.com</a></div>
-    </div>
-    <div class="settings-row">
-      <label class="setup-label" for="settings-nasa">NASA (Picture of the Day)</label>
-      <input class="setup-input" id="settings-nasa" type="text" placeholder="Paste your NASA API key…" style="margin-bottom:4px">
-      <div style="font-size:11px;color:var(--hint)">Free at <a href="https://api.nasa.gov" target="_blank" style="color:var(--muted)">api.nasa.gov</a></div>
+    <div class="settings-body">
+
+      <span class="settings-section">Appearance</span>
+      <div class="mode-btns">
+        <button class="mode-btn" id="mode-light" onclick="setMode('light')">☀ Light</button>
+        <button class="mode-btn" id="mode-dark"  onclick="setMode('dark')">☾ Dark</button>
+      </div>
+      <div class="theme-swatches">
+        <button class="swatch-btn" id="accent-amber"  onclick="setAccent('amber')">
+          <span class="swatch-dot" style="background:#c8924a"></span>Amber
+        </button>
+        <button class="swatch-btn" id="accent-slate"  onclick="setAccent('slate')">
+          <span class="swatch-dot" style="background:#4a7fb5"></span>Slate
+        </button>
+        <button class="swatch-btn" id="accent-forest" onclick="setAccent('forest')">
+          <span class="swatch-dot" style="background:#3d7a5e"></span>Forest
+        </button>
+      </div>
+
+      <hr class="settings-divider">
+      <span class="settings-section">Location</span>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-country">Country</label>
+        <select class="setup-select" id="settings-country"></select>
+      </div>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-city">City or town</label>
+        <input class="setup-input" id="settings-city" type="text" style="margin-bottom:0">
+      </div>
+
+      <hr class="settings-divider">
+      <span class="settings-section">API keys</span>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-wordnik">Wordnik (Word of the Day)</label>
+        <input class="setup-input" id="settings-wordnik" type="text" placeholder="Paste your Wordnik API key…" style="margin-bottom:4px">
+        <div style="font-size:11px;color:var(--hint)">Free at <a href="https://developer.wordnik.com" target="_blank" style="color:var(--muted)">developer.wordnik.com</a></div>
+      </div>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-nasa">NASA (Picture of the Day)</label>
+        <input class="setup-input" id="settings-nasa" type="text" placeholder="Paste your NASA API key…" style="margin-bottom:4px">
+        <div style="font-size:11px;color:var(--hint)">Free at <a href="https://api.nasa.gov" target="_blank" style="color:var(--muted)">api.nasa.gov</a></div>
+      </div>
+
+      <hr class="settings-divider">
+      <span class="settings-section">Cards — drag to reorder, toggle to show/hide</span>
+      <ul class="card-order-list" id="card-order-list"></ul>
+
     </div>
 
-    <hr class="settings-divider">
-    <span class="settings-section-title">Cards — drag to reorder, toggle to show/hide</span>
-    <ul class="card-order-list" id="card-order-list"></ul>
+    <div class="settings-footer">
+      <button class="settings-save" onclick="saveSettings()">Save location &amp; keys</button>
+      <div class="error-text" id="settings-err"></div>
+    </div>
 
-    <button class="settings-save" onclick="saveSettings()">Save location & keys</button>
-    <div class="error-text" id="settings-err"></div>
   </div>
 </div>
 
-<!-- ══ MAIN DASHBOARD ══ -->
-<div class="wrapper" id="main" style="display:none">
+<!-- ══ MAIN APP ══ -->
+<div id="app">
 
-  <!-- Header -->
-  <div id="section-header" class="header-card">
-    <div class="header-top">
-      <div>
-        <div class="weekday" id="weekday">—</div>
-        <div class="full-date" id="full-date">—</div>
-      </div>
-      <div>
-        <div class="live-clock" id="live-clock">—</div>
-        <div class="live-clock-sub">local time</div>
-      </div>
-    </div>
-    <div class="badges">
-      <span class="badge" id="badge-day">Day —</span>
-      <span class="badge" id="badge-week">Week —</span>
-      <span class="badge" id="badge-doy">— days remaining</span>
-    </div>
-  </div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
 
-  <!-- Quote of the Day -->
-  <div id="section-quote" class="quote-card">
-    <div class="quote-meta" id="quote-meta">Quote · Day —</div>
-    <div class="quote-text" id="quote-text">—</div>
-    <div class="quote-author" id="quote-author">—</div>
-  </div>
-
-  <!-- Strange Fact -->
-  <div id="section-fact" class="otd-card">
-    <div class="otd-header">Strange Fact of the Day</div>
-    <div class="otd-body" id="fact-body">—</div>
-  </div>
-
-  <!-- Music Fact -->
-  <div id="section-music" class="otd-card">
-    <div class="otd-header">Music Fact of the Day</div>
-    <div class="otd-body" id="music-body">—</div>
-  </div>
-
-  <!-- Word of the Day (Wordnik) -->
-  <div id="section-wotd" class="wotd-card">
-    <div class="wotd-header">Word of the Day</div>
-    <div id="wotd-content"><div class="wotd-missing">Loading…</div></div>
-  </div>
-
-  <!-- Irish Word of the Day -->
-  <div id="section-irish" class="otd-card">
-    <div class="otd-header">Irish Word of the Day</div>
-    <div class="irish-word" id="irish-word">—</div>
-    <div class="irish-pron" id="irish-pron">—</div>
-    <div class="irish-meaning" id="irish-meaning">—</div>
-    <div class="irish-example" id="irish-example">—</div>
-  </div>
-
-  <!-- Irish Proverb of the Day -->
-  <div id="section-proverb" class="otd-card">
-    <div class="otd-header">Irish Proverb — Seanfhocal</div>
-    <div class="proverb-irish" id="proverb-irish">—</div>
-    <div class="proverb-english" id="proverb-english">—</div>
-    <div class="proverb-literal" id="proverb-literal">—</div>
-  </div>
-
-  <!-- 80s Song -->
-  <div id="section-song" class="otd-card">
-    <div class="otd-header">80s Song of the Day</div>
-    <div class="otd-body" id="song-title">—</div>
-    <div class="otd-sub" id="song-artist">—</div>
-    <a class="otd-link" id="song-link" href="#" target="_blank" rel="noopener">
-      <svg viewBox="0 0 11 11" fill="none"><polygon points="2,1 10,5.5 2,10" fill="currentColor"/></svg>
-      Listen on YouTube
-    </a>
-  </div>
-
-  <!-- Weather -->
-  <div id="section-weather" class="weather-card">
-    <div class="weather-main">
-      <svg class="weather-icon-svg" id="w-icon-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22" cy="22" r="9" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="22" y1="4" x2="22" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="22" y1="36" x2="22" y2="40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="4" y1="22" x2="8" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="36" y1="22" x2="40" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="9.4" y1="9.4" x2="12.2" y2="12.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="31.8" y1="31.8" x2="34.6" y2="34.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="9.4" y1="34.6" x2="12.2" y2="31.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="31.8" y1="12.2" x2="34.6" y2="9.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      <div>
-        <div class="weather-temp-big" id="w-temp">—°C</div>
-        <div class="weather-desc" id="w-desc">Loading…</div>
-        <div class="weather-loc" id="w-loc">—</div>
+    <div class="sb-header">
+      <div class="sb-time" id="sb-time">—</div>
+      <div class="sb-day" id="sb-day">—</div>
+      <div class="sb-date" id="sb-date">—</div>
+      <div class="sb-badges">
+        <span class="sb-badge" id="sb-badge-day">Day —</span>
+        <span class="sb-badge" id="sb-badge-week">Week —</span>
+        <span class="sb-badge" id="sb-badge-left">— days left</span>
       </div>
     </div>
-    <div class="weather-grid">
-      <div class="w-stat"><div class="w-stat-label">Feels like</div><div class="w-stat-val" id="w-feels">—</div></div>
-      <div class="w-stat"><div class="w-stat-label">Humidity</div><div class="w-stat-val" id="w-humidity">—</div></div>
-      <div class="w-stat"><div class="w-stat-label">Wind</div><div class="w-stat-val" id="w-wind">—</div></div>
-    </div>
-  </div>
 
-  <!-- Sunrise & Sunset -->
-  <div id="section-sun" class="sun-row">
-    <div class="sun-card">
-      <svg class="sun-icon-svg" viewBox="0 0 28 28" fill="none">
-        <path d="M14 8v-4M14 24v-2M6 14H2M26 14h-2M8.5 8.5L6 6M21.5 21.5l-1.8-1.8M8.5 19.5L6 22M21.5 8.5l-1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        <circle cx="14" cy="14" r="5" stroke="currentColor" stroke-width="1.4"/>
-        <path d="M2 22h24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M8 18l6-6 6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div>
-        <div class="sun-label">Sunrise</div>
-        <div class="sun-time" id="sun-rise">—</div>
-        <div class="sun-sub">dawn</div>
+    <div class="sb-section" id="sb-progress-section">
+      <span class="sb-label">Year progress</span>
+      <div class="sb-progress-row">
+        <span class="sb-progress-pct" id="sb-pct">—%</span>
+        <span class="sb-progress-sub" id="sb-progress-sub">—</span>
+      </div>
+      <div class="sb-bar-bg"><div class="sb-bar-fill" id="sb-bar" style="width:0%"></div></div>
+      <div class="sb-bh-name" id="sb-bh-name">—</div>
+      <div class="sb-bh-when" id="sb-bh-when">—</div>
+    </div>
+
+    <div class="sb-section" id="sb-weather-section">
+      <span class="sb-label">Weather</span>
+      <div class="sb-temp" id="sb-temp">—°C</div>
+      <div class="sb-weather-desc" id="sb-desc">Loading…</div>
+      <div class="sb-weather-loc" id="sb-loc">—</div>
+      <div class="sb-weather-grid">
+        <div><div class="sb-witem-label">Sunrise</div><div class="sb-witem-val" id="sb-rise">—</div></div>
+        <div><div class="sb-witem-label">Sunset</div><div class="sb-witem-val" id="sb-set">—</div></div>
+        <div><div class="sb-witem-label">Day length</div><div class="sb-witem-val" id="sb-daylen">—</div></div>
+        <div><div class="sb-witem-label">Moon</div><div class="sb-witem-val" id="sb-moon">—</div></div>
+        <div><div class="sb-witem-label">Feels like</div><div class="sb-witem-val" id="sb-feels">—</div></div>
+        <div><div class="sb-witem-label">Wind</div><div class="sb-witem-val" id="sb-wind">—</div></div>
       </div>
     </div>
-    <div class="sun-card">
-      <svg class="sun-icon-svg" viewBox="0 0 28 28" fill="none">
-        <path d="M14 8v-4M14 24v-2M6 14H2M26 14h-2M8.5 8.5L6 6M21.5 21.5l-1.8-1.8M8.5 19.5L6 22M21.5 8.5l-1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        <circle cx="14" cy="14" r="5" stroke="currentColor" stroke-width="1.4"/>
-        <path d="M2 22h24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M8 16l6 6 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div>
-        <div class="sun-label">Sunset</div>
-        <div class="sun-time" id="sun-set">—</div>
-        <div class="sun-sub">dusk</div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Moon & Day Length -->
-  <div id="section-moon" class="stats-row">
-    <div class="stat-card">
-      <div class="stat-label">Moon phase</div>
-      <div class="stat-main" id="moon-display">
-        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.3"/></svg>
-        <span>—</span>
-      </div>
-      <div class="stat-sub" id="moon-sub">—</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Day length</div>
-      <div class="stat-main" id="day-length">—</div>
-      <div class="stat-sub" id="day-length-sub">of daylight</div>
-    </div>
-  </div>
-
-  <!-- Year Progress -->
-  <div id="section-progress" class="progress-card">
-    <div class="progress-header">
-      <span class="progress-label">Year progress</span>
-      <span class="progress-pct" id="year-pct">—%</span>
-    </div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" id="year-bar" style="width:0%"></div>
-    </div>
-    <div class="progress-sub">
-      <span id="days-elapsed">—</span>
-      <span id="days-left">—</span>
-    </div>
-  </div>
-
-  <!-- Bank Holiday -->
-  <div id="section-bankholiday" class="bh-card">
-    <svg class="bh-icon-svg" viewBox="0 0 22 22" fill="none">
-      <rect x="2" y="5" width="18" height="15" rx="2" stroke="currentColor" stroke-width="1.3"/>
-      <path d="M7 2v6M15 2v6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-      <path d="M2 10h18" stroke="currentColor" stroke-width="1.3"/>
-    </svg>
-    <div>
-      <div class="bh-label" id="bh-label">Next bank holiday</div>
-      <div class="bh-name" id="bh-name">—</div>
-      <div class="bh-when" id="bh-when">—</div>
-    </div>
-  </div>
-
-  <!-- Today's Observances -->
-  <div id="section-observances" class="obs-card">
-    <div class="obs-card-title">Today's Observances</div>
-    <div id="obs-list"></div>
-  </div>
-
-  <!-- NASA Picture of the Day -->
-  <div id="section-nasa" class="otd-card">
-    <div class="otd-header">NASA — Astronomy Picture of the Day</div>
-    <div id="nasa-content"><div class="wotd-missing">Loading…</div></div>
-  </div>
-
-  <!-- Joke of the Day -->
-  <div id="section-joke" class="otd-card">
-    <div class="otd-header">Joke of the Day</div>
-    <div class="otd-body" id="joke-setup">—</div>
-    <div class="otd-sub" id="joke-punchline" style="display:none">—</div>
-    <button onclick="revealPunchline()" id="joke-reveal-btn" style="margin-top:10px;background:none;border:1px solid var(--border);border-radius:var(--rsm);padding:5px 12px;font-size:12px;cursor:pointer;font-family:var(--sans);color:var(--muted);">Reveal punchline</button>
-  </div>
-
-  <!-- RTÉ Headlines -->
-  <div id="section-news" class="news-card">
-    <div class="news-card-title">
-      <span>RTÉ — Headlines</span>
-      <button class="news-refresh-btn" onclick="loadNews()">
-        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M9.5 5.5A4 4 0 1 1 5.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M7 1.5h2.5V4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="sb-section" id="sb-news-section" style="flex:1">
+      <span class="sb-label">RTÉ Headlines</span>
+      <div id="sb-news-list"><div class="sb-news-loading">Loading…</div></div>
+      <button class="sb-news-refresh" onclick="loadNews()">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M8.5 5A3.5 3.5 0 1 1 5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M6.5 1.5H8.5V3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Refresh
       </button>
     </div>
-    <div id="news-list"><div class="news-loading">Loading headlines…</div></div>
-  </div>
 
-  <!-- About this Day -->
-  <div id="section-onthisday" class="atd-card">
-    <div class="atd-title" id="atd-title">About this Day</div>
-    <div class="atd-section">
-      <div class="atd-section-label">
-        <svg viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 4v4M6 3v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Historical events
-      </div>
-      <div id="atd-events"><div class="atd-loading">Loading…</div></div>
+    <div class="sb-footer">
+      <div class="sb-updated" id="sb-updated">—</div>
+      <button class="settings-btn" onclick="openSettings()">
+        <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.93 2.93l1.06 1.06M10.01 10.01l1.06 1.06M2.93 11.07l1.06-1.06M10.01 3.99l1.06-1.06" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Settings
+      </button>
     </div>
-    <hr class="atd-divider">
-    <div class="atd-section">
-      <div class="atd-section-label">
-        <svg viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3v3l2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Born on this day
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="cards-grid" id="cards-grid">
+
+      <!-- Quote — full width -->
+      <div id="section-quote" class="card card-full">
+        <div class="card-accent-bar"></div>
+        <span class="card-label" id="quote-meta">Quote · Day —</span>
+        <div class="quote-text" id="quote-text">—</div>
+        <div class="quote-author" id="quote-author">—</div>
       </div>
-      <div id="atd-births"><div class="atd-loading">Loading…</div></div>
-    </div>
-    <hr class="atd-divider">
-    <div class="atd-section">
-      <div class="atd-section-label">
-        <svg viewBox="0 0 12 12" fill="none"><path d="M2 10h8M6 2v6M4 6l2 2 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Died on this day
+
+      <!-- Strange Fact -->
+      <div id="section-fact" class="card">
+        <span class="card-label">Strange Fact of the Day</span>
+        <div class="otd-body" id="fact-body">—</div>
       </div>
-      <div id="atd-deaths"><div class="atd-loading">Loading…</div></div>
+
+      <!-- Music Fact -->
+      <div id="section-music" class="card">
+        <span class="card-label">Music Fact of the Day</span>
+        <div class="otd-body" id="music-body">—</div>
+      </div>
+
+      <!-- Word of the Day (Wordnik) -->
+      <div id="section-wotd" class="card">
+        <span class="card-label">Word of the Day</span>
+        <div id="wotd-content"><div class="wotd-missing">Loading…</div></div>
+      </div>
+
+      <!-- Irish Word -->
+      <div id="section-irish" class="card">
+        <span class="card-label">Irish Word of the Day</span>
+        <div class="irish-word" id="irish-word">—</div>
+        <div class="irish-pron" id="irish-pron">—</div>
+        <div class="irish-meaning" id="irish-meaning">—</div>
+        <div class="irish-example" id="irish-example">—</div>
+      </div>
+
+      <!-- Irish Proverb -->
+      <div id="section-proverb" class="card">
+        <span class="card-label">Irish Proverb — Seanfhocal</span>
+        <div class="proverb-irish" id="proverb-irish">—</div>
+        <div class="proverb-english" id="proverb-english">—</div>
+        <div class="proverb-literal" id="proverb-literal">—</div>
+      </div>
+
+      <!-- 80s Song -->
+      <div id="section-song" class="card">
+        <span class="card-label">80s Song of the Day</span>
+        <div class="otd-body" id="song-title">—</div>
+        <div class="otd-sub" id="song-artist">—</div>
+        <a class="otd-link" id="song-link" href="#" target="_blank" rel="noopener">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+          Listen on YouTube
+        </a>
+      </div>
+
+      <!-- Observances -->
+      <div id="section-observances" class="card">
+        <span class="card-label">Today's Observances</span>
+        <div id="obs-list"><div class="wotd-missing">—</div></div>
+      </div>
+
+      <!-- NASA APOD -->
+      <div id="section-nasa" class="card">
+        <span class="card-label">NASA — Astronomy Picture of the Day</span>
+        <div id="nasa-content"><div class="wotd-missing">Loading…</div></div>
+      </div>
+
+      <!-- Joke -->
+      <div id="section-joke" class="card">
+        <span class="card-label">Joke of the Day</span>
+        <div class="otd-body" id="joke-setup">—</div>
+        <div class="otd-sub" id="joke-punchline" style="display:none">—</div>
+        <button class="joke-reveal-btn" id="joke-reveal-btn" onclick="revealPunchline()">Reveal punchline</button>
+      </div>
+
+      <!-- About This Day — full width -->
+      <div id="section-onthisday" class="card card-full">
+        <div class="atd-title" id="atd-title">About this Day</div>
+        <div class="atd-cols">
+          <div>
+            <span class="atd-col-label">Historical events</span>
+            <div id="atd-events"><div class="atd-loading">Loading…</div></div>
+          </div>
+          <div>
+            <span class="atd-col-label">Born on this day</span>
+            <div id="atd-births"><div class="atd-loading">Loading…</div></div>
+          </div>
+          <div>
+            <span class="atd-col-label">Died on this day</span>
+            <div id="atd-deaths"><div class="atd-loading">Loading…</div></div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
+  </main>
 
-</div>
+</div><!-- /#app -->
 
-<!-- ══ FOOTER BAR ══ -->
-<div class="footer-bar" id="footer-bar" style="display:none">
-  <div class="footer-updated" id="footer-updated">—</div>
-  <button class="settings-btn" onclick="openSettings()">
-    <svg viewBox="0 0 14 14" fill="none">
-      <circle cx="7" cy="7" r="2" stroke="currentColor" stroke-width="1.2"/>
-      <path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.93 2.93l1.06 1.06M10.01 10.01l1.06 1.06M2.93 11.07l1.06-1.06M10.01 3.99l1.06-1.06" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-    </svg>
-    Settings
-  </button>
-</div>
-
-<!-- Backdrop click to close settings -->
 <script>
-document.getElementById('settings-panel').addEventListener('click', function(e) {
-  if (e.target === this) window.closeSettings();
-});
-document.getElementById('city-input').addEventListener('keydown', e => { if (e.key === 'Enter') window.saveSetup(); });
-document.getElementById('setup-wordnik').addEventListener('keydown', e => { if (e.key === 'Enter') window.saveSetup2(); });
-document.getElementById('settings-city').addEventListener('keydown', e => { if (e.key === 'Enter') window.saveSettings(); });
+  // Close settings on backdrop click
+  document.getElementById('settings-panel').addEventListener('click', function(e) {
+    if (e.target === this) window.closeSettings();
+  });
+  document.getElementById('city-input').addEventListener('keydown',     e => { if (e.key==='Enter') window.saveSetup(); });
+  document.getElementById('setup-wordnik').addEventListener('keydown',  e => { if (e.key==='Enter') window.saveSetup2(); });
+  document.getElementById('settings-city').addEventListener('keydown',  e => { if (e.key==='Enter') window.saveSettings(); });
 </script>
 <script type="module" src="js/app.js"></script>
 </body>
