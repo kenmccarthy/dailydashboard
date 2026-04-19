@@ -3,7 +3,7 @@ import { loadAllData, renderQuote, renderFact, renderMusicFact, renderSong,
          renderIrishWord, renderProverb, renderObservances, renderBankHoliday,
          loadNASA, loadJoke, loadWordOfDay, loadOnThisDay, loadNews,
          revealPunchline } from './cards.js';
-import { loadWeather, fmt } from './weather.js';
+import { loadWeather, fmt, moonSVG } from './weather.js';
 import { populateCountrySelects, applyCardOrder, applyTheme, getToggle,
          saveSetup, saveSetup2, skipSetup2, openSettings, closeSettings,
          saveSettings, setMode, setAccent } from './setup.js';
@@ -74,8 +74,9 @@ async function init() {
   if (getToggle('wotd'))    loadWordOfDay(now);
   if (getToggle('nasa'))    loadNASA();
   if (getToggle('joke'))    loadJoke();
-  loadNews();
+  if (getToggle('news')) loadNews();
   loadOnThisDay(now.getMonth()+1, now.getDate());
+  renderObservancesSidebar(now);
 }
 
 // ── BOOT ──
@@ -85,7 +86,7 @@ window.addEventListener('load', async () => {
 
   // Default toggles on first run
   if (!localStorage.getItem('dd_toggles_init')) {
-    ['fact','music','song','irish','proverb','nasa','joke','wotd','observances','onthisday'].forEach(k => {
+    ['fact','music','song','irish','proverb','nasa','joke','news','wotd','onthisday'].forEach(k => {
       if (localStorage.getItem('dd_tog_'+k) === null) localStorage.setItem('dd_tog_'+k, 'true');
     });
     localStorage.setItem('dd_toggles_init', '1');
@@ -105,6 +106,7 @@ window.addEventListener('load', async () => {
 
   tickClock();
   setInterval(tickClock, 1000);
+  updateDarkToggleIcon();
 
   // Midnight refresh
   const now = new Date();
@@ -126,5 +128,46 @@ window.closeSettings     = closeSettings;
 window.saveSettings      = saveSettings;
 window.setMode           = setMode;
 window.setAccent         = setAccent;
+window.toggleDark        = toggleDark;
+
+function toggleDark() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  setMode(next);
+  // Update button icon
+  const btn = document.getElementById('dark-toggle-btn');
+  if (btn) btn.textContent = next === 'dark' ? '☀' : '☾';
+}
+
+function updateDarkToggleIcon() {
+  const mode = localStorage.getItem('dd_mode') || 'light';
+  const btn = document.getElementById('dark-toggle-btn');
+  if (btn) btn.textContent = mode === 'dark' ? '☀' : '☾';
+}
+
+async function renderObservancesSidebar(now) {
+  const [saintsRes, unRes] = await Promise.all([
+    fetch('data/saints.json').then(r=>r.json()).catch(()=>({})),
+    fetch('data/un_days.json').then(r=>r.json()).catch(()=>({})),
+  ]);
+  const mm = String(now.getMonth()+1).padStart(2,'0');
+  const dd = String(now.getDate()).padStart(2,'0');
+  const key = mm+'-'+dd;
+  const items = [];
+  const saint = saintsRes[key];
+  if (saint) items.push({tag:'Saint', name:saint.saint, note:saint.note});
+  const un = unRes[key];
+  if (un) un.split(' & ').forEach(u => items.push({tag:'UN Day', name:u, note:''}));
+  const el = document.getElementById('sb-obs-list');
+  if (!el) return;
+  if (!items.length) { el.innerHTML = '<div class="sb-news-loading">No observances today.</div>'; return; }
+  el.innerHTML = items.map(item =>
+    `<div class="sb-obs-item">
+      <span class="sb-obs-tag">${item.tag}</span>
+      <span class="sb-obs-name">${item.name}</span>
+      ${item.note ? `<div class="sb-obs-note">${item.note}</div>` : ''}
+    </div>`
+  ).join('');
+}
 
 function set$(id, val) { const el = document.getElementById(id); if (el) el.textContent = val; }

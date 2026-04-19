@@ -8,9 +8,9 @@ const CARD_DEFS = [
   {id:'irish',       label:'Irish word of the day',       full:false},
   {id:'proverb',     label:'Irish proverb of the day',    full:false},
   {id:'song',        label:'80s song of the day',         full:false},
-  {id:'observances', label:"Today's observances",         full:false},
   {id:'nasa',        label:'NASA picture of the day',     full:false},
   {id:'joke',        label:'Joke of the day',             full:false},
+  {id:'news',        label:'RTÉ headlines',               full:false},
   {id:'onthisday',   label:'About this day',              full:true},
 ];
 
@@ -86,13 +86,10 @@ export async function geocode(city, cc) {
 
 // ── THEME ──
 export function applyTheme() {
-  const mode   = localStorage.getItem('dd_mode')   || 'light';
-  const accent = localStorage.getItem('dd_accent') || 'amber';
-  document.documentElement.setAttribute('data-theme',  mode);
-  document.documentElement.setAttribute('data-accent', accent);
+  const mode = localStorage.getItem('dd_mode') || 'light';
+  document.documentElement.setAttribute('data-theme', mode);
   // Update active states in settings
   ['light','dark'].forEach(m => document.getElementById('mode-'+m)?.classList.toggle('active', m===mode));
-  ['amber','slate','forest'].forEach(a => document.getElementById('accent-'+a)?.classList.toggle('active', a===accent));
 }
 
 export function setMode(mode) {

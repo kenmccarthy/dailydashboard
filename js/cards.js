@@ -214,9 +214,9 @@ export async function loadOnThisDay(month, day) {
 }
 
 export async function loadNews() {
-  const el = document.getElementById('sb-news-list');
+  const el = document.getElementById('news-list');
   if (!el) return;
-  el.innerHTML = '<div class="sb-news-loading">Loading…</div>';
+  el.innerHTML = '<div class="wotd-missing">Loading…</div>';
   const feeds = ['https://www.rte.ie/news/rss/news-headlines.xml','https://www.rte.ie/news/rss/'];
   const proxy = 'https://api.rss2json.com/v1/api.json?rss_url=';
   for (const feed of feeds) {
@@ -226,11 +226,14 @@ export async function loadNews() {
       const data = await r.json();
       if (data.status !== 'ok' || !data.items?.length) continue;
       el.innerHTML = data.items.slice(0,8).map(item => {
-        const when = item.pubDate ? new Date(item.pubDate).toLocaleTimeString('en-IE',{hour:'2-digit',minute:'2-digit',hour12:false}) : '';
-        return `<a class="sb-news-item" href="${item.link||'#'}" target="_blank" rel="noopener">
-          ${(item.title||'').trim()}
-          ${when ? `<div class="sb-news-meta">${when}</div>` : ''}
-        </a>`;
+        const title = (item.title||'').trim();
+        const link  = item.link||'#';
+        const pub   = item.pubDate || '';
+        const when  = pub ? new Date(pub).toLocaleTimeString('en-IE',{hour:'2-digit',minute:'2-digit',hour12:false}) : '';
+        return `<div class="news-item">
+          <a class="news-headline" href="${link}" target="_blank" rel="noopener">${title}</a>
+          ${when ? `<div class="news-meta">${when}</div>` : ''}
+        </div>`;
       }).join('');
       return;
     } catch(e) { continue; }
