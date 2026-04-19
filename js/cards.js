@@ -201,13 +201,22 @@ export async function loadOnThisDay(month, day) {
       const el = document.getElementById(id);
       if (!el) return;
       if (!items?.length) { el.innerHTML = '<div class="atd-loading">None recorded.</div>'; return; }
-      el.innerHTML = shuffle(items).slice(0,max).sort((a,b)=>(a.year||0)-(b.year||0)).map(item =>
-        `<div class="atd-item"><div class="atd-year">${item.year||''}</div><div class="atd-text">${item.text||item.pages?.[0]?.description||''}</div></div>`
-      ).join('');
+      el.innerHTML = shuffle(items).slice(0,max).sort((a,b)=>(a.year||0)-(b.year||0)).map(item => {
+        const text = item.text || item.pages?.[0]?.description || '';
+        const year = item.year || '';
+        // Build Wikipedia link from first page if available
+        const page = item.pages?.[0];
+        const wikiUrl = page ? `https://en.wikipedia.org/wiki/${encodeURIComponent(page.title)}` : null;
+        return `<div class="atd-item">
+          <div class="atd-year">${year}</div>
+          <div class="atd-text">${text}</div>
+          ${wikiUrl ? `<a class="atd-wiki-link" href="${wikiUrl}" target="_blank" rel="noopener" title="Wikipedia">↗</a>` : ''}
+        </div>`;
+      }).join('');
     };
-    renderItems(data.events, 'atd-events', 4);
-    renderItems(data.births, 'atd-births', 4);
-    renderItems(data.deaths, 'atd-deaths', 3);
+    renderItems(data.events, 'atd-events', 5);
+    renderItems(data.births, 'atd-births', 5);
+    renderItems(data.deaths, 'atd-deaths', 5);
   } catch(e) {
     ['atd-events','atd-births','atd-deaths'].forEach(id => set$(id, '<div class="atd-loading">Could not load.</div>'));
   }

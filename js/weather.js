@@ -95,7 +95,8 @@ export async function loadWeather() {
     set$('sb-wind',   `${Math.round(c.wind_speed_10m)} km/h`);
     set$('sb-rise',   fmt(rise));
     set$('sb-set',    fmt(set));
-    set$('sb-daylen', `${lenH}h ${lenM}m · ${diffLabel}`);
+    set$('sb-daylen', `${lenH}h ${lenM}m`);
+    set$('sb-daylen-diff', diffLabel);
 
     // Moon with SVG icon
     const moonEl = document.getElementById('sb-moon');
