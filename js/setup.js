@@ -11,6 +11,7 @@ const CARD_DEFS = [
   {id:'nasa',        label:'NASA picture of the day',     full:false},
   {id:'joke',        label:'Joke of the day',             full:false},
   {id:'news',        label:'RTÉ headlines',               full:false},
+  {id:'flight',      label:'Nearest flight overhead',     full:false},
   {id:'onthisday',   label:'About this day',              full:true},
 ];
 
@@ -145,6 +146,9 @@ export function openSettings() {
   document.getElementById('settings-country').value = localStorage.getItem('dd_country')      || 'IE';
   document.getElementById('settings-wordnik').value = localStorage.getItem('dd_wordnik_key')  || '';
   document.getElementById('settings-nasa').value    = localStorage.getItem('dd_nasa_key')     || '';
+  document.getElementById('settings-flight-lat').value    = localStorage.getItem('dd_flight_lat')    || '';
+  document.getElementById('settings-flight-lon').value    = localStorage.getItem('dd_flight_lon')    || '';
+  document.getElementById('settings-flight-radius').value = localStorage.getItem('dd_flight_radius') || '';
   applyTheme();
   loadTogglesUI();
   buildOrderUI();
@@ -156,6 +160,12 @@ export function closeSettings() {
 export async function saveSettings() {
   const city = document.getElementById('settings-city').value.trim();
   const cc   = document.getElementById('settings-country').value;
+  // Flight-location overrides persist regardless of the location field.
+  const setOrClear = (key, val) => { val ? localStorage.setItem(key, val) : localStorage.removeItem(key); };
+  setOrClear('dd_flight_lat',    document.getElementById('settings-flight-lat').value.trim());
+  setOrClear('dd_flight_lon',    document.getElementById('settings-flight-lon').value.trim());
+  setOrClear('dd_flight_radius', document.getElementById('settings-flight-radius').value.trim());
+  if (window.__reloadFlight) window.__reloadFlight();
   if (!city) return;
   document.getElementById('settings-err').textContent = '';
   try {
