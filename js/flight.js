@@ -1,0 +1,104 @@
+// ── FLIGHT.JS ──
+// Nearest flight overhead via airplanes.live point-radius feed (keyless).
+import { getToggle } from './setup.js';
+
+let AIRLINES = null;
+let flightTimer = null;
+let lastFetch = 0;
+
+// 8-point compass from a bearing in degrees
+function compass(deg) {
+  if (deg == null) return '';
+  const dirs = ['N','NE','E','SE','S','SW','W','NW'];
+  return dirs[Math.round(deg / 45) % 8];
+}
+
+// "AIRBUS A-320" → "Airbus A-320" (leave tokens with digits alone)
+function titleCase(s) {
+  return String(s).toLowerCase().split(' ').map(w =>
+    /\d/.test(w) ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)
+  ).join(' ');
+}
+
+async function getAirlines() {
+  if (AIRLINES) return AIRLINES;
+  try { AIRLINES = await fetch('data/airlines.json').then(r => r.json()); }
+  catch(e) { AIRLINES = {}; }
+  return AIRLINES;
+}
+
+// Resolve which location + radius the flight card should use.
+// Falls back to the weather location if no flight-specific coords are set.
+function flightLocation() {
+  const fLat = localStorage.getItem('dd_flight_lat');
+  const fLon = localStorage.getItem('dd_flight_lon');
+  const lat = parseFloat(fLat || localStorage.getItem('dd_lat'));
+  const lon = parseFloat(fLon || localStorage.getItem('dd_lon'));
+  let radius = parseInt(localStorage.getItem('dd_flight_radius'), 10);
+  if (isNaN(radius) || radius < 1) radius = 50;   // nautical miles
+  return { lat, lon, radius: Math.min(radius, 250) };
+}
+
+export async function loadFlight() {
+  lastFetch = Date.now();
+  const el = document.getElementById('flight-content');
+  if (!el) return;
+  const { lat, lon, radius } = flightLocation();
+  if (isNaN(lat) || isNaN(lon)) {
+    el.innerHTML = '<div class="wotd-missing">Set a location to see flights.</div>';
+    return;
+  }
+  try {
+    const airlines = await getAirlines();
+    const r = await fetch(`https://api.airplanes.live/v2/point/${lat}/${lon}/${radius}`);
+    if (!r.ok) throw new Error();
+    const data = await r.json();
+    // Airborne aircraft with a position, nearest first (dst = nautical miles).
+    const planes = (data.ac || [])
+      .filter(a => a.lat != null && a.alt_baro !== 'ground' && a.dst != null)
+      .sort((a, b) => a.dst - b.dst);
+
+    if (!planes.length) {
+      el.innerHTML = '<div class="wotd-missing">No aircraft overhead right now.</div>';
+      return;
+    }
+
+    const p = planes[0];
+    const call = (p.flight || '').trim();
+    const icao = call.slice(0, 3);
+    const airline = airlines[icao] || '';
+    const acType = p.desc ? titleCase(p.desc) : (p.t || '');
+    const alt = typeof p.alt_baro === 'number' ? `${p.alt_baro.toLocaleString()} ft` : '';
+    const climb = p.baro_rate > 100 ? ' ↑' : p.baro_rate < -100 ? ' ↓' : '';
+    const spd = p.gs != null ? `${Math.round(p.gs)} kt` : '';
+    const distKm = `${(p.dst * 1.852).toFixed(1)} km ${compass(p.dir)}`.trim();
+
+    const line2 = [call || null, p.r || null, acType || null].filter(Boolean).join(' · ');
+    const line3 = [alt ? alt + climb : null, spd, distKm].filter(Boolean).join(' · ');
+
+    el.innerHTML = `
+      <div class="otd-body">${airline || call || 'Unknown aircraft'}</div>
+      ${line2 ? `<div class="otd-sub">${line2}</div>` : ''}
+      ${line3 ? `<div class="otd-sub">${line3}</div>` : ''}
+      ${call ? `<a class="otd-link" href="https://globe.airplanes.live/?callsign=${encodeURIComponent(call)}" target="_blank" rel="noopener">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+        Track flight</a>` : ''}`;
+  } catch(e) {
+    el.innerHTML = '<div class="wotd-missing">Flight data unavailable right now.</div>';
+  }
+}
+
+// Poll while the tab is visible; pause when hidden to respect rate limits.
+export function initFlightRefresh() {
+  if (flightTimer) clearInterval(flightTimer);
+  const POLL = 90000; // 90s
+  flightTimer = setInterval(() => {
+    if (document.visibilityState === 'visible' && getToggle('flight')) loadFlight();
+  }, POLL);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && getToggle('flight') &&
+        Date.now() - lastFetch > 60000) {
+      loadFlight();
+    }
+  });
+}

@@ -83,6 +83,20 @@
       </div>
 
       <hr class="settings-divider">
+      <span class="settings-section">Nearest flight (optional)</span>
+      <div class="settings-row">
+        <label class="setup-label">Leave blank to use your weather location.</label>
+        <div style="display:flex;gap:8px">
+          <input class="setup-input" id="settings-flight-lat" type="text" inputmode="decimal" placeholder="Latitude" style="margin-bottom:0">
+          <input class="setup-input" id="settings-flight-lon" type="text" inputmode="decimal" placeholder="Longitude" style="margin-bottom:0">
+        </div>
+      </div>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-flight-radius">Search radius (nautical miles, max 250)</label>
+        <input class="setup-input" id="settings-flight-radius" type="text" inputmode="numeric" placeholder="50" style="margin-bottom:0">
+      </div>
+
+      <hr class="settings-divider">
       <span class="settings-section">Cards — drag to reorder, toggle to show/hide</span>
       <ul class="card-order-list" id="card-order-list"></ul>
 
@@ -245,6 +259,12 @@
         <div class="otd-body" id="joke-setup">—</div>
         <div class="otd-sub" id="joke-punchline" style="display:none">—</div>
         <button class="joke-reveal-btn" id="joke-reveal-btn" onclick="revealPunchline()">Reveal punchline</button>
+      </div>
+
+      <!-- Nearest Flight Overhead -->
+      <div id="section-flight" class="card">
+        <span class="card-label">Nearest Flight Overhead</span>
+        <div id="flight-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
       <!-- RTÉ News -->
