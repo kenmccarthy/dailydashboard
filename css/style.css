@@ -187,6 +187,11 @@ a { color: inherit; text-decoration: none; }
 .otd-sub { font-size: 11px; color: var(--muted); margin-top: 5px; font-style: italic; }
 .otd-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-size: 11px; font-weight: 500; color: var(--muted); border: 1px solid var(--border); border-radius: var(--rsm); padding: 5px 10px; transition: border-color 0.15s, color 0.15s; }
 .otd-link:hover { border-color: var(--accent); color: var(--accent); }
+.flight-head { display: flex; align-items: center; gap: 9px; }
+.flight-logo { width: 28px; height: 28px; object-fit: contain; border-radius: 4px; flex-shrink: 0; background: var(--bg); }
+.flight-route { font-size: 12px; color: var(--text); margin-top: 7px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.flight-route .flight-arrow { color: var(--muted); }
+.flight-route .flight-iata { color: var(--muted); }
 .irish-word { font-family: var(--serif); font-size: 22px; color: var(--text); }
 .irish-pron { font-size: 11px; color: var(--hint); font-style: italic; margin-top: 2px; }
 .irish-meaning { font-size: 13px; color: var(--text); margin-top: 10px; border-top: 1px solid var(--border); padding-top: 10px; }

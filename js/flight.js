@@ -5,6 +5,7 @@ import { getToggle } from './setup.js';
 let AIRLINES = null;
 let flightTimer = null;
 let lastFetch = 0;
+const ROUTE_CACHE = new Map();   // callsign → route object (or null when unknown)
 
 // 8-point compass from a bearing in degrees
 function compass(deg) {
@@ -25,6 +26,31 @@ async function getAirlines() {
   try { AIRLINES = await fetch('data/airlines.json').then(r => r.json()); }
   catch(e) { AIRLINES = {}; }
   return AIRLINES;
+}
+
+// Origin/destination + airline (incl. IATA for the logo) for a callsign,
+// via the keyless adsbdb route feed. Cached per callsign; null when unknown.
+async function getRoute(call) {
+  if (!call) return null;
+  if (ROUTE_CACHE.has(call)) return ROUTE_CACHE.get(call);
+  let route = null;
+  try {
+    const r = await fetch(`https://api.adsbdb.com/v0/callsign/${encodeURIComponent(call)}`);
+    if (r.ok) {
+      const j = await r.json();
+      route = (j && j.response && j.response.flightroute) || null;
+    }
+  } catch(e) { /* leave route null */ }
+  ROUTE_CACHE.set(call, route);
+  return route;
+}
+
+// "London (LGW)" — municipality preferred, airport name as fallback.
+function airportLabel(a) {
+  if (!a) return '';
+  const place = a.municipality || a.name || '';
+  const code = a.iata_code || a.icao_code || '';
+  return code ? `${place} <span class="flight-iata">(${code})</span>`.trim() : place;
 }
 
 // Resolve which location + radius the flight card should use.
@@ -66,7 +92,12 @@ export async function loadFlight() {
     const p = planes[0];
     const call = (p.flight || '').trim();
     const icao = call.slice(0, 3);
-    const airline = airlines[icao] || '';
+    const route = await getRoute(call);
+
+    // Airline name: prefer adsbdb's (broad coverage), fall back to the offline table.
+    const airline = (route && route.airline && route.airline.name) || airlines[icao] || '';
+    // Logo needs an IATA code, which only the route feed gives us.
+    const iata = route && route.airline && route.airline.iata;
     const acType = p.desc ? titleCase(p.desc) : (p.t || '');
     const alt = typeof p.alt_baro === 'number' ? `${p.alt_baro.toLocaleString()} ft` : '';
     const climb = p.baro_rate > 100 ? ' ↑' : p.baro_rate < -100 ? ' ↓' : '';
@@ -75,10 +106,18 @@ export async function loadFlight() {
 
     const line2 = [call || null, p.r || null, acType || null].filter(Boolean).join(' · ');
     const line3 = [alt ? alt + climb : null, spd, distKm].filter(Boolean).join(' · ');
+    const routeLine = route && (route.origin || route.destination)
+      ? `<div class="flight-route">${airportLabel(route.origin)}<span class="flight-arrow">→</span>${airportLabel(route.destination)}</div>`
+      : '';
+    const logo = iata
+      ? `<img class="flight-logo" src="https://images.kiwi.com/airlines/64/${encodeURIComponent(iata)}.png" alt="" onerror="this.style.display='none'">`
+      : '';
+    const heading = `${logo}<div class="otd-body">${airline || call || 'Unknown aircraft'}</div>`;
 
     el.innerHTML = `
-      <div class="otd-body">${airline || call || 'Unknown aircraft'}</div>
+      <div class="flight-head">${heading}</div>
       ${line2 ? `<div class="otd-sub">${line2}</div>` : ''}
+      ${routeLine}
       ${line3 ? `<div class="otd-sub">${line3}</div>` : ''}
       ${call ? `<a class="otd-link" href="https://globe.airplanes.live/?callsign=${encodeURIComponent(call)}" target="_blank" rel="noopener">
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
