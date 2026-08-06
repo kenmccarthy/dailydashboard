@@ -68,7 +68,7 @@ export async function loadWeather() {
     const r = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
       `&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code` +
-      `&daily=sunrise,sunset&timezone=auto&forecast_days=1&past_days=1`
+      `&daily=sunrise,sunset,weather_code,temperature_2m_max&timezone=auto&forecast_days=6&past_days=1`
     );
     const data = await r.json();
     const c = data.current, d = data.daily;
@@ -101,6 +101,26 @@ export async function loadWeather() {
     // Moon with SVG icon
     const moonEl = document.getElementById('sb-moon');
     if (moonEl) moonEl.innerHTML = moonSVG(moonName) + moonName;
+
+    // 5-day forecast strip (tomorrow → +5): daily indices 2..6.
+    const fcEl = document.getElementById('sb-forecast');
+    if (fcEl) {
+      let cells = '';
+      for (let i = 2; i <= 6; i++) {
+        if (d.weather_code?.[i] == null) continue;
+        const code = d.weather_code[i];
+        const label = new Date(d.time[i] + 'T12:00:00')
+          .toLocaleDateString(undefined, { weekday: 'short' });
+        const hi = Math.round(d.temperature_2m_max[i]);
+        cells +=
+          `<div class="sb-fc-day" title="${weatherDesc(code)}">` +
+            `<div class="sb-fc-label">${label}</div>` +
+            `<svg class="sb-fc-icon" viewBox="0 0 44 44" fill="none">${weatherSVG(code)}</svg>` +
+            `<div class="sb-fc-temp">${hi}°</div>` +
+          `</div>`;
+      }
+      fcEl.innerHTML = cells;
+    }
 
   } catch(e) {
     set$('sb-desc', 'Weather unavailable');

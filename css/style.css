@@ -145,6 +145,11 @@ a { color: inherit; text-decoration: none; }
 .sb-weather-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
 .sb-witem-label { font-size: 9px; color: var(--hint); text-transform: uppercase; letter-spacing: 0.05em; }
 .sb-witem-val { font-size: 13px; color: var(--text); margin-top: 1px; }
+.sb-forecast { display: flex; justify-content: space-between; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+.sb-fc-day { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center; }
+.sb-fc-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--hint); }
+.sb-fc-icon { width: 22px; height: 22px; color: var(--text); }
+.sb-fc-temp { font-size: 11px; color: var(--text); }
 .sb-news-item { font-size: 11px; color: var(--text); padding: 7px 0; border-bottom: 1px solid var(--border); line-height: 1.45; display: block; transition: color 0.15s; }
 .sb-news-item:last-child { border-bottom: none; }
 .sb-news-item:hover { color: var(--accent); }
