@@ -207,6 +207,13 @@ a { color: inherit; text-decoration: none; }
 .f1-pos { width: 16px; color: var(--hint); font-variant-numeric: tabular-nums; }
 .f1-name { flex: 1; color: var(--text); }
 .f1-pts { color: var(--muted); font-variant-numeric: tabular-nums; }
+.ukno-row { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+.ukno-row:last-child { border-bottom: none; }
+.ukno-yrs { flex-shrink: 0; width: 44px; font-size: 11px; font-weight: 500; color: var(--accent); padding-top: 1px; }
+.ukno-info { min-width: 0; }
+.ukno-song { font-size: 13px; color: var(--text); display: block; text-decoration: none; }
+.ukno-song:hover { color: var(--accent); }
+.ukno-artist { font-size: 11px; color: var(--muted); margin-top: 1px; }
 .irish-word { font-family: var(--serif); font-size: 22px; color: var(--text); }
 .irish-pron { font-size: 11px; color: var(--hint); font-style: italic; margin-top: 2px; }
 .irish-meaning { font-size: 13px; color: var(--text); margin-top: 10px; border-top: 1px solid var(--border); padding-top: 10px; }

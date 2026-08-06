@@ -14,6 +14,7 @@ const CARD_DEFS = [
   {id:'flight',      label:'Nearest flight overhead',     full:false},
   {id:'airquality',  label:'Air quality & pollen',        full:false},
   {id:'f1',          label:'Formula 1',                   full:false},
+  {id:'uk1s',        label:'UK #1 · this week in history', full:false},
   {id:'onthisday',   label:'About this day',              full:true},
 ];
 
