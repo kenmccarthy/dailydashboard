@@ -5,6 +5,8 @@ import { loadAllData, renderQuote, renderFact, renderMusicFact, renderSong,
          revealPunchline } from './cards.js';
 import { loadWeather, fmt, moonSVG } from './weather.js';
 import { loadFlight, initFlightRefresh } from './flight.js';
+import { loadAirQuality } from './airquality.js';
+import { loadF1 } from './f1.js';
 import { populateCountrySelects, applyCardOrder, applyTheme, getToggle,
          saveSetup, saveSetup2, skipSetup2, openSettings, closeSettings,
          saveSettings, setMode, setAccent } from './setup.js';
@@ -72,7 +74,9 @@ async function init() {
 
   // Async
   loadWeather();
-  if (getToggle('flight'))  loadFlight();
+  if (getToggle('flight'))     loadFlight();
+  if (getToggle('airquality')) loadAirQuality();
+  if (getToggle('f1'))         loadF1();
   if (getToggle('wotd'))    loadWordOfDay(now);
   if (getToggle('nasa'))    loadNASA();
   if (getToggle('joke'))    loadJoke();
@@ -88,7 +92,7 @@ window.addEventListener('load', async () => {
 
   // Default toggles on first run
   if (!localStorage.getItem('dd_toggles_init')) {
-    ['fact','music','song','irish','proverb','nasa','joke','news','wotd','flight','onthisday'].forEach(k => {
+    ['fact','music','song','irish','proverb','nasa','joke','news','wotd','flight','airquality','f1','onthisday'].forEach(k => {
       if (localStorage.getItem('dd_tog_'+k) === null) localStorage.setItem('dd_tog_'+k, 'true');
     });
     localStorage.setItem('dd_toggles_init', '1');
@@ -121,6 +125,7 @@ window.addEventListener('load', async () => {
 window.__initDashboard   = init;
 window.__reloadWeather   = loadWeather;
 window.__reloadFlight    = loadFlight;
+window.__reloadAirQuality = loadAirQuality;
 window.__reloadWordOfDay = () => loadWordOfDay(new Date());
 window.revealPunchline   = revealPunchline;
 window.loadNews          = loadNews;

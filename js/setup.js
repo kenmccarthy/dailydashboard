@@ -12,6 +12,8 @@ const CARD_DEFS = [
   {id:'joke',        label:'Joke of the day',             full:false},
   {id:'news',        label:'RTÉ headlines',               full:false},
   {id:'flight',      label:'Nearest flight overhead',     full:false},
+  {id:'airquality',  label:'Air quality & pollen',        full:false},
+  {id:'f1',          label:'Formula 1',                   full:false},
   {id:'onthisday',   label:'About this day',              full:true},
 ];
 
@@ -181,6 +183,7 @@ export async function saveSettings() {
     if (nk) localStorage.setItem('dd_nasa_key',    nk);
     closeSettings();
     window.__reloadWeather();
+    window.__reloadAirQuality?.();
     window.__reloadWordOfDay();
   } catch(e) {
     document.getElementById('settings-err').textContent = 'Location not found. Try again.';
