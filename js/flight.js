@@ -45,6 +45,33 @@ async function getRoute(call) {
   return route;
 }
 
+// Great-circle distance between two lat/lon points, in km.
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const R = 6371, rad = Math.PI / 180;
+  const dLat = (lat2 - lat1) * rad, dLon = (lon2 - lon1) * rad;
+  const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+// adsbdb maps a callsign to a scheduled route, which can be stale/wrong for the
+// physical flight. Sanity-check it against where the aircraft actually is: the
+// plane must lie within a generous ellipse with the two airports as foci. Lateral
+// re-routing barely changes the summed distance, so this tolerates ATC/weather
+// detours while rejecting gross mismatches (e.g. a HNL→LAX route over Ireland).
+function routeMatchesPosition(route, lat, lon) {
+  const o = route && route.origin, d = route && route.destination;
+  if (o == null || d == null || o.latitude == null || o.longitude == null ||
+      d.latitude == null || d.longitude == null || lat == null || lon == null) {
+    return true;   // can't verify — don't hide
+  }
+  const MARGIN_KM = 500;
+  const dO = haversineKm(lat, lon, o.latitude, o.longitude);
+  const dD = haversineKm(lat, lon, d.latitude, d.longitude);
+  const routeLen = haversineKm(o.latitude, o.longitude, d.latitude, d.longitude);
+  return dO + dD <= routeLen + MARGIN_KM;
+}
+
 // "London (LGW)" — municipality preferred, airport name as fallback.
 function airportLabel(a) {
   if (!a) return '';
@@ -106,7 +133,10 @@ export async function loadFlight() {
 
     const line2 = [call || null, p.r || null, acType || null].filter(Boolean).join(' · ');
     const line3 = [alt ? alt + climb : null, spd, distKm].filter(Boolean).join(' · ');
-    const routeLine = route && (route.origin || route.destination)
+    // Only show the origin→destination line if the route plausibly matches
+    // where the aircraft actually is (guards against wrong adsbdb callsign routes).
+    const routeLine = route && (route.origin || route.destination) &&
+                      routeMatchesPosition(route, p.lat, p.lon)
       ? `<div class="flight-route">${airportLabel(route.origin)}<span class="flight-arrow">→</span>${airportLabel(route.destination)}</div>`
       : '';
     const logo = iata
