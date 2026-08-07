@@ -5,7 +5,9 @@ import { getToggle } from './setup.js';
 let AIRLINES = null;
 let flightTimer = null;
 let lastFetch = 0;
-const ROUTE_CACHE = new Map();   // callsign → route object (or null when unknown)
+const ROUTE_CACHE   = new Map();   // callsign → adsbdb route  (or null when unknown)
+const HEX_CACHE     = new Map();   // callsign → hexdb route   (or null when unknown)
+const AIRPORT_CACHE = new Map();   // ICAO     → airport object (or null when unknown)
 
 // 8-point compass from a bearing in degrees
 function compass(deg) {
@@ -42,6 +44,67 @@ async function getRoute(call) {
     }
   } catch(e) { /* leave route null */ }
   ROUTE_CACHE.set(call, route);
+  return route;
+}
+
+// "Frankfurt Airport" → "Frankfurt"; "Newark Liberty International Airport"
+// → "Newark Liberty". Gives a short place-style label from a full airport name.
+function shortenAirport(name) {
+  const s = String(name || '')
+    .replace(/\s+(International\s+)?Airport$/i, '')
+    .replace(/\s+Intl$/i, '')
+    .trim();
+  return s || name || '';
+}
+
+// Resolve an ICAO airport code to an adsbdb-shaped airport object via hexdb.io
+// (keyless, CORS-open). Cached per code; null when unknown.
+async function getAirport(icao) {
+  if (!icao) return null;
+  if (AIRPORT_CACHE.has(icao)) return AIRPORT_CACHE.get(icao);
+  let ap = null;
+  try {
+    const r = await fetch(`https://hexdb.io/api/v1/airport/icao/${encodeURIComponent(icao)}`);
+    if (r.ok) {
+      const j = await r.json();
+      if (j && j.icao) {
+        ap = {
+          municipality: shortenAirport(j.airport),
+          name:         j.airport || '',
+          iata_code:    j.iata || '',
+          icao_code:    j.icao || '',
+          latitude:     j.latitude,
+          longitude:    j.longitude,
+        };
+      }
+    }
+  } catch(e) { /* leave ap null */ }
+  AIRPORT_CACHE.set(icao, ap);
+  return ap;
+}
+
+// Origin/destination for a callsign via the keyless hexdb.io route feed, as a
+// second opinion to adsbdb (the two databases go stale on different flights).
+// hexdb returns "ICAO-ICAO" codes, resolved to full airports. Cached per
+// callsign; null when unknown. No airline data — that stays with adsbdb.
+async function getRouteHexdb(call) {
+  if (!call) return null;
+  if (HEX_CACHE.has(call)) return HEX_CACHE.get(call);
+  let route = null;
+  try {
+    const r = await fetch(`https://hexdb.io/api/v1/route/icao/${encodeURIComponent(call)}`);
+    if (r.ok) {
+      const j = await r.json();
+      const codes = ((j && j.route) || '').split('-').filter(Boolean);
+      if (codes.length >= 2) {
+        const [o, d] = await Promise.all([
+          getAirport(codes[0]), getAirport(codes[codes.length - 1]),
+        ]);
+        if (o && d) route = { origin: o, destination: d, airline: null };
+      }
+    }
+  } catch(e) { /* leave route null */ }
+  HEX_CACHE.set(call, route);
   return route;
 }
 
@@ -119,12 +182,21 @@ export async function loadFlight() {
     const p = planes[0];
     const call = (p.flight || '').trim();
     const icao = call.slice(0, 3);
-    const route = await getRoute(call);
+    // Two independent keyless route databases; they go stale on different flights.
+    const [adsbRoute, hexRoute] = await Promise.all([getRoute(call), getRouteHexdb(call)]);
 
-    // Airline name: prefer adsbdb's (broad coverage), fall back to the offline table.
-    const airline = (route && route.airline && route.airline.name) || airlines[icao] || '';
-    // Logo needs an IATA code, which only the route feed gives us.
-    const iata = route && route.airline && route.airline.iata;
+    // Pick the airports from whichever source's route actually fits the aircraft's
+    // current position. This arbitration is what rejects a stale route (e.g. adsbdb
+    // returning Hawaii→Newark for a flight that's really Frankfurt→Newark over Ireland).
+    const fits = rt => rt && rt.origin && rt.destination &&
+                       routeMatchesPosition(rt, p.lat, p.lon);
+    const route = fits(adsbRoute) ? adsbRoute : fits(hexRoute) ? hexRoute : null;
+
+    // Airline name/logo come from adsbdb (reliable from the callsign) or the offline
+    // table — independent of which source supplied the airports.
+    const airline = (adsbRoute && adsbRoute.airline && adsbRoute.airline.name) || airlines[icao] || '';
+    // Logo needs an IATA code, which only the airline block gives us.
+    const iata = adsbRoute && adsbRoute.airline && adsbRoute.airline.iata;
     const acType = p.desc ? titleCase(p.desc) : (p.t || '');
     const alt = typeof p.alt_baro === 'number' ? `${p.alt_baro.toLocaleString()} ft` : '';
     const climb = p.baro_rate > 100 ? ' ↑' : p.baro_rate < -100 ? ' ↓' : '';
@@ -133,10 +205,8 @@ export async function loadFlight() {
 
     const line2 = [call || null, p.r || null, acType || null].filter(Boolean).join(' · ');
     const line3 = [alt ? alt + climb : null, spd, distKm].filter(Boolean).join(' · ');
-    // Only show the origin→destination line if the route plausibly matches
-    // where the aircraft actually is (guards against wrong adsbdb callsign routes).
-    const routeLine = route && (route.origin || route.destination) &&
-                      routeMatchesPosition(route, p.lat, p.lon)
+    // `route` is already the position-verified pick (or null), so show it as-is.
+    const routeLine = route
       ? `<div class="flight-route">${airportLabel(route.origin)}<span class="flight-arrow">→</span>${airportLabel(route.destination)}</div>`
       : '';
     const logo = iata

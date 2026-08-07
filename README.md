@@ -18,7 +18,8 @@ A personal start-of-day dashboard built as a static web app. Designed to work as
 - Moon phase and day length comparison vs yesterday
 - Air quality & pollen — European AQI, PM2.5/PM10, ozone (Open-Meteo — no key)
 - Nearest flight overhead — airline, aircraft, altitude/speed, origin→destination
-  airports and airline logo (airplanes.live + adsbdb — no key)
+  airports and airline logo (airplanes.live for position; adsbdb + hexdb.io
+  cross-checked for the route — no key)
 - Formula 1 — next Grand Prix countdown + drivers' championship top 3
   (Jolpica/Ergast — no key)
 - UK Number 1 single this week 10/20/30/40/50 years ago (bundled offline dataset)
@@ -104,8 +105,11 @@ Both are free with instant signup. Enter them via the ⚙ Settings button in the
 
 All other cards need **no key**: weather, forecast, UV and air quality use
 [Open-Meteo](https://open-meteo.com); the flight card uses the keyless
-[airplanes.live](https://airplanes.live) and [adsbdb](https://www.adsbdb.com)
-feeds; Formula 1 uses the keyless [Jolpica/Ergast](https://jolpi.ca) API. The UK
+[airplanes.live](https://airplanes.live) feed for aircraft positions and
+cross-checks the route against both [adsbdb](https://www.adsbdb.com) and
+[hexdb.io](https://hexdb.io), picking whichever origin→destination actually fits
+the aircraft's current position; Formula 1 uses the keyless
+[Jolpica/Ergast](https://jolpi.ca) API. The UK
 #1s card is fully offline — `data/uk_number_ones.json` is a bundled snapshot
 parsed from Wikipedia's "List of UK singles chart number ones" (Official Charts
 Company data).
