@@ -38,6 +38,16 @@ export function moonSVG(phase) {
   return `<svg class="sb-moon-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
 }
 
+// UV index → plain-language level (WHO bands)
+export function uvLevel(uv) {
+  if (uv == null) return '';
+  if (uv < 3)  return 'Low';
+  if (uv < 6)  return 'Moderate';
+  if (uv < 8)  return 'High';
+  if (uv < 11) return 'Very high';
+  return 'Extreme';
+}
+
 export function fmt(d) {
   // AM/PM, no leading zero
   let hours = d.getHours();
@@ -67,8 +77,8 @@ export async function loadWeather() {
   try {
     const r = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-      `&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code` +
-      `&daily=sunrise,sunset,weather_code,temperature_2m_max&timezone=auto&forecast_days=6&past_days=1`
+      `&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code,uv_index` +
+      `&daily=sunrise,sunset,weather_code,temperature_2m_max,uv_index_max&timezone=auto&forecast_days=6&past_days=1`
     );
     const data = await r.json();
     const c = data.current, d = data.daily;
@@ -97,6 +107,9 @@ export async function loadWeather() {
     set$('sb-set',    fmt(set));
     set$('sb-daylen', `${lenH}h ${lenM}m`);
     set$('sb-daylen-diff', diffLabel);
+    // UV: today's peak (daily index 1 = today with past_days=1), fall back to current.
+    const uvMax = d.uv_index_max?.[1] ?? c.uv_index;
+    if (uvMax != null) set$('sb-uv', `${Math.round(uvMax)} · ${uvLevel(uvMax)}`);
 
     // Moon with SVG icon
     const moonEl = document.getElementById('sb-moon');
