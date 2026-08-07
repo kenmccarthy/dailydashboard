@@ -8,6 +8,8 @@ import { loadFlight, initFlightRefresh } from './flight.js';
 import { loadAirQuality } from './airquality.js';
 import { loadF1 } from './f1.js';
 import { loadTides } from './tides.js';
+import { loadSpace } from './space.js';
+import { loadLastfm, initLastfmRefresh } from './lastfm.js';
 import { loadUKNumberOnes } from './uk1s.js';
 import { loadSpecialDates } from './special.js';
 import { populateCountrySelects, applyCardOrder, applyTheme, getToggle,
@@ -114,6 +116,8 @@ async function init() {
   if (getToggle('flight'))     loadFlight();
   if (getToggle('f1'))         loadF1();
   if (getToggle('tides'))      loadTides();
+  if (getToggle('space'))      loadSpace();
+  if (getToggle('lastfm'))     loadLastfm();
   if (getToggle('uk1s'))       loadUKNumberOnes();
   if (getToggle('wotd'))    loadWordOfDay(now);
   if (getToggle('nasa'))    loadNASA();
@@ -131,7 +135,7 @@ window.addEventListener('load', async () => {
 
   // Default toggles on first run
   if (!localStorage.getItem('dd_toggles_init')) {
-    ['fact','music','song','irish','proverb','nasa','joke','news','wotd','flight','f1','uk1s','tides','onthisday'].forEach(k => {
+    ['fact','music','song','irish','proverb','nasa','joke','news','wotd','flight','f1','uk1s','tides','space','lastfm','onthisday'].forEach(k => {
       if (localStorage.getItem('dd_tog_'+k) === null) localStorage.setItem('dd_tog_'+k, 'true');
     });
     localStorage.setItem('dd_toggles_init', '1');
@@ -152,6 +156,7 @@ window.addEventListener('load', async () => {
   tickClock();
   setInterval(tickClock, 1000);
   initFlightRefresh();
+  initLastfmRefresh();
   updateDarkToggleIcon();
 
   // Midnight refresh
@@ -166,6 +171,8 @@ window.__reloadWeather   = loadWeather;
 window.__reloadFlight    = loadFlight;
 window.__reloadAirQuality = loadAirQuality;
 window.__reloadTides     = loadTides;
+window.__reloadSpace     = loadSpace;
+window.__reloadLastfm    = loadLastfm;
 window.__reloadSpecialDates = () => loadSpecialDates();
 window.__reloadTimezones = () => renderTimezones();
 window.__reloadWordOfDay = () => loadWordOfDay(new Date());

@@ -27,6 +27,10 @@ A personal start-of-day dashboard built as a static web app. Designed to work as
 - Formula 1 — next Grand Prix countdown + drivers' championship top 3
   (Jolpica/Ergast — no key)
 - Tides — next high/low tides for a coastal location (WorldTides — free API key)
+- People in space — live crew count and roster with flags, agency and spacecraft
+  (open-notify data via a keyless mirror — no key)
+- Last.fm — your now-playing / last-scrobbled track with album art plus recent
+  tracks (Last.fm API — free API key + username)
 - UK Number 1 single this week 10/20/30/40/50 years ago (bundled offline dataset)
 - Today's observances — Roman Catholic feast days + UN International Days
 - NASA Astronomy Picture of the Day (free API key required)
@@ -52,6 +56,8 @@ daily-dashboard/
     flight.js         ← nearest flight overhead (airplanes.live + adsbdb + hexdb.io)
     f1.js             ← Formula 1 next race + standings (Jolpica/Ergast)
     tides.js          ← next high/low tides (WorldTides — needs a key)
+    space.js          ← people in space now (keyless open-notify mirror)
+    lastfm.js         ← Last.fm now playing + recent tracks (needs key + user)
     uk1s.js           ← UK #1 singles "this week through the years"
     special.js        ← user special dates & countdowns (sidebar)
     setup.js          ← setup flow, settings, card ordering, backup/restore
@@ -109,10 +115,11 @@ In your Glance `config.yaml`:
 | Word of the Day | Wordnik | [developer.wordnik.com](https://developer.wordnik.com) |
 | NASA Picture of the Day | NASA | [api.nasa.gov](https://api.nasa.gov) |
 | Tides | WorldTides | [worldtides.info](https://www.worldtides.info) |
+| Last.fm now playing | Last.fm | [last.fm/api](https://www.last.fm/api/account/create) |
 
-All three are free with instant signup (WorldTides is credit-based; the tides
-card caches results so it uses very few credits). Enter them via the ⚙ Settings
-button in the dashboard.
+All are free with instant signup (WorldTides is credit-based; the tides card
+caches results so it uses very few credits — Last.fm also needs your username).
+Enter them via the ⚙ Settings button in the dashboard.
 
 All other cards need **no key**: weather, forecast, UV and air quality use
 [Open-Meteo](https://open-meteo.com); the flight card uses the keyless
