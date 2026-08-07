@@ -51,7 +51,7 @@ function renderTimezones(now = new Date()) {
   getTimezones().forEach(z => {
     let time;
     try {
-      time = new Intl.DateTimeFormat(undefined, { timeZone: z.tz, hour: 'numeric', minute: '2-digit' }).format(now);
+      time = new Intl.DateTimeFormat('en-US', { timeZone: z.tz, hour: 'numeric', minute: '2-digit', hour12: true }).format(now);
     } catch(e) { return; }   // invalid zone — skip it
     const row = document.createElement('div');
     row.className = 'sb-tz-row';

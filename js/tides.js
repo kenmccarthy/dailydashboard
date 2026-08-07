@@ -15,7 +15,13 @@ function tidesLocation() {
 }
 
 function fmtTime(d) {
-  return d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+  // 12-hour AM/PM, matching the main clock's fmt().
+  return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 }
 
 // Human "in 2 h 10 min" from a millisecond delta.
@@ -73,7 +79,9 @@ function render(el, extremes) {
     el.innerHTML = '<div class="wotd-missing">No upcoming tide data for this location.</div>';
     return;
   }
-  el.innerHTML = upcoming.map((e, i) => {
+  const label = (localStorage.getItem('dd_tides_label') || '').trim();
+  const loc = label ? `<div class="tide-loc">${esc(label)}</div>` : '';
+  el.innerHTML = loc + upcoming.map((e, i) => {
     const d = new Date(e.t);
     const label = e.type === 'High' ? 'High tide' : 'Low tide';
     const height = e.height != null ? `${e.height.toFixed(1)} m` : '';
