@@ -13,8 +13,15 @@ A personal start-of-day dashboard built as a static web app. Designed to work as
 - 80s song of the day with YouTube link (365 curated)
 - Word of the Day via Wordnik API
 - Irish word of the day with pronunciation (365 curated)
-- Weather, sunrise/sunset, day length (Open-Meteo — no key needed)
+- Weather, sunrise/sunset, day length, UV index (Open-Meteo — no key needed)
+- 5-day weather forecast strip (icon + high per day)
 - Moon phase and day length comparison vs yesterday
+- Air quality & pollen — European AQI, PM2.5/PM10, ozone (Open-Meteo — no key)
+- Nearest flight overhead — airline, aircraft, altitude/speed, origin→destination
+  airports and airline logo (airplanes.live + adsbdb — no key)
+- Formula 1 — next Grand Prix countdown + drivers' championship top 3
+  (Jolpica/Ergast — no key)
+- UK Number 1 single this week 10/20/30/40/50 years ago (bundled offline dataset)
 - Today's observances — Roman Catholic feast days + UN International Days
 - NASA Astronomy Picture of the Day (free API key required)
 - Joke of the day
@@ -33,7 +40,11 @@ daily-dashboard/
   js/
     app.js            ← main orchestrator (ES module)
     cards.js          ← data rendering and API loaders
-    weather.js        ← Open-Meteo weather
+    weather.js        ← Open-Meteo weather, forecast strip, UV
+    airquality.js     ← Open-Meteo air quality & pollen
+    flight.js         ← nearest flight overhead (airplanes.live + adsbdb)
+    f1.js             ← Formula 1 next race + standings (Jolpica/Ergast)
+    uk1s.js           ← UK #1 singles "this week through the years"
     setup.js          ← setup flow, settings, card ordering
   data/
     quotes.json
@@ -43,6 +54,8 @@ daily-dashboard/
     irish_words.json
     saints.json
     un_days.json
+    airlines.json         ← ICAO airline-code → name (flight card)
+    uk_number_ones.json   ← UK chart #1s 1969–present (UK #1s card)
   README.md
 ```
 
@@ -88,6 +101,14 @@ In your Glance `config.yaml`:
 | NASA Picture of the Day | NASA | [api.nasa.gov](https://api.nasa.gov) |
 
 Both are free with instant signup. Enter them via the ⚙ Settings button in the dashboard.
+
+All other cards need **no key**: weather, forecast, UV and air quality use
+[Open-Meteo](https://open-meteo.com); the flight card uses the keyless
+[airplanes.live](https://airplanes.live) and [adsbdb](https://www.adsbdb.com)
+feeds; Formula 1 uses the keyless [Jolpica/Ergast](https://jolpi.ca) API. The UK
+#1s card is fully offline — `data/uk_number_ones.json` is a bundled snapshot
+parsed from Wikipedia's "List of UK singles chart number ones" (Official Charts
+Company data).
 
 ## Local development
 
