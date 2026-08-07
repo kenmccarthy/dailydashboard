@@ -116,6 +116,18 @@
       </div>
 
       <hr class="settings-divider">
+      <span class="settings-section">Last.fm (optional)</span>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-lastfm-key">Last.fm API key</label>
+        <input class="setup-input" id="settings-lastfm-key" type="text" placeholder="Paste your Last.fm API key…" style="margin-bottom:4px">
+        <div style="font-size:11px;color:var(--hint)">Free key at <a href="https://www.last.fm/api/account/create" target="_blank" style="color:var(--muted)">last.fm/api</a></div>
+      </div>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-lastfm-user">Last.fm username</label>
+        <input class="setup-input" id="settings-lastfm-user" type="text" placeholder="Your Last.fm username" style="margin-bottom:0">
+      </div>
+
+      <hr class="settings-divider">
       <span class="settings-section">Special dates &amp; countdowns</span>
       <ul class="special-list" id="special-dates-list"></ul>
       <div class="special-add">
@@ -330,6 +342,18 @@
       <div id="section-tides" class="card">
         <span class="card-label">Tides</span>
         <div id="tides-content"><div class="wotd-missing">Loading…</div></div>
+      </div>
+
+      <!-- People in Space -->
+      <div id="section-space" class="card">
+        <span class="card-label">People in Space</span>
+        <div id="space-content"><div class="wotd-missing">Loading…</div></div>
+      </div>
+
+      <!-- Last.fm -->
+      <div id="section-lastfm" class="card">
+        <span class="card-label">Last.fm</span>
+        <div id="lastfm-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
       <!-- RTÉ News -->

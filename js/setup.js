@@ -15,6 +15,8 @@ const CARD_DEFS = [
   {id:'flight',      label:'Nearest flight overhead',     full:false},
   {id:'f1',          label:'Formula 1',                   full:false},
   {id:'tides',       label:'Tides',                       full:false},
+  {id:'space',       label:'People in space',             full:false},
+  {id:'lastfm',      label:'Last.fm — now playing',       full:false},
   {id:'uk1s',        label:'UK #1 · this week in history', full:false},
   {id:'onthisday',   label:'About this day',              full:true},
 ];
@@ -165,6 +167,8 @@ export function openSettings() {
   document.getElementById('settings-tides-lat').value = localStorage.getItem('dd_tides_lat') || '';
   document.getElementById('settings-tides-lon').value = localStorage.getItem('dd_tides_lon') || '';
   document.getElementById('settings-tides-label').value = localStorage.getItem('dd_tides_label') || '';
+  document.getElementById('settings-lastfm-key').value  = localStorage.getItem('dd_lastfm_key')  || '';
+  document.getElementById('settings-lastfm-user').value = localStorage.getItem('dd_lastfm_user') || '';
   applyTheme();
   loadTogglesUI();
   buildSpecialDatesUI();
@@ -189,6 +193,10 @@ export async function saveSettings() {
   setOrClear('dd_tides_lat',   document.getElementById('settings-tides-lat').value.trim());
   setOrClear('dd_tides_lon',   document.getElementById('settings-tides-lon').value.trim());
   setOrClear('dd_tides_label', document.getElementById('settings-tides-label').value.trim());
+  // Last.fm key + username persist regardless of the city field; reload immediately.
+  setOrClear('dd_lastfm_key',  document.getElementById('settings-lastfm-key').value.trim());
+  setOrClear('dd_lastfm_user', document.getElementById('settings-lastfm-user').value.trim());
+  window.__reloadLastfm?.();
   // Additional time zones.
   const tzs = [];
   for (let i = 0; i < 3; i++) {

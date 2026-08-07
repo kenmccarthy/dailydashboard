@@ -222,6 +222,27 @@ a { color: inherit; text-decoration: none; }
 .tide-rel { color: var(--hint); font-size: 11px; margin-left: auto; }
 .tide-h { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; width: 48px; text-align: right; }
 .tide-next .tide-type { color: var(--accent); }
+.space-head { font-size: 13px; color: var(--text); margin-bottom: 8px; }
+.space-count { font-size: 20px; font-weight: 300; }
+.space-head a { color: var(--accent); }
+.space-row { display: flex; align-items: baseline; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+.space-row:last-child { border-bottom: none; }
+.space-flag { flex-shrink: 0; }
+.space-name { color: var(--text); }
+.space-craft { color: var(--muted); font-size: 11px; margin-left: auto; text-align: right; padding-left: 8px; }
+.lastfm-now { display: flex; gap: 12px; align-items: center; text-decoration: none; }
+.lastfm-art { width: 56px; height: 56px; border-radius: var(--rsm); object-fit: cover; flex-shrink: 0; background: var(--surface2); }
+.lastfm-now-info { display: flex; flex-direction: column; min-width: 0; }
+.lastfm-status { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--hint); }
+.lastfm-status.playing { color: var(--accent); }
+.lastfm-track { font-size: 14px; color: var(--text); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lastfm-artist { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lastfm-now:hover .lastfm-track { color: var(--accent); }
+.lastfm-list { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); }
+.lastfm-row { display: flex; align-items: baseline; gap: 8px; padding: 4px 0; font-size: 12px; min-width: 0; }
+.lastfm-row-track { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 1; }
+.lastfm-row-artist { color: var(--muted); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 1; }
+.lastfm-row-when { color: var(--hint); font-size: 10px; margin-left: auto; flex-shrink: 0; }
 .ukno-row { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border); }
 .ukno-row:last-child { border-bottom: none; }
 .ukno-yrs { flex-shrink: 0; width: 44px; font-size: 11px; font-weight: 500; color: var(--accent); padding-top: 1px; }
