@@ -1,4 +1,5 @@
 // ── SETUP.JS ──
+import { getSpecialDates } from './special.js';
 
 const CARD_DEFS = [
   {id:'quote',       label:'Quote of the day',            full:true},
@@ -12,8 +13,8 @@ const CARD_DEFS = [
   {id:'joke',        label:'Joke of the day',             full:false},
   {id:'news',        label:'RTÉ headlines',               full:false},
   {id:'flight',      label:'Nearest flight overhead',     full:false},
-  {id:'airquality',  label:'Air quality & pollen',        full:false},
   {id:'f1',          label:'Formula 1',                   full:false},
+  {id:'tides',       label:'Tides',                       full:false},
   {id:'uk1s',        label:'UK #1 · this week in history', full:false},
   {id:'onthisday',   label:'About this day',              full:true},
 ];
@@ -21,11 +22,19 @@ const CARD_DEFS = [
 const ALWAYS_ON = new Set(['quote']);
 
 export function getCardOrder() {
+  const ids = CARD_DEFS.map(c => c.id);
   try {
     const saved = JSON.parse(localStorage.getItem('dd_card_order') || '[]');
-    if (saved.length === CARD_DEFS.length) return saved;
+    // Keep a saved order only if it holds exactly the current set of card ids.
+    // Comparing the id-set (not just the length) lets added/removed/renamed
+    // cards self-heal — otherwise a swap like removing one card and adding
+    // another keeps the length equal and strands the new card.
+    if (Array.isArray(saved) && saved.length === ids.length &&
+        [...saved].sort().join(' ') === [...ids].sort().join(' ')) {
+      return saved;
+    }
   } catch(e) {}
-  return CARD_DEFS.map(c => c.id);
+  return ids;
 }
 
 export function getToggle(key) {
@@ -152,8 +161,13 @@ export function openSettings() {
   document.getElementById('settings-flight-lat').value    = localStorage.getItem('dd_flight_lat')    || '';
   document.getElementById('settings-flight-lon').value    = localStorage.getItem('dd_flight_lon')    || '';
   document.getElementById('settings-flight-radius').value = localStorage.getItem('dd_flight_radius') || '';
+  document.getElementById('settings-tides-key').value = localStorage.getItem('dd_tides_key') || '';
+  document.getElementById('settings-tides-lat').value = localStorage.getItem('dd_tides_lat') || '';
+  document.getElementById('settings-tides-lon').value = localStorage.getItem('dd_tides_lon') || '';
   applyTheme();
   loadTogglesUI();
+  buildSpecialDatesUI();
+  buildTimezoneUI();
   buildOrderUI();
   document.getElementById('settings-panel').classList.add('open');
 }
@@ -169,7 +183,20 @@ export async function saveSettings() {
   setOrClear('dd_flight_lon',    document.getElementById('settings-flight-lon').value.trim());
   setOrClear('dd_flight_radius', document.getElementById('settings-flight-radius').value.trim());
   if (window.__reloadFlight) window.__reloadFlight();
-  if (!city) return;
+  // Tides key + optional location override persist regardless of the city field.
+  setOrClear('dd_tides_key', document.getElementById('settings-tides-key').value.trim());
+  setOrClear('dd_tides_lat', document.getElementById('settings-tides-lat').value.trim());
+  setOrClear('dd_tides_lon', document.getElementById('settings-tides-lon').value.trim());
+  // Additional time zones.
+  const tzs = [];
+  for (let i = 0; i < 3; i++) {
+    const tz    = document.getElementById('settings-tz-zone-'  + i)?.value || '';
+    const label = (document.getElementById('settings-tz-label-' + i)?.value || '').trim();
+    if (tz) tzs.push({ label, tz });
+  }
+  localStorage.setItem('dd_timezones', JSON.stringify(tzs));
+  window.__reloadTimezones?.();
+  if (!city) { window.__reloadTides?.(); return; }
   document.getElementById('settings-err').textContent = '';
   try {
     const geo = await geocode(city, cc);
@@ -185,6 +212,7 @@ export async function saveSettings() {
     closeSettings();
     window.__reloadWeather();
     window.__reloadAirQuality?.();
+    window.__reloadTides?.();
     window.__reloadWordOfDay();
   } catch(e) {
     document.getElementById('settings-err').textContent = 'Location not found. Try again.';
@@ -243,6 +271,144 @@ function saveOrderFromUI() {
   localStorage.setItem('dd_card_order', JSON.stringify(order));
   applyCardOrder();
 }
+
+// ── SPECIAL DATES EDITOR ──
+function escHtml(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+
+function buildSpecialDatesUI() {
+  const list = document.getElementById('special-dates-list');
+  if (!list) return;
+  const entries = getSpecialDates();
+  if (!entries.length) {
+    list.innerHTML = '<li class="special-empty">No special dates yet.</li>';
+    return;
+  }
+  list.innerHTML = entries.map((e, i) =>
+    `<li class="special-item">
+      <span class="special-item-info">
+        <span class="special-item-name">${escHtml(e.name || 'Untitled')}</span>
+        <span class="special-item-date">${escHtml(e.date || '')}${e.annual ? ' · yearly' : ''}</span>
+      </span>
+      <button class="special-remove" type="button" title="Remove" onclick="window.__removeSpecialDate(${i})">✕</button>
+    </li>`
+  ).join('');
+}
+
+window.__addSpecialDate = () => {
+  const name   = document.getElementById('special-name').value.trim();
+  const date   = document.getElementById('special-date').value;   // YYYY-MM-DD
+  const annual = document.getElementById('special-annual').checked;
+  if (!name || !date) return;
+  const entries = getSpecialDates();
+  entries.push({ name, date, annual });
+  localStorage.setItem('dd_special_dates', JSON.stringify(entries));
+  document.getElementById('special-name').value = '';
+  document.getElementById('special-date').value = '';
+  buildSpecialDatesUI();
+  window.__reloadSpecialDates?.();
+};
+
+window.__removeSpecialDate = (i) => {
+  const entries = getSpecialDates();
+  entries.splice(i, 1);
+  localStorage.setItem('dd_special_dates', JSON.stringify(entries));
+  buildSpecialDatesUI();
+  window.__reloadSpecialDates?.();
+};
+
+// ── ADDITIONAL TIME ZONES EDITOR ──
+let TZ_LIST = null;
+function timezoneList() {
+  if (TZ_LIST) return TZ_LIST;
+  try { TZ_LIST = (Intl.supportedValuesOf && Intl.supportedValuesOf('timeZone')) || []; }
+  catch(e) { TZ_LIST = []; }
+  if (!TZ_LIST.length) {   // fallback for browsers without supportedValuesOf
+    TZ_LIST = ['America/Los_Angeles','America/Denver','America/Chicago','America/New_York',
+      'America/Sao_Paulo','Europe/London','Europe/Dublin','Europe/Paris','Europe/Berlin',
+      'Europe/Madrid','Europe/Athens','Europe/Moscow','Africa/Johannesburg','Asia/Dubai',
+      'Asia/Kolkata','Asia/Bangkok','Asia/Singapore','Asia/Hong_Kong','Asia/Shanghai',
+      'Asia/Tokyo','Australia/Sydney','Pacific/Auckland','UTC'];
+  }
+  return TZ_LIST;
+}
+
+function buildTimezoneUI() {
+  const wrap = document.getElementById('tz-settings-rows');
+  if (!wrap) return;
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem('dd_timezones') || '[]'); } catch(e) {}
+  if (!Array.isArray(saved)) saved = [];
+  const zones = timezoneList();
+  wrap.innerHTML = '';
+  for (let i = 0; i < 3; i++) {
+    const cur = saved[i] || {};
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;gap:8px;margin-bottom:8px';
+
+    const label = document.createElement('input');
+    label.className = 'setup-input'; label.type = 'text';
+    label.id = 'settings-tz-label-' + i;
+    label.placeholder = 'Label (optional)';
+    label.value = cur.label || '';
+    label.style.cssText = 'margin-bottom:0;flex:1';
+
+    const sel = document.createElement('select');
+    sel.className = 'setup-select';
+    sel.id = 'settings-tz-zone-' + i;
+    sel.style.cssText = 'margin-bottom:0;flex:1.4';
+    const blank = document.createElement('option');
+    blank.value = ''; blank.textContent = '— none —';
+    sel.appendChild(blank);
+    zones.forEach(z => {
+      const o = document.createElement('option');
+      o.value = z; o.textContent = z.replace(/_/g, ' ');
+      if (z === cur.tz) o.selected = true;
+      sel.appendChild(o);
+    });
+
+    row.append(label, sel);
+    wrap.appendChild(row);
+  }
+}
+
+// ── BACKUP / RESTORE (all dd_* keys) ──
+window.__exportSettings = () => {
+  const data = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('dd_')) data[k] = localStorage.getItem(k);
+  }
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'daily-dashboard-settings.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+};
+
+window.__importSettings = (file) => {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = JSON.parse(reader.result);
+      if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('bad');
+      Object.keys(data).forEach(k => {
+        if (k.startsWith('dd_')) localStorage.setItem(k, data[k]);   // only our own keys
+      });
+      location.reload();
+    } catch(e) {
+      alert('That file is not a valid Daily Dashboard settings backup.');
+    }
+  };
+  reader.readAsText(file);
+};
 
 // Globals for inline handlers
 window.__saveToggle = (key, val) => {

@@ -7,7 +7,9 @@ import { loadWeather, fmt, moonSVG } from './weather.js';
 import { loadFlight, initFlightRefresh } from './flight.js';
 import { loadAirQuality } from './airquality.js';
 import { loadF1 } from './f1.js';
+import { loadTides } from './tides.js';
 import { loadUKNumberOnes } from './uk1s.js';
+import { loadSpecialDates } from './special.js';
 import { populateCountrySelects, applyCardOrder, applyTheme, getToggle,
          saveSetup, saveSetup2, skipSetup2, openSettings, closeSettings,
          saveSettings, setMode, setAccent } from './setup.js';
@@ -29,6 +31,39 @@ const MONTHS = ['January','February','March','April','May','June','July','August
 function tickClock() {
   const now = new Date();
   set$('sb-time', fmt(now));
+  renderTimezones(now);
+}
+
+// Up to 3 extra time zones shown small under the main clock.
+function getTimezones() {
+  try {
+    const v = JSON.parse(localStorage.getItem('dd_timezones') || '[]');
+    return Array.isArray(v) ? v.slice(0, 3) : [];
+  } catch(e) { return []; }
+}
+function tzShort(tz) {
+  return (String(tz).split('/').pop() || tz).replace(/_/g, ' ');
+}
+function renderTimezones(now = new Date()) {
+  const el = document.getElementById('sb-tz');
+  if (!el) return;
+  el.innerHTML = '';
+  getTimezones().forEach(z => {
+    let time;
+    try {
+      time = new Intl.DateTimeFormat(undefined, { timeZone: z.tz, hour: 'numeric', minute: '2-digit' }).format(now);
+    } catch(e) { return; }   // invalid zone — skip it
+    const row = document.createElement('div');
+    row.className = 'sb-tz-row';
+    const lab = document.createElement('span');
+    lab.className = 'sb-tz-label';
+    lab.textContent = z.label || tzShort(z.tz);   // textContent — safe with user input
+    const t = document.createElement('span');
+    t.className = 'sb-tz-time';
+    t.textContent = time;
+    row.append(lab, t);
+    el.appendChild(row);
+  });
 }
 
 // ── MAIN INIT ──
@@ -75,9 +110,10 @@ async function init() {
 
   // Async
   loadWeather();
+  loadAirQuality();   // part of the always-on weather sidebar block
   if (getToggle('flight'))     loadFlight();
-  if (getToggle('airquality')) loadAirQuality();
   if (getToggle('f1'))         loadF1();
+  if (getToggle('tides'))      loadTides();
   if (getToggle('uk1s'))       loadUKNumberOnes();
   if (getToggle('wotd'))    loadWordOfDay(now);
   if (getToggle('nasa'))    loadNASA();
@@ -85,6 +121,7 @@ async function init() {
   if (getToggle('news')) loadNews();
   loadOnThisDay(now.getMonth()+1, now.getDate());
   renderObservancesSidebar(now);
+  loadSpecialDates(now);
 }
 
 // ── BOOT ──
@@ -94,7 +131,7 @@ window.addEventListener('load', async () => {
 
   // Default toggles on first run
   if (!localStorage.getItem('dd_toggles_init')) {
-    ['fact','music','song','irish','proverb','nasa','joke','news','wotd','flight','airquality','f1','uk1s','onthisday'].forEach(k => {
+    ['fact','music','song','irish','proverb','nasa','joke','news','wotd','flight','f1','uk1s','tides','onthisday'].forEach(k => {
       if (localStorage.getItem('dd_tog_'+k) === null) localStorage.setItem('dd_tog_'+k, 'true');
     });
     localStorage.setItem('dd_toggles_init', '1');
@@ -128,6 +165,9 @@ window.__initDashboard   = init;
 window.__reloadWeather   = loadWeather;
 window.__reloadFlight    = loadFlight;
 window.__reloadAirQuality = loadAirQuality;
+window.__reloadTides     = loadTides;
+window.__reloadSpecialDates = () => loadSpecialDates();
+window.__reloadTimezones = () => renderTimezones();
 window.__reloadWordOfDay = () => loadWordOfDay(new Date());
 window.revealPunchline   = revealPunchline;
 window.loadNews          = loadNews;

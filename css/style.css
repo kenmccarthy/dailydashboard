@@ -150,6 +150,13 @@ a { color: inherit; text-decoration: none; }
 .sb-fc-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--hint); }
 .sb-fc-icon { width: 22px; height: 22px; color: var(--text); }
 .sb-fc-temp { font-size: 11px; color: var(--text); }
+.sb-aq { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+.sb-aq .sb-label { margin-bottom: 6px; }
+.sb-aq-head { display: flex; align-items: center; gap: 7px; }
+.sb-aq-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.sb-aq-index { font-size: 18px; font-weight: 300; color: var(--text); }
+.sb-aq-level { font-size: 12px; color: var(--muted); }
+.sb-aq-sub { font-size: 10px; color: var(--hint); margin-top: 3px; }
 .sb-news-item { font-size: 11px; color: var(--text); padding: 7px 0; border-bottom: 1px solid var(--border); line-height: 1.45; display: block; transition: color 0.15s; }
 .sb-news-item:last-child { border-bottom: none; }
 .sb-news-item:hover { color: var(--accent); }
@@ -197,16 +204,19 @@ a { color: inherit; text-decoration: none; }
 .flight-route { font-size: 12px; color: var(--text); margin-top: 7px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .flight-route .flight-arrow { color: var(--muted); }
 .flight-route .flight-iata { color: var(--muted); }
-.aq-head { display: flex; align-items: baseline; gap: 8px; }
-.aq-dot { width: 10px; height: 10px; border-radius: 50%; align-self: center; flex-shrink: 0; }
-.aq-index { font-size: 22px; font-weight: 300; color: var(--text); }
-.aq-level { font-size: 13px; color: var(--muted); }
 .f1-when { font-size: 11px; font-weight: 500; color: var(--accent); }
 .f1-standings { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); }
 .f1-standing { display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 2px 0; }
 .f1-pos { width: 16px; color: var(--hint); font-variant-numeric: tabular-nums; }
 .f1-name { flex: 1; color: var(--text); }
 .f1-pts { color: var(--muted); font-variant-numeric: tabular-nums; }
+.tide-row { display: flex; align-items: baseline; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.tide-row:last-child { border-bottom: none; }
+.tide-type { color: var(--text); font-weight: 500; width: 66px; flex-shrink: 0; }
+.tide-time { color: var(--text); font-variant-numeric: tabular-nums; }
+.tide-rel { color: var(--hint); font-size: 11px; margin-left: auto; }
+.tide-h { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; width: 48px; text-align: right; }
+.tide-next .tide-type { color: var(--accent); }
 .ukno-row { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border); }
 .ukno-row:last-child { border-bottom: none; }
 .ukno-yrs { flex-shrink: 0; width: 44px; font-size: 11px; font-weight: 500; color: var(--accent); padding-top: 1px; }
@@ -306,6 +316,27 @@ a { color: inherit; text-decoration: none; }
 }
 .sb-obs-name { font-size: 11px; color: var(--text); line-height: 1.4; }
 .sb-obs-note { font-size: 10px; color: var(--hint); }
+
+/* ── SIDEBAR SPECIAL DATES ── */
+.sb-special-item { padding: 6px 0; border-bottom: 1px solid var(--border); }
+.sb-special-item:last-child { border-bottom: none; }
+.sb-special-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.sb-special-name { font-size: 12px; color: var(--text); }
+.sb-special-when { font-size: 11px; color: var(--muted); flex-shrink: 0; }
+.sb-special-when.is-today { color: var(--accent); font-weight: 500; }
+.sb-special-date { font-size: 10px; color: var(--hint); margin-top: 1px; }
+
+/* ── SETTINGS: SPECIAL DATES EDITOR ── */
+.special-list { list-style: none; padding: 0; margin-bottom: 10px; }
+.special-item { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.special-item:last-child { border-bottom: none; }
+.special-item-info { flex: 1; min-width: 0; }
+.special-item-name { font-size: 13px; color: var(--text); display: block; }
+.special-item-date { font-size: 11px; color: var(--hint); }
+.special-empty { font-size: 12px; color: var(--hint); font-style: italic; padding: 4px 0; }
+.special-remove { background: none; border: 1px solid var(--border); border-radius: var(--rsm); width: 26px; height: 26px; cursor: pointer; color: var(--muted); flex-shrink: 0; }
+.special-remove:hover { border-color: var(--border2); color: var(--text); }
+.special-annual-label { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 5px; white-space: nowrap; }
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {

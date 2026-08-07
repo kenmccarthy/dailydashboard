@@ -5,6 +5,9 @@ A personal start-of-day dashboard built as a static web app. Designed to work as
 ## Features
 
 - Live clock, date, day number, week number, days remaining
+- Up to 3 additional time zones shown under the main clock
+- Special dates & countdowns — birthdays, anniversaries (repeat yearly) and
+  one-off countdowns, shown in the sidebar sorted by how soon they are
 - Year progress bar
 - Irish bank holidays countdown
 - Daily quote (365 curated)
@@ -16,12 +19,14 @@ A personal start-of-day dashboard built as a static web app. Designed to work as
 - Weather, sunrise/sunset, day length, UV index (Open-Meteo — no key needed)
 - 5-day weather forecast strip (icon + high per day)
 - Moon phase and day length comparison vs yesterday
-- Air quality & pollen — European AQI, PM2.5/PM10, ozone (Open-Meteo — no key)
+- Air quality & pollen in the weather sidebar — European AQI, PM2.5/PM10, ozone
+  (Open-Meteo — no key)
 - Nearest flight overhead — airline, aircraft, altitude/speed, origin→destination
   airports and airline logo (airplanes.live for position; adsbdb + hexdb.io
   cross-checked for the route — no key)
 - Formula 1 — next Grand Prix countdown + drivers' championship top 3
   (Jolpica/Ergast — no key)
+- Tides — next high/low tides for a coastal location (WorldTides — free API key)
 - UK Number 1 single this week 10/20/30/40/50 years ago (bundled offline dataset)
 - Today's observances — Roman Catholic feast days + UN International Days
 - NASA Astronomy Picture of the Day (free API key required)
@@ -30,6 +35,7 @@ A personal start-of-day dashboard built as a static web app. Designed to work as
 - On this day in history (Wikipedia)
 - Drag-to-reorder cards
 - Per-card show/hide toggles in Settings
+- Backup & restore — export all settings to a file and import on another device
 
 ## Project structure
 
@@ -43,10 +49,12 @@ daily-dashboard/
     cards.js          ← data rendering and API loaders
     weather.js        ← Open-Meteo weather, forecast strip, UV
     airquality.js     ← Open-Meteo air quality & pollen
-    flight.js         ← nearest flight overhead (airplanes.live + adsbdb)
+    flight.js         ← nearest flight overhead (airplanes.live + adsbdb + hexdb.io)
     f1.js             ← Formula 1 next race + standings (Jolpica/Ergast)
+    tides.js          ← next high/low tides (WorldTides — needs a key)
     uk1s.js           ← UK #1 singles "this week through the years"
-    setup.js          ← setup flow, settings, card ordering
+    special.js        ← user special dates & countdowns (sidebar)
+    setup.js          ← setup flow, settings, card ordering, backup/restore
   data/
     quotes.json
     facts.json
@@ -100,8 +108,11 @@ In your Glance `config.yaml`:
 |---------|----------|--------------|
 | Word of the Day | Wordnik | [developer.wordnik.com](https://developer.wordnik.com) |
 | NASA Picture of the Day | NASA | [api.nasa.gov](https://api.nasa.gov) |
+| Tides | WorldTides | [worldtides.info](https://www.worldtides.info) |
 
-Both are free with instant signup. Enter them via the ⚙ Settings button in the dashboard.
+All three are free with instant signup (WorldTides is credit-based; the tides
+card caches results so it uses very few credits). Enter them via the ⚙ Settings
+button in the dashboard.
 
 All other cards need **no key**: weather, forecast, UV and air quality use
 [Open-Meteo](https://open-meteo.com); the flight card uses the keyless
@@ -136,6 +147,11 @@ The JSON files in `data/` are plain arrays. To update:
 - Commit and push to GitHub
 - Changes go live within ~60 seconds
 
-## Resetting settings
+## Backup, restore & resetting settings
 
-Open browser DevTools → Application → Local Storage → clear any `dd_` keys.
+All settings live in your browser under `dd_`-prefixed local-storage keys. To move
+your dashboard to another device, open ⚙ Settings → **Backup & restore** →
+**Export settings** to download a `daily-dashboard-settings.json` file, then
+**Import settings** on the other device.
+
+To reset, open browser DevTools → Application → Local Storage → clear any `dd_` keys.
