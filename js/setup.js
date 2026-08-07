@@ -164,6 +164,7 @@ export function openSettings() {
   document.getElementById('settings-tides-key').value = localStorage.getItem('dd_tides_key') || '';
   document.getElementById('settings-tides-lat').value = localStorage.getItem('dd_tides_lat') || '';
   document.getElementById('settings-tides-lon').value = localStorage.getItem('dd_tides_lon') || '';
+  document.getElementById('settings-tides-label').value = localStorage.getItem('dd_tides_label') || '';
   applyTheme();
   loadTogglesUI();
   buildSpecialDatesUI();
@@ -184,9 +185,10 @@ export async function saveSettings() {
   setOrClear('dd_flight_radius', document.getElementById('settings-flight-radius').value.trim());
   if (window.__reloadFlight) window.__reloadFlight();
   // Tides key + optional location override persist regardless of the city field.
-  setOrClear('dd_tides_key', document.getElementById('settings-tides-key').value.trim());
-  setOrClear('dd_tides_lat', document.getElementById('settings-tides-lat').value.trim());
-  setOrClear('dd_tides_lon', document.getElementById('settings-tides-lon').value.trim());
+  setOrClear('dd_tides_key',   document.getElementById('settings-tides-key').value.trim());
+  setOrClear('dd_tides_lat',   document.getElementById('settings-tides-lat').value.trim());
+  setOrClear('dd_tides_lon',   document.getElementById('settings-tides-lon').value.trim());
+  setOrClear('dd_tides_label', document.getElementById('settings-tides-label').value.trim());
   // Additional time zones.
   const tzs = [];
   for (let i = 0; i < 3; i++) {
