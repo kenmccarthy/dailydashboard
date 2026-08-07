@@ -22,12 +22,12 @@ function pollenLevel(v) {
 }
 
 export async function loadAirQuality() {
-  const el = document.getElementById('airquality-content');
+  const el = document.getElementById('sb-aq');
   if (!el) return;
   const lat = localStorage.getItem('dd_lat');
   const lon = localStorage.getItem('dd_lon');
   if (!lat || !lon) {
-    el.innerHTML = '<div class="wotd-missing">Set a location to see air quality.</div>';
+    el.innerHTML = '<div class="sb-news-loading">Set a location to see air quality.</div>';
     return;
   }
   try {
@@ -49,14 +49,15 @@ export async function loadAirQuality() {
       : 'Pollen: none detected';
 
     el.innerHTML =
-      `<div class="aq-head">` +
-        `<span class="aq-dot" style="background:${band.color}"></span>` +
-        `<span class="aq-index">${Math.round(c.european_aqi)}</span>` +
-        `<span class="aq-level">${band.label}</span>` +
+      `<span class="sb-label">Air quality &amp; pollen</span>` +
+      `<div class="sb-aq-head">` +
+        `<span class="sb-aq-dot" style="background:${band.color}"></span>` +
+        `<span class="sb-aq-index">${Math.round(c.european_aqi)}</span>` +
+        `<span class="sb-aq-level">${band.label}</span>` +
       `</div>` +
-      `<div class="otd-sub">PM2.5 ${c.pm2_5} · PM10 ${c.pm10} · O₃ ${Math.round(c.ozone)} µg/m³</div>` +
-      `<div class="otd-sub">${pollenStr}</div>`;
+      `<div class="sb-aq-sub">${pollenStr}</div>` +
+      `<div class="sb-aq-sub">PM2.5 ${c.pm2_5} · PM10 ${c.pm10} · O₃ ${Math.round(c.ozone)} µg/m³</div>`;
   } catch(e) {
-    el.innerHTML = '<div class="wotd-missing">Air quality unavailable right now.</div>';
+    el.innerHTML = '<div class="sb-news-loading">Air quality unavailable right now.</div>';
   }
 }

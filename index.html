@@ -97,6 +97,46 @@
       </div>
 
       <hr class="settings-divider">
+      <span class="settings-section">Tides (optional)</span>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-tides-key">WorldTides API key</label>
+        <input class="setup-input" id="settings-tides-key" type="text" placeholder="Paste your WorldTides API key…" style="margin-bottom:4px">
+        <div style="font-size:11px;color:var(--hint)">Free key at <a href="https://www.worldtides.info" target="_blank" style="color:var(--muted)">worldtides.info</a></div>
+      </div>
+      <div class="settings-row">
+        <label class="setup-label">Tide location — leave blank to use your weather location.</label>
+        <div style="display:flex;gap:8px">
+          <input class="setup-input" id="settings-tides-lat" type="text" inputmode="decimal" placeholder="Latitude" style="margin-bottom:0">
+          <input class="setup-input" id="settings-tides-lon" type="text" inputmode="decimal" placeholder="Longitude" style="margin-bottom:0">
+        </div>
+      </div>
+
+      <hr class="settings-divider">
+      <span class="settings-section">Special dates &amp; countdowns</span>
+      <ul class="special-list" id="special-dates-list"></ul>
+      <div class="special-add">
+        <input class="setup-input" id="special-name" type="text" placeholder="Name — e.g. Mum's birthday" style="margin-bottom:8px">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <input class="setup-input" id="special-date" type="date" style="margin-bottom:0;flex:1">
+          <label class="special-annual-label"><input type="checkbox" id="special-annual" checked> Repeats yearly</label>
+        </div>
+        <button class="settings-btn" type="button" onclick="window.__addSpecialDate()">Add date</button>
+      </div>
+
+      <hr class="settings-divider">
+      <span class="settings-section">Additional time zones (up to 3)</span>
+      <div id="tz-settings-rows"></div>
+
+      <hr class="settings-divider">
+      <span class="settings-section">Backup &amp; restore</span>
+      <div class="settings-row" style="display:flex;gap:8px;margin-bottom:0">
+        <button class="settings-btn" type="button" onclick="window.__exportSettings()">Export settings</button>
+        <button class="settings-btn" type="button" onclick="document.getElementById('settings-import-file').click()">Import settings</button>
+        <input type="file" id="settings-import-file" accept="application/json" style="display:none" onchange="window.__importSettings(this.files[0])">
+      </div>
+      <div style="font-size:11px;color:var(--hint);margin-top:6px">Move your dashboard between devices — export a settings file here, then import it on the other device.</div>
+
+      <hr class="settings-divider">
       <span class="settings-section">Cards — drag to reorder, toggle to show/hide</span>
       <ul class="card-order-list" id="card-order-list"></ul>
 
@@ -125,6 +165,7 @@
         <span class="sb-badge" id="sb-badge-week">Week —</span>
         <span class="sb-badge" id="sb-badge-left">— days left</span>
       </div>
+      <div class="sb-tz" id="sb-tz"></div>
     </div>
 
     <div class="sb-section" id="sb-progress-section">
@@ -168,6 +209,12 @@
         <div><div class="sb-witem-label">UV index</div><div class="sb-witem-val" id="sb-uv">—</div></div>
       </div>
       <div class="sb-forecast" id="sb-forecast"></div>
+      <div class="sb-aq" id="sb-aq"></div>
+    </div>
+
+    <div class="sb-section" id="sb-special-section" style="display:none">
+      <span class="sb-label">Special dates</span>
+      <div id="sb-special-list"></div>
     </div>
 
     <div class="sb-section" id="sb-obs-section" style="flex:1">
@@ -269,16 +316,16 @@
         <div id="flight-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
-      <!-- Air Quality -->
-      <div id="section-airquality" class="card">
-        <span class="card-label">Air Quality &amp; Pollen</span>
-        <div id="airquality-content"><div class="wotd-missing">Loading…</div></div>
-      </div>
-
       <!-- Formula 1 -->
       <div id="section-f1" class="card">
         <span class="card-label">Formula 1</span>
         <div id="f1-content"><div class="wotd-missing">Loading…</div></div>
+      </div>
+
+      <!-- Tides -->
+      <div id="section-tides" class="card">
+        <span class="card-label">Tides</span>
+        <div id="tides-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
       <!-- RTÉ News -->

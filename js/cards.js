@@ -181,7 +181,7 @@ export async function loadWordOfDay(now) {
     if (!r.ok) throw new Error();
     const d = await r.json();
     el.innerHTML = `
-      <div class="wotd-word">${d.word||''}</div>
+      <div class="wotd-word">${d.word ? d.word.charAt(0).toUpperCase() + d.word.slice(1) : ''}</div>
       ${d.definitions?.[0]?.partOfSpeech ? `<div class="wotd-pos">${d.definitions[0].partOfSpeech}</div>` : ''}
       ${d.definitions?.[0]?.text ? `<div class="wotd-def">${d.definitions[0].text}</div>` : ''}
       ${d.examples?.[0]?.text ? `<div class="wotd-example">"${d.examples[0].text}"</div>` : ''}
