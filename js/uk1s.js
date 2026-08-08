@@ -3,7 +3,7 @@
 // Data is a bundled, offline snapshot of the Official Charts number ones
 // (data/uk_number_ones.json), so this card needs no network and never goes stale.
 
-import { esc, showLoading, showError, stampUpdated } from './dom-utils.js';
+import { esc, showLoading, showError } from './dom-utils.js';
 
 let UKNO = null;
 
@@ -51,7 +51,6 @@ export async function loadUKNumberOnes() {
 
     if (!rows.length) {
       el.innerHTML = '<div class="wotd-missing">No chart data for these dates.</div>';
-      stampUpdated('uk1s-content-updated');
       return;
     }
 
@@ -65,7 +64,6 @@ export async function loadUKNumberOnes() {
         `</div>` +
       `</div>`;
     }).join('');
-    stampUpdated('uk1s-content-updated');
   } catch(e) {
     showError('uk1s-content', 'Chart data unavailable.');
   }
