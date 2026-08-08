@@ -214,6 +214,14 @@ a { color: inherit; text-decoration: none; }
 .f1-pos { width: 16px; color: var(--hint); font-variant-numeric: tabular-nums; }
 .f1-name { flex: 1; color: var(--text); }
 .f1-pts { color: var(--muted); font-variant-numeric: tabular-nums; }
+.rugby-when { font-size: 11px; font-weight: 500; color: var(--accent); }
+.rugby-when.live { color: #e53935; }
+.rugby-v { color: var(--muted); font-weight: 400; }
+.rugby-standings { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); }
+.rugby-standing { display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 2px 0; }
+.rugby-pos { width: 16px; color: var(--hint); font-variant-numeric: tabular-nums; }
+.rugby-name { flex: 1; color: var(--text); }
+.rugby-pts { color: var(--muted); font-variant-numeric: tabular-nums; }
 .tide-loc { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
 .tide-row { display: flex; align-items: baseline; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
 .tide-row:last-child { border-bottom: none; }
@@ -222,6 +230,9 @@ a { color: inherit; text-decoration: none; }
 .tide-rel { color: var(--hint); font-size: 11px; margin-left: auto; }
 .tide-h { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; width: 48px; text-align: right; }
 .tide-next .tide-type { color: var(--accent); }
+.space-iss { font-size: 11px; color: var(--muted); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.space-iss:empty { display: none; }
+.space-iss-sat { margin-right: 2px; }
 .space-head { font-size: 13px; color: var(--text); margin-bottom: 8px; }
 .space-count { font-size: 20px; font-weight: 300; }
 .space-head a { color: var(--accent); }
