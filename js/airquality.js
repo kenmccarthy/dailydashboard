@@ -1,5 +1,6 @@
 // ── AIRQUALITY.JS ──
 // Air quality + pollen via the keyless Open-Meteo Air Quality API.
+import { showLoading, showError, stampUpdated } from './dom-utils.js';
 
 // European AQI value → {label, colour} using the official EAQI bands.
 function aqiBand(aqi) {
@@ -30,6 +31,7 @@ export async function loadAirQuality() {
     el.innerHTML = '<div class="sb-news-loading">Set a location to see air quality.</div>';
     return;
   }
+  showLoading('sb-aq');
   try {
     const r = await fetch(
       `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}` +
@@ -57,7 +59,8 @@ export async function loadAirQuality() {
       `</div>` +
       `<div class="sb-aq-sub">${pollenStr}</div>` +
       `<div class="sb-aq-sub">PM2.5 ${c.pm2_5} · PM10 ${c.pm10} · O₃ ${Math.round(c.ozone)} µg/m³</div>`;
+    stampUpdated('sb-aq-updated');
   } catch(e) {
-    el.innerHTML = '<div class="sb-news-loading">Air quality unavailable right now.</div>';
+    showError('sb-aq', 'Air quality unavailable right now.');
   }
 }

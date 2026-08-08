@@ -1,4 +1,6 @@
 // ── WEATHER.JS ──
+import { set$, stampUpdated } from './dom-utils.js';
+
 export function weatherDesc(code) {
   const m = {0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Icy fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',80:'Light showers',81:'Showers',82:'Heavy showers',85:'Snow showers',86:'Heavy snow showers',95:'Thunderstorm',96:'Hail & thunder',99:'Heavy hail & thunder'};
   return m[code] || '—';
@@ -141,9 +143,8 @@ export async function loadWeather() {
       fcEl.innerHTML = cells;
     }
 
+    stampUpdated('weather-updated');
   } catch(e) {
     set$('sb-desc', 'Weather unavailable');
   }
 }
-
-function set$(id, val) { const el = document.getElementById(id); if (el) el.textContent = val; }

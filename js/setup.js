@@ -1,25 +1,27 @@
 // ── SETUP.JS ──
 import { getSpecialDates } from './special.js';
+import { esc as escHtml } from './dom-utils.js';
+import { openModal, closeModal } from './a11y-utils.js';
 
 const CARD_DEFS = [
-  {id:'quote',       label:'Quote of the day',            full:true},
-  {id:'fact',        label:'Strange fact of the day',     full:false},
-  {id:'music',       label:'Music fact of the day',       full:false},
-  {id:'wotd',        label:'Word of the day (Wordnik)',   full:false},
-  {id:'irish',       label:'Irish word of the day',       full:false},
-  {id:'proverb',     label:'Irish proverb of the day',    full:false},
-  {id:'song',        label:'80s song of the day',         full:false},
-  {id:'nasa',        label:'NASA picture of the day',     full:false},
-  {id:'joke',        label:'Joke of the day',             full:false},
-  {id:'news',        label:'RTÉ headlines',               full:false},
-  {id:'flight',      label:'Nearest flight overhead',     full:false},
-  {id:'f1',          label:'Formula 1',                   full:false},
-  {id:'rugby',       label:'Rugby',                       full:false},
-  {id:'tides',       label:'Tides',                       full:false},
-  {id:'space',       label:'People in space',             full:false},
-  {id:'lastfm',      label:'Last.fm — now playing',       full:false},
-  {id:'uk1s',        label:'UK #1 · this week in history', full:false},
-  {id:'onthisday',   label:'About this day',              full:true},
+  {id:'quote',       label:'Quote of the day',            full:true,  category:'Always shown'},
+  {id:'fact',        label:'Strange fact of the day',     full:false, category:'Facts & Trivia'},
+  {id:'music',       label:'Music fact of the day',       full:false, category:'Facts & Trivia'},
+  {id:'wotd',        label:'Word of the day (Wordnik)',   full:false, category:'Facts & Trivia'},
+  {id:'irish',       label:'Irish word of the day',       full:false, category:'Facts & Trivia'},
+  {id:'proverb',     label:'Irish proverb of the day',    full:false, category:'Facts & Trivia'},
+  {id:'song',        label:'80s song of the day',         full:false, category:'Facts & Trivia'},
+  {id:'onthisday',   label:'About this day',              full:true,  category:'Facts & Trivia'},
+  {id:'nasa',        label:'NASA picture of the day',     full:false, category:'Media'},
+  {id:'joke',        label:'Joke of the day',             full:false, category:'Media'},
+  {id:'news',        label:'RTÉ headlines',               full:false, category:'Media'},
+  {id:'flight',      label:'Nearest flight overhead',     full:false, category:'Live Data'},
+  {id:'f1',          label:'Formula 1',                   full:false, category:'Live Data'},
+  {id:'rugby',       label:'Rugby',                       full:false, category:'Live Data'},
+  {id:'tides',       label:'Tides',                       full:false, category:'Live Data'},
+  {id:'space',       label:'People in space',             full:false, category:'Live Data'},
+  {id:'lastfm',      label:'Last.fm — now playing',       full:false, category:'Live Data'},
+  {id:'uk1s',        label:'UK #1 · this week in history', full:false, category:'Live Data'},
 ];
 
 const ALWAYS_ON = new Set(['quote']);
@@ -132,8 +134,10 @@ export async function saveSetup() {
     localStorage.setItem('dd_lat',      geo.lat);
     localStorage.setItem('dd_lon',      geo.lon);
     localStorage.setItem('dd_loc_name', geo.name + ', ' + geo.country);
+    closeModal(document.getElementById('setup'));
     document.getElementById('setup').style.display  = 'none';
     document.getElementById('setup2').style.display = 'flex';
+    openModal(document.getElementById('setup2'));
   } catch(e) {
     document.getElementById('setup-err').textContent = 'Could not find that location. Try a nearby city.';
     btn.textContent = 'Continue →'; btn.disabled = false;
@@ -150,6 +154,7 @@ export function saveSetup2() {
 export function skipSetup2() { showMain(); }
 
 function showMain() {
+  closeModal(document.getElementById('setup2'));
   document.getElementById('setup2').style.display = 'none';
   document.getElementById('app').classList.add('visible');
   window.__initDashboard();
@@ -177,9 +182,11 @@ export function openSettings() {
   buildTimezoneUI();
   buildOrderUI();
   document.getElementById('settings-panel').classList.add('open');
+  openModal(document.getElementById('settings-panel'), { onEscape: closeSettings });
 }
 export function closeSettings() {
   document.getElementById('settings-panel').classList.remove('open');
+  closeModal(document.getElementById('settings-panel'));
 }
 export async function saveSettings() {
   const city = document.getElementById('settings-city').value.trim();
@@ -247,16 +254,27 @@ function buildOrderUI() {
   if (!list) return;
   const order = getCardOrder();
   list.innerHTML = '';
+  // Category dividers are purely cosmetic — recomputed from whatever order the
+  // cards are currently in, so drag-reordering across categories still works
+  // unchanged (it just moves the divider to wherever that category's items end up).
+  let lastCategory = null;
   order.forEach(id => {
     const def = CARD_DEFS.find(c => c.id === id);
     if (!def) return;
+    if (def.category !== lastCategory) {
+      lastCategory = def.category;
+      const heading = document.createElement('li');
+      heading.className = 'card-order-group-label';
+      heading.textContent = def.category;
+      list.appendChild(heading);
+    }
     const li = document.createElement('li');
     li.className = 'card-order-item';
     li.dataset.id = id;
     li.draggable = true;
     li.innerHTML = `
-      <span class="drag-handle">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <span class="drag-handle" aria-label="Drag to reorder">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <circle cx="4" cy="3" r="1.2" fill="currentColor"/>
           <circle cx="10" cy="3" r="1.2" fill="currentColor"/>
           <circle cx="4" cy="7" r="1.2" fill="currentColor"/>
@@ -287,11 +305,6 @@ function saveOrderFromUI() {
 }
 
 // ── SPECIAL DATES EDITOR ──
-function escHtml(s) {
-  return String(s).replace(/[&<>"']/g, c =>
-    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
-}
-
 function buildSpecialDatesUI() {
   const list = document.getElementById('special-dates-list');
   if (!list) return;
@@ -306,7 +319,7 @@ function buildSpecialDatesUI() {
         <span class="special-item-name">${escHtml(e.name || 'Untitled')}</span>
         <span class="special-item-date">${escHtml(e.date || '')}${e.annual ? ' · yearly' : ''}</span>
       </span>
-      <button class="special-remove" type="button" title="Remove" onclick="window.__removeSpecialDate(${i})">✕</button>
+      <button class="special-remove" type="button" title="Remove" aria-label="Remove ${escHtml(e.name || 'this date')}" onclick="window.__removeSpecialDate(${i})">✕</button>
     </li>`
   ).join('');
 }

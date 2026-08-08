@@ -3,14 +3,10 @@
 // API key + username, stored in the user's own browser (like the other keyed
 // cards). A single user.getRecentTracks call gives both the header and the list.
 import { getToggle } from './setup.js';
+import { esc, showLoading, showError, stampUpdated } from './dom-utils.js';
 
 let lfmTimer = null;
 let lfmLast = 0;
-
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c =>
-    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
-}
 
 // Pick an image URL of the requested size from a Last.fm image[] array.
 function img(track, size) {
@@ -37,6 +33,7 @@ export async function loadLastfm() {
     el.innerHTML = '<div class="wotd-missing">Add your Last.fm API key and username in Settings to enable this.</div>';
     return;
   }
+  showLoading('lastfm-content');
   try {
     const r = await fetch(
       `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${encodeURIComponent(user)}` +
@@ -44,13 +41,14 @@ export async function loadLastfm() {
     );
     const j = await r.json().catch(() => null);
     if (!j || j.error) {
-      el.innerHTML = `<div class="wotd-missing">${j && j.message ? esc(j.message) : 'Last.fm unavailable right now.'}</div>`;
+      showError('lastfm-content', j && j.message ? esc(j.message) : 'Last.fm unavailable right now.');
       return;
     }
     let tracks = j.recenttracks && j.recenttracks.track;
     tracks = Array.isArray(tracks) ? tracks : (tracks ? [tracks] : []);
     if (!tracks.length) {
       el.innerHTML = '<div class="wotd-missing">No recent scrobbles for this user.</div>';
+      stampUpdated('lastfm-content-updated', new Date(lfmLast));
       return;
     }
 
@@ -78,8 +76,9 @@ export async function loadLastfm() {
     }).join('');
 
     el.innerHTML = header + (list ? `<div class="lastfm-list">${list}</div>` : '');
+    stampUpdated('lastfm-content-updated', new Date(lfmLast));
   } catch(e) {
-    el.innerHTML = '<div class="wotd-missing">Last.fm unavailable right now.</div>';
+    showError('lastfm-content', 'Last.fm unavailable right now.');
   }
 }
 

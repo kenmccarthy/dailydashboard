@@ -1,9 +1,11 @@
 // ── F1.JS ──
 // Next Grand Prix + driver standings via Jolpica (Ergast-compatible, keyless).
+import { showLoading, showError, stampUpdated } from './dom-utils.js';
 
 export async function loadF1() {
   const el = document.getElementById('f1-content');
   if (!el) return;
+  showLoading('f1-content');
   try {
     const [nextR, standR] = await Promise.all([
       fetch('https://api.jolpi.ca/ergast/f1/current/next.json').then(r => r.json()),
@@ -14,6 +16,7 @@ export async function loadF1() {
 
     if (!race) {
       el.innerHTML = '<div class="wotd-missing">No upcoming race — season may be over.</div>';
+      stampUpdated('f1-content-updated');
       return;
     }
 
@@ -36,7 +39,8 @@ export async function loadF1() {
       `<div class="otd-body">${race.raceName} <span class="f1-when">${when}</span></div>` +
       `<div class="otd-sub">${race.Circuit.circuitName}, ${race.Circuit.Location.locality} · ${dateStr}</div>` +
       (top ? `<div class="f1-standings">${top}</div>` : '');
+    stampUpdated('f1-content-updated');
   } catch(e) {
-    el.innerHTML = '<div class="wotd-missing">F1 data unavailable right now.</div>';
+    showError('f1-content', 'F1 data unavailable right now.');
   }
 }

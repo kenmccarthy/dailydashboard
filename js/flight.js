@@ -1,13 +1,28 @@
 // ── FLIGHT.JS ──
 // Nearest flight overhead via airplanes.live point-radius feed (keyless).
 import { getToggle } from './setup.js';
+import { showLoading, showError, stampUpdated } from './dom-utils.js';
 
 let AIRLINES = null;
 let flightTimer = null;
 let lastFetch = 0;
-const ROUTE_CACHE   = new Map();   // callsign → adsbdb route  (or null when unknown)
-const HEX_CACHE     = new Map();   // callsign → hexdb route   (or null when unknown)
-const AIRPORT_CACHE = new Map();   // ICAO     → airport object (or null when unknown)
+const ROUTE_CACHE   = new Map();   // callsign → {value: adsbdb route, ts}  (value null when unknown)
+const HEX_CACHE     = new Map();   // callsign → {value: hexdb route, ts}   (value null when unknown)
+const AIRPORT_CACHE = new Map();   // ICAO     → {value: airport object, ts} (value null when unknown)
+const CACHE_TTL_MS  = 24 * 60 * 60 * 1000;   // route/airport lookups are near-static reference data
+
+// Cached lookups never expired before, so a one-off stale route/airport (e.g. a
+// callsign reused by a different flight next week) would stick forever. A 24h
+// TTL clears them out without re-fetching on every 90s poll of the same flight.
+function cacheGet(map, key) {
+  const hit = map.get(key);
+  if (!hit) return undefined;
+  if (Date.now() - hit.ts > CACHE_TTL_MS) { map.delete(key); return undefined; }
+  return hit.value;
+}
+function cacheSet(map, key, value) {
+  map.set(key, { value, ts: Date.now() });
+}
 
 // 8-point compass from a bearing in degrees
 function compass(deg) {
@@ -34,7 +49,8 @@ async function getAirlines() {
 // via the keyless adsbdb route feed. Cached per callsign; null when unknown.
 async function getRoute(call) {
   if (!call) return null;
-  if (ROUTE_CACHE.has(call)) return ROUTE_CACHE.get(call);
+  const cached = cacheGet(ROUTE_CACHE, call);
+  if (cached !== undefined) return cached;
   let route = null;
   try {
     const r = await fetch(`https://api.adsbdb.com/v0/callsign/${encodeURIComponent(call)}`);
@@ -43,7 +59,7 @@ async function getRoute(call) {
       route = (j && j.response && j.response.flightroute) || null;
     }
   } catch(e) { /* leave route null */ }
-  ROUTE_CACHE.set(call, route);
+  cacheSet(ROUTE_CACHE, call, route);
   return route;
 }
 
@@ -61,7 +77,8 @@ function shortenAirport(name) {
 // (keyless, CORS-open). Cached per code; null when unknown.
 async function getAirport(icao) {
   if (!icao) return null;
-  if (AIRPORT_CACHE.has(icao)) return AIRPORT_CACHE.get(icao);
+  const cached = cacheGet(AIRPORT_CACHE, icao);
+  if (cached !== undefined) return cached;
   let ap = null;
   try {
     const r = await fetch(`https://hexdb.io/api/v1/airport/icao/${encodeURIComponent(icao)}`);
@@ -79,7 +96,7 @@ async function getAirport(icao) {
       }
     }
   } catch(e) { /* leave ap null */ }
-  AIRPORT_CACHE.set(icao, ap);
+  cacheSet(AIRPORT_CACHE, icao, ap);
   return ap;
 }
 
@@ -89,7 +106,8 @@ async function getAirport(icao) {
 // callsign; null when unknown. No airline data — that stays with adsbdb.
 async function getRouteHexdb(call) {
   if (!call) return null;
-  if (HEX_CACHE.has(call)) return HEX_CACHE.get(call);
+  const cached = cacheGet(HEX_CACHE, call);
+  if (cached !== undefined) return cached;
   let route = null;
   try {
     const r = await fetch(`https://hexdb.io/api/v1/route/icao/${encodeURIComponent(call)}`);
@@ -104,7 +122,7 @@ async function getRouteHexdb(call) {
       }
     }
   } catch(e) { /* leave route null */ }
-  HEX_CACHE.set(call, route);
+  cacheSet(HEX_CACHE, call, route);
   return route;
 }
 
@@ -164,6 +182,7 @@ export async function loadFlight() {
     el.innerHTML = '<div class="wotd-missing">Set a location to see flights.</div>';
     return;
   }
+  showLoading('flight-content');
   try {
     const airlines = await getAirlines();
     const r = await fetch(`https://api.airplanes.live/v2/point/${lat}/${lon}/${radius}`);
@@ -176,6 +195,7 @@ export async function loadFlight() {
 
     if (!planes.length) {
       el.innerHTML = '<div class="wotd-missing">No aircraft overhead right now.</div>';
+      stampUpdated('flight-content-updated', new Date(lastFetch));
       return;
     }
 
@@ -220,10 +240,11 @@ export async function loadFlight() {
       ${routeLine}
       ${line3 ? `<div class="otd-sub">${line3}</div>` : ''}
       ${call ? `<a class="otd-link" href="https://globe.airplanes.live/?callsign=${encodeURIComponent(call)}" target="_blank" rel="noopener">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
         Track flight</a>` : ''}`;
+    stampUpdated('flight-content-updated', new Date(lastFetch));
   } catch(e) {
-    el.innerHTML = '<div class="wotd-missing">Flight data unavailable right now.</div>';
+    showError('flight-content', 'Flight data unavailable right now.');
   }
 }
 

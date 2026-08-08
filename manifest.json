@@ -1,0 +1,14 @@
+{
+  "name": "Daily Dashboard",
+  "short_name": "Dashboard",
+  "description": "A personal start-of-day dashboard — weather, flights, sport, news and more.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#f9f7f4",
+  "theme_color": "#f9f7f4",
+  "icons": [
+    { "src": "img/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "img/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

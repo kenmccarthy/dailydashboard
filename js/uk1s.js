@@ -3,6 +3,8 @@
 // Data is a bundled, offline snapshot of the Official Charts number ones
 // (data/uk_number_ones.json), so this card needs no network and never goes stale.
 
+import { esc, showLoading, showError, stampUpdated } from './dom-utils.js';
+
 let UKNO = null;
 
 async function getData() {
@@ -31,37 +33,40 @@ function chartOn(data, dateObj) {
   return best;
 }
 
-function esc(s) {
-  return String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
-}
-
 export async function loadUKNumberOnes() {
   const el = document.getElementById('uk1s-content');
   if (!el) return;
-  const data = await getData();
-  if (!data.length) {
-    el.innerHTML = '<div class="wotd-missing">Chart data unavailable.</div>';
-    return;
-  }
-  const now = new Date();
-  const rows = [10, 20, 30, 40, 50].map(n => {
-    const d = new Date(now.getFullYear() - n, now.getMonth(), now.getDate());
-    return { n, hit: chartOn(data, d) };
-  }).filter(r => r.hit);
+  showLoading('uk1s-content');
+  try {
+    const data = await getData();
+    if (!data.length) {
+      showError('uk1s-content', 'Chart data unavailable.');
+      return;
+    }
+    const now = new Date();
+    const rows = [10, 20, 30, 40, 50].map(n => {
+      const d = new Date(now.getFullYear() - n, now.getMonth(), now.getDate());
+      return { n, hit: chartOn(data, d) };
+    }).filter(r => r.hit);
 
-  if (!rows.length) {
-    el.innerHTML = '<div class="wotd-missing">No chart data for these dates.</div>';
-    return;
-  }
+    if (!rows.length) {
+      el.innerHTML = '<div class="wotd-missing">No chart data for these dates.</div>';
+      stampUpdated('uk1s-content-updated');
+      return;
+    }
 
-  el.innerHTML = rows.map(({ n, hit }) => {
-    const q = encodeURIComponent(`${hit.artist} ${hit.song}`);
-    return `<div class="ukno-row">` +
-      `<div class="ukno-yrs">${n} yrs</div>` +
-      `<div class="ukno-info">` +
-        `<a class="ukno-song" href="https://www.youtube.com/results?search_query=${q}" target="_blank" rel="noopener">${esc(hit.song)}</a>` +
-        `<div class="ukno-artist">${esc(hit.artist)}</div>` +
-      `</div>` +
-    `</div>`;
-  }).join('');
+    el.innerHTML = rows.map(({ n, hit }) => {
+      const q = encodeURIComponent(`${hit.artist} ${hit.song}`);
+      return `<div class="ukno-row">` +
+        `<div class="ukno-yrs">${n} yrs</div>` +
+        `<div class="ukno-info">` +
+          `<a class="ukno-song" href="https://www.youtube.com/results?search_query=${q}" target="_blank" rel="noopener">${esc(hit.song)}</a>` +
+          `<div class="ukno-artist">${esc(hit.artist)}</div>` +
+        `</div>` +
+      `</div>`;
+    }).join('');
+    stampUpdated('uk1s-content-updated');
+  } catch(e) {
+    showError('uk1s-content', 'Chart data unavailable.');
+  }
 }

@@ -4,6 +4,8 @@
 // results are cached and only refetched when the key/location changes or the
 // cache goes stale — this keeps WorldTides credit use low.
 
+import { esc, showLoading, showError, stampUpdated } from './dom-utils.js';
+
 let CACHE = null;                          // { key, lat, lon, at, extremes }
 const CACHE_MS = 3 * 60 * 60 * 1000;       // 3 hours
 
@@ -17,11 +19,6 @@ function tidesLocation() {
 function fmtTime(d) {
   // 12-hour AM/PM, matching the main clock's fmt().
   return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-}
-
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c =>
-    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 }
 
 // Human "in 2 h 10 min" from a millisecond delta.
@@ -50,22 +47,24 @@ export async function loadTides() {
   if (CACHE && CACHE.key === key && CACHE.lat === lat && CACHE.lon === lon &&
       Date.now() - CACHE.at < CACHE_MS) {
     render(el, CACHE.extremes);
+    stampUpdated('tides-content-updated', new Date(CACHE.at));
     return;
   }
+  showLoading('tides-content');
   try {
     const r = await fetch(
       `https://www.worldtides.info/api/v3?extremes&lat=${lat}&lon=${lon}&key=${encodeURIComponent(key)}`
     );
     const j = await r.json().catch(() => null);
     if (!r.ok || !j || (j.status && j.status >= 400) || !Array.isArray(j.extremes)) {
-      const msg = j && j.error ? j.error : 'Tides unavailable right now.';
-      el.innerHTML = `<div class="wotd-missing">${msg}</div>`;
+      showError('tides-content', j && j.error ? j.error : 'Tides unavailable right now.');
       return;
     }
     CACHE = { key, lat, lon, at: Date.now(), extremes: j.extremes };
     render(el, j.extremes);
+    stampUpdated('tides-content-updated', new Date(CACHE.at));
   } catch(e) {
-    el.innerHTML = '<div class="wotd-missing">Tides unavailable right now.</div>';
+    showError('tides-content', 'Tides unavailable right now.');
   }
 }
 

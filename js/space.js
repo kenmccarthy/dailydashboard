@@ -3,13 +3,9 @@
 // open-notify data (corquaid, hosted on GitHub Pages over HTTPS), plus the ISS's
 // live position from wheretheiss.at (keyless) reverse-geocoded via BigDataCloud.
 import { getToggle } from './setup.js';
+import { esc, showLoading, showError, stampUpdated } from './dom-utils.js';
 
 let spaceTimer = null;
-
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c =>
-    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
-}
 
 // "us" → 🇺🇸 (two regional-indicator letters); fallback to a satellite glyph.
 function flagEmoji(code) {
@@ -20,6 +16,7 @@ function flagEmoji(code) {
 export async function loadSpace() {
   const el = document.getElementById('space-content');
   if (!el) return;
+  showLoading('space-content');
   try {
     const r = await fetch('https://corquaid.github.io/international-space-station-APIs/JSON/people-in-space.json');
     if (!r.ok) throw new Error();
@@ -27,6 +24,7 @@ export async function loadSpace() {
     const people = Array.isArray(d.people) ? d.people : [];
     if (!people.length) {
       el.innerHTML = '<div class="wotd-missing">No crew data right now.</div>';
+      stampUpdated('space-content-updated');
       return;
     }
     const exp = (d.iss_expedition && d.expedition_url)
@@ -42,8 +40,9 @@ export async function loadSpace() {
       `</div>`;
     }).join('');
     el.innerHTML = head + `<div class="space-list">${rows}</div>`;
+    stampUpdated('space-content-updated');
   } catch(e) {
-    el.innerHTML = '<div class="wotd-missing">Space crew data unavailable right now.</div>';
+    showError('space-content', 'Space crew data unavailable right now.');
   }
 }
 
@@ -84,7 +83,9 @@ export async function updateISS() {
     ].filter(Boolean);
     el.innerHTML = `<span class="space-iss-sat">🛰</span> ${parts.join(' · ')}`;
   } catch(e) {
-    /* leave any prior text in place */
+    // Was previously silent, leaving stale text with no indication it's stuck —
+    // only replace with an error once we have no prior content to preserve.
+    if (!el.textContent.trim()) showError('space-iss', 'ISS position unavailable.');
   }
 }
 

@@ -16,6 +16,8 @@ import { loadSpecialDates } from './special.js';
 import { populateCountrySelects, applyCardOrder, applyTheme, getToggle,
          saveSetup, saveSetup2, skipSetup2, openSettings, closeSettings,
          saveSettings, setMode, setAccent } from './setup.js';
+import { set$ } from './dom-utils.js';
+import { openModal } from './a11y-utils.js';
 
 // ── DATE UTILS ──
 function getDOY(d) { return Math.floor((d - new Date(d.getFullYear(),0,0)) / 86400000); }
@@ -132,6 +134,8 @@ async function init() {
 
 // ── BOOT ──
 window.addEventListener('load', async () => {
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+
   // Restore theme immediately (before any render)
   applyTheme();
 
@@ -153,6 +157,8 @@ window.addEventListener('load', async () => {
     document.getElementById('setup').style.display = 'none';
     document.getElementById('app').classList.add('visible');
     init();
+  } else {
+    openModal(document.getElementById('setup'));
   }
 
   tickClock();
@@ -198,13 +204,13 @@ function toggleDark() {
   setMode(next);
   // Update button icon
   const btn = document.getElementById('dark-toggle-btn');
-  if (btn) btn.textContent = next === 'dark' ? '☀' : '☾';
+  if (btn) { btn.textContent = next === 'dark' ? '☀' : '☾'; btn.setAttribute('aria-pressed', String(next === 'dark')); }
 }
 
 function updateDarkToggleIcon() {
   const mode = localStorage.getItem('dd_mode') || 'light';
   const btn = document.getElementById('dark-toggle-btn');
-  if (btn) btn.textContent = mode === 'dark' ? '☀' : '☾';
+  if (btn) { btn.textContent = mode === 'dark' ? '☀' : '☾'; btn.setAttribute('aria-pressed', String(mode === 'dark')); }
 }
 
 async function renderObservancesSidebar(now) {
@@ -231,5 +237,3 @@ async function renderObservancesSidebar(now) {
     </div>`
   ).join('');
 }
-
-function set$(id, val) { const el = document.getElementById(id); if (el) el.textContent = val; }

@@ -2,6 +2,7 @@
 // Next fixture + league table via ESPN's keyless, CORS-open rugby API. Defaults
 // to "auto" — whichever major competition is in season (live now, else soonest
 // upcoming fixture) — and is switchable in Settings (dd_rugby_league).
+import { esc, showLoading, showError, stampUpdated } from './dom-utils.js';
 
 const LEAGUES = [
   { id: '270557', name: 'United Rugby Championship' },
@@ -12,11 +13,6 @@ const LEAGUES = [
 ];
 const SB = id => `https://site.api.espn.com/apis/site/v2/sports/rugby/${id}/scoreboard`;
 const ST = id => `https://site.api.espn.com/apis/v2/sports/rugby/${id}/standings`;
-
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c =>
-    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
-}
 
 async function getJSON(url) {
   try { const r = await fetch(url); return r.ok ? await r.json() : null; }
@@ -86,10 +82,12 @@ async function standingsHTML(id) {
 export async function loadRugby() {
   const el = document.getElementById('rugby-content');
   if (!el) return;
+  showLoading('rugby-content');
   try {
     const chosen = await chooseLeague();
     if (!chosen || !chosen.pick) {
       el.innerHTML = '<div class="wotd-missing">No upcoming rugby fixtures right now.</div>';
+      stampUpdated('rugby-content-updated');
       return;
     }
     const { league, pick } = chosen;
@@ -119,7 +117,8 @@ export async function loadRugby() {
       `<div class="otd-body">${esc(hName)} <span class="rugby-v">v</span> ${esc(aName)} ${badge}</div>` +
       `<div class="otd-sub">${sub}</div>` +
       table;
+    stampUpdated('rugby-content-updated');
   } catch(e) {
-    el.innerHTML = '<div class="wotd-missing">Rugby data unavailable right now.</div>';
+    showError('rugby-content', 'Rugby data unavailable right now.');
   }
 }
