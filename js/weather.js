@@ -78,7 +78,7 @@ export async function loadWeather() {
     const r = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
       `&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code,uv_index` +
-      `&daily=sunrise,sunset,weather_code,temperature_2m_max,uv_index_max&timezone=auto&forecast_days=6&past_days=1`
+      `&daily=sunrise,sunset,weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_probability_max&timezone=auto&forecast_days=6&past_days=1`
     );
     const data = await r.json();
     const c = data.current, d = data.daily;
@@ -110,6 +110,12 @@ export async function loadWeather() {
     // UV: today's peak (daily index 1 = today with past_days=1), fall back to current.
     const uvMax = d.uv_index_max?.[1] ?? c.uv_index;
     if (uvMax != null) set$('sb-uv', `${Math.round(uvMax)} · ${uvLevel(uvMax)}`);
+    // Today's high/low and rain chance (daily index 1 = today).
+    if (d.temperature_2m_max?.[1] != null && d.temperature_2m_min?.[1] != null) {
+      set$('sb-hilo', `${Math.round(d.temperature_2m_max[1])}° / ${Math.round(d.temperature_2m_min[1])}°`);
+    }
+    const rain = d.precipitation_probability_max?.[1];
+    set$('sb-rain', rain == null ? '—' : `${Math.round(rain)}%`);
 
     // Moon with SVG icon
     const moonEl = document.getElementById('sb-moon');

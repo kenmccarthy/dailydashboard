@@ -1,6 +1,10 @@
 // ── SPACE.JS ──
 // "People in space" via a keyless, CORS-open static JSON mirror of the
-// open-notify data (corquaid, hosted on GitHub Pages over HTTPS).
+// open-notify data (corquaid, hosted on GitHub Pages over HTTPS), plus the ISS's
+// live position from wheretheiss.at (keyless) reverse-geocoded via BigDataCloud.
+import { getToggle } from './setup.js';
+
+let spaceTimer = null;
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c =>
@@ -41,4 +45,58 @@ export async function loadSpace() {
   } catch(e) {
     el.innerHTML = '<div class="wotd-missing">Space crew data unavailable right now.</div>';
   }
+}
+
+// "12.3°N" / "45.6°W" from a signed coordinate.
+function fmtCoord(v, pos, neg) {
+  return `${Math.abs(v).toFixed(1)}°${v >= 0 ? pos : neg}`;
+}
+
+// Reverse-geocode to a country name. Returns null on failure, '' over open
+// ocean (BigDataCloud gives an empty countryName there), else the country.
+async function reverseGeo(lat, lon) {
+  try {
+    const r = await fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
+    );
+    if (!r.ok) return null;
+    const j = await r.json();
+    return (j.countryName && j.countryName.trim()) || '';
+  } catch(e) { return null; }
+}
+
+// Live ISS position line (updates in place; never throws out of the roster).
+export async function updateISS() {
+  const el = document.getElementById('space-iss');
+  if (!el) return;
+  try {
+    const r = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
+    if (!r.ok) throw new Error();
+    const d = await r.json();
+    const country = await reverseGeo(d.latitude, d.longitude);
+    const place = country == null ? '' : (country ? `Over ${esc(country)}` : 'Over the ocean');
+    const coords = `${fmtCoord(d.latitude, 'N', 'S')}, ${fmtCoord(d.longitude, 'E', 'W')}`;
+    const parts = [
+      place,
+      coords,
+      `${Math.round(d.altitude)} km`,
+      `${Math.round(d.velocity).toLocaleString()} km/h`,
+    ].filter(Boolean);
+    el.innerHTML = `<span class="space-iss-sat">🛰</span> ${parts.join(' · ')}`;
+  } catch(e) {
+    /* leave any prior text in place */
+  }
+}
+
+// Poll the ISS position while visible; the crew roster itself changes rarely and
+// is loaded separately by loadSpace().
+export function initSpaceRefresh() {
+  if (getToggle('space')) updateISS();
+  if (spaceTimer) clearInterval(spaceTimer);
+  spaceTimer = setInterval(() => {
+    if (document.visibilityState === 'visible' && getToggle('space')) updateISS();
+  }, 20000);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && getToggle('space')) updateISS();
+  });
 }

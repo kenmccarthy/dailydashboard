@@ -128,6 +128,20 @@
       </div>
 
       <hr class="settings-divider">
+      <span class="settings-section">Rugby</span>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-rugby-league">Competition</label>
+        <select class="setup-select" id="settings-rugby-league" style="margin-bottom:0">
+          <option value="auto">Auto — whichever is in season</option>
+          <option value="270557">United Rugby Championship</option>
+          <option value="180659">Six Nations</option>
+          <option value="271937">European Champions Cup</option>
+          <option value="267979">Gallagher Premiership</option>
+          <option value="164205">Rugby World Cup</option>
+        </select>
+      </div>
+
+      <hr class="settings-divider">
       <span class="settings-section">Special dates &amp; countdowns</span>
       <ul class="special-list" id="special-dates-list"></ul>
       <div class="special-add">
@@ -223,6 +237,8 @@
         <div><div class="sb-witem-label">Feels like</div><div class="sb-witem-val" id="sb-feels">—</div></div>
         <div><div class="sb-witem-label">Wind</div><div class="sb-witem-val" id="sb-wind">—</div></div>
         <div><div class="sb-witem-label">UV index</div><div class="sb-witem-val" id="sb-uv">—</div></div>
+        <div><div class="sb-witem-label">High / Low</div><div class="sb-witem-val" id="sb-hilo">—</div></div>
+        <div><div class="sb-witem-label">Rain</div><div class="sb-witem-val" id="sb-rain">—</div></div>
       </div>
       <div class="sb-forecast" id="sb-forecast"></div>
       <div class="sb-aq" id="sb-aq"></div>
@@ -338,6 +354,12 @@
         <div id="f1-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
+      <!-- Rugby -->
+      <div id="section-rugby" class="card">
+        <span class="card-label">Rugby</span>
+        <div id="rugby-content"><div class="wotd-missing">Loading…</div></div>
+      </div>
+
       <!-- Tides -->
       <div id="section-tides" class="card">
         <span class="card-label">Tides</span>
@@ -347,6 +369,7 @@
       <!-- People in Space -->
       <div id="section-space" class="card">
         <span class="card-label">People in Space</span>
+        <div class="space-iss" id="space-iss"></div>
         <div id="space-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 

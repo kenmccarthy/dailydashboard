@@ -16,7 +16,8 @@ A personal start-of-day dashboard built as a static web app. Designed to work as
 - 80s song of the day with YouTube link (365 curated)
 - Word of the Day via Wordnik API
 - Irish word of the day with pronunciation (365 curated)
-- Weather, sunrise/sunset, day length, UV index (Open-Meteo — no key needed)
+- Weather — temperature, today's high/low, chance of rain, sunrise/sunset, day
+  length, UV index (Open-Meteo — no key needed)
 - 5-day weather forecast strip (icon + high per day)
 - Moon phase and day length comparison vs yesterday
 - Air quality & pollen in the weather sidebar — European AQI, PM2.5/PM10, ozone
@@ -26,9 +27,12 @@ A personal start-of-day dashboard built as a static web app. Designed to work as
   cross-checked for the route — no key)
 - Formula 1 — next Grand Prix countdown + drivers' championship top 3
   (Jolpica/Ergast — no key)
+- Rugby — next fixture + league table for whichever competition is in season
+  (auto, or pin one in Settings), via ESPN's keyless API — no key
 - Tides — next high/low tides for a coastal location (WorldTides — free API key)
-- People in space — live crew count and roster with flags, agency and spacecraft
-  (open-notify data via a keyless mirror — no key)
+- People in space — live crew count and roster with flags, agency and spacecraft,
+  plus the ISS's live position over the Earth (keyless — open-notify mirror,
+  wheretheiss.at and BigDataCloud)
 - Last.fm — your now-playing / last-scrobbled track with album art plus recent
   tracks (Last.fm API — free API key + username)
 - UK Number 1 single this week 10/20/30/40/50 years ago (bundled offline dataset)
@@ -55,8 +59,9 @@ daily-dashboard/
     airquality.js     ← Open-Meteo air quality & pollen
     flight.js         ← nearest flight overhead (airplanes.live + adsbdb + hexdb.io)
     f1.js             ← Formula 1 next race + standings (Jolpica/Ergast)
+    rugby.js          ← rugby next fixture + table, auto in-season (ESPN, keyless)
     tides.js          ← next high/low tides (WorldTides — needs a key)
-    space.js          ← people in space now (keyless open-notify mirror)
+    space.js          ← people in space + live ISS position (keyless)
     lastfm.js         ← Last.fm now playing + recent tracks (needs key + user)
     uk1s.js           ← UK #1 singles "this week through the years"
     special.js        ← user special dates & countdowns (sidebar)
