@@ -6,8 +6,26 @@
 
 import { esc, showLoading, showError, stampUpdated } from './dom-utils.js';
 
-let CACHE = null;                          // { key, lat, lon, at, extremes }
-const CACHE_MS = 3 * 60 * 60 * 1000;       // 3 hours
+const CACHE_KEY = 'dd_tides_cache';
+// Tide extremes are astronomically predictable — a day-old fetch is still
+// accurate — so a 24h cache caps WorldTides credit use to ~once/day. Persisted
+// to localStorage (not just this module's memory) so a page reload within the
+// same 24h window reuses it instead of spending another credit.
+const CACHE_MS = 24 * 60 * 60 * 1000;      // 24 hours
+
+function loadCacheFromStorage() {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function saveCacheToStorage(cache) {
+  try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); }
+  catch(e) { /* storage full/unavailable — cache still works for this session */ }
+}
+
+let CACHE = loadCacheFromStorage();        // { key, lat, lon, at, extremes }
 
 // Tide location: dedicated override, else the weather location.
 function tidesLocation() {
@@ -52,8 +70,11 @@ export async function loadTides() {
   }
   showLoading('tides-content');
   try {
+    // days=2 so a fetch made at the start of its 24h cache window still has
+    // "upcoming" extremes left near the end of that window, instead of the
+    // default single day running dry and wrongly showing "no upcoming tides".
     const r = await fetch(
-      `https://www.worldtides.info/api/v3?extremes&lat=${lat}&lon=${lon}&key=${encodeURIComponent(key)}`
+      `https://www.worldtides.info/api/v3?extremes&days=2&lat=${lat}&lon=${lon}&key=${encodeURIComponent(key)}`
     );
     const j = await r.json().catch(() => null);
     if (!r.ok || !j || (j.status && j.status >= 400) || !Array.isArray(j.extremes)) {
@@ -61,6 +82,7 @@ export async function loadTides() {
       return;
     }
     CACHE = { key, lat, lon, at: Date.now(), extremes: j.extremes };
+    saveCacheToStorage(CACHE);
     render(el, j.extremes);
     stampUpdated('tides-content-updated', new Date(CACHE.at));
   } catch(e) {
