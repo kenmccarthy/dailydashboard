@@ -3,12 +3,9 @@
 // shown in the sidebar sorted by how soon they are. Stored in dd_special_dates
 // as [{name, date:"YYYY-MM-DD", annual:bool}].
 
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+import { esc } from './dom-utils.js';
 
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c =>
-    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
-}
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 export function getSpecialDates() {
   try {

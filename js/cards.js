@@ -1,4 +1,6 @@
 // ── CARDS.JS ──
+import { set$, showLoading, showError, stampUpdated } from './dom-utils.js';
+
 let DATA = {};
 
 export async function loadAllData() {
@@ -127,6 +129,7 @@ export async function loadNASA() {
   const el = document.getElementById('nasa-content');
   if (!el) return;
   if (!key) { el.innerHTML = '<div class="wotd-missing">Add a NASA API key in Settings to enable this. Free at <a href="https://api.nasa.gov" target="_blank" style="color:var(--muted)">api.nasa.gov</a>.</div>'; return; }
+  showLoading('nasa-content');
   try {
     const r = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${key}`);
     if (!r.ok) throw new Error();
@@ -134,8 +137,9 @@ export async function loadNASA() {
     el.innerHTML = d.media_type === 'image'
       ? `<img class="apod-img" src="${d.url}" alt="${d.title}" loading="lazy"><div class="apod-title">${d.title}</div><div class="apod-exp">${(d.explanation||'').slice(0,300)}…</div>`
       : `<div class="apod-title">${d.title}</div><div class="apod-exp">${(d.explanation||'').slice(0,300)}…</div><a class="otd-link" href="${d.url}" target="_blank">Watch video</a>`;
+    stampUpdated('nasa-content-updated');
   } catch(e) {
-    el.innerHTML = '<div class="wotd-missing">APOD unavailable — check your API key in Settings.</div>';
+    showError('nasa-content', 'APOD unavailable — check your API key in Settings.');
   }
 }
 
@@ -176,6 +180,7 @@ export async function loadWordOfDay(now) {
   if (!el) return;
   if (!key) { el.innerHTML = '<div class="wotd-missing">Add a Wordnik API key in Settings to enable this.</div>'; return; }
   const ds = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+  showLoading('wotd-content');
   try {
     const r = await fetch(`https://api.wordnik.com/v4/words.json/wordOfTheDay?date=${ds}&api_key=${key}`);
     if (!r.ok) throw new Error();
@@ -186,8 +191,9 @@ export async function loadWordOfDay(now) {
       ${d.definitions?.[0]?.text ? `<div class="wotd-def">${d.definitions[0].text}</div>` : ''}
       ${d.examples?.[0]?.text ? `<div class="wotd-example">"${d.examples[0].text}"</div>` : ''}
       ${d.note ? `<div class="wotd-etymology">${d.note}</div>` : ''}`;
+    stampUpdated('wotd-content-updated');
   } catch(e) {
-    el.innerHTML = '<div class="wotd-missing">Word unavailable — check your Wordnik key in Settings.</div>';
+    showError('wotd-content', 'Word unavailable — check your Wordnik key in Settings.');
   }
 }
 
@@ -244,13 +250,9 @@ export async function loadNews() {
           ${when ? `<div class="news-meta">${when}</div>` : ''}
         </div>`;
       }).join('');
+      stampUpdated('news-list-updated');
       return;
     } catch(e) { continue; }
   }
-  el.innerHTML = '<div class="sb-news-loading">Headlines unavailable. <a href="https://www.rte.ie/news/" target="_blank" style="color:var(--hint)">Visit RTÉ</a></div>';
-}
-
-function set$(id, val) {
-  const el = document.getElementById(id);
-  if (el) typeof val === 'string' && val.includes('<') ? el.innerHTML = val : el.textContent = val;
+  showError('news-list', 'Headlines unavailable. <a href="https://www.rte.ie/news/" target="_blank" style="color:var(--hint)">Visit RTÉ</a>');
 }

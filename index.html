@@ -15,6 +15,7 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="icon" href="img/android-chrome-192x192.png" sizes="192x192" type="image/png">
 <link rel="icon" href="img/android-chrome-512x512.png" sizes="512x512" type="image/png">
+<link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -22,9 +23,9 @@
 <body>
 
 <!-- ══ SETUP STEP 1 ══ -->
-<div id="setup">
+<div id="setup" role="dialog" aria-modal="true" aria-labelledby="setup-title">
   <div class="setup-card">
-    <div class="setup-logo">Daily Dashboard</div>
+    <div class="setup-logo" id="setup-title">Daily Dashboard</div>
     <div class="setup-steps"><div class="setup-step active"></div><div class="setup-step"></div></div>
     <div class="setup-sub">Step 1 of 2 — Your location for weather and sunrise times.</div>
     <label class="setup-label" for="country-input">Country</label>
@@ -38,9 +39,9 @@
 </div>
 
 <!-- ══ SETUP STEP 2 ══ -->
-<div id="setup2">
+<div id="setup2" role="dialog" aria-modal="true" aria-labelledby="setup2-title">
   <div class="setup-card">
-    <div class="setup-logo">Daily Dashboard</div>
+    <div class="setup-logo" id="setup2-title">Daily Dashboard</div>
     <div class="setup-steps"><div class="setup-step"></div><div class="setup-step active"></div></div>
     <div class="setup-sub">Step 2 of 2 — Optional API keys for Word of the Day and NASA Picture of the Day.</div>
     <label class="setup-label" for="setup-wordnik">Wordnik API key</label>
@@ -55,12 +56,12 @@
 </div>
 
 <!-- ══ SETTINGS PANEL ══ -->
-<div id="settings-panel">
+<div id="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title">
   <div class="settings-modal">
 
     <div class="settings-header">
-      <div class="settings-title">Settings</div>
-      <button class="settings-close" onclick="closeSettings()">✕</button>
+      <div class="settings-title" id="settings-title">Settings</div>
+      <button class="settings-close" onclick="closeSettings()" aria-label="Close settings">✕</button>
     </div>
 
     <div class="settings-body">
@@ -234,6 +235,7 @@
           <div class="sb-temp" id="sb-temp">—°C</div>
           <div class="sb-weather-desc" id="sb-desc">Loading…</div>
           <div class="sb-weather-loc" id="sb-loc">—</div>
+          <span class="card-updated" id="weather-updated"></span>
         </div>
       </div>
       <div class="sb-weather-grid">
@@ -249,6 +251,7 @@
       </div>
       <div class="sb-forecast" id="sb-forecast"></div>
       <div class="sb-aq" id="sb-aq"></div>
+      <span class="card-updated" id="sb-aq-updated"></span>
     </div>
 
     <div class="sb-section" id="sb-special-section" style="display:none">
@@ -264,9 +267,9 @@
     <div class="sb-footer">
       <div class="sb-updated" id="sb-updated">—</div>
       <div class="sb-footer-row">
-        <button class="dark-toggle-btn" id="dark-toggle-btn" onclick="toggleDark()" title="Toggle light/dark mode">☀</button>
+        <button class="dark-toggle-btn" id="dark-toggle-btn" onclick="toggleDark()" title="Toggle light/dark mode" aria-label="Toggle dark mode" aria-pressed="false">☀</button>
         <button class="settings-btn" onclick="openSettings()">
-          <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.93 2.93l1.06 1.06M10.01 10.01l1.06 1.06M2.93 11.07l1.06-1.06M10.01 3.99l1.06-1.06" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.93 2.93l1.06 1.06M10.01 10.01l1.06 1.06M2.93 11.07l1.06-1.06M10.01 3.99l1.06-1.06" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
           Settings
         </button>
       </div>
@@ -304,6 +307,7 @@
       <!-- Word of the Day (Wordnik) -->
       <div id="section-wotd" class="card">
         <span class="card-label">Word of the Day</span>
+        <span class="card-updated" id="wotd-content-updated"></span>
         <div id="wotd-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
@@ -330,7 +334,7 @@
         <div class="otd-body" id="song-title">—</div>
         <div class="otd-sub" id="song-artist">—</div>
         <a class="otd-link" id="song-link" href="#" target="_blank" rel="noopener">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
           Listen on YouTube
         </a>
       </div>
@@ -338,6 +342,7 @@
       <!-- NASA APOD -->
       <div id="section-nasa" class="card">
         <span class="card-label">NASA — Astronomy Picture of the Day</span>
+        <span class="card-updated" id="nasa-content-updated"></span>
         <div id="nasa-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
@@ -352,30 +357,35 @@
       <!-- Nearest Flight Overhead -->
       <div id="section-flight" class="card">
         <span class="card-label">Nearest Flight Overhead</span>
+        <span class="card-updated" id="flight-content-updated"></span>
         <div id="flight-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
       <!-- Formula 1 -->
       <div id="section-f1" class="card">
         <span class="card-label">Formula 1</span>
+        <span class="card-updated" id="f1-content-updated"></span>
         <div id="f1-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
       <!-- Rugby -->
       <div id="section-rugby" class="card">
         <span class="card-label">Rugby</span>
+        <span class="card-updated" id="rugby-content-updated"></span>
         <div id="rugby-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
       <!-- Tides -->
       <div id="section-tides" class="card">
         <span class="card-label">Tides</span>
+        <span class="card-updated" id="tides-content-updated"></span>
         <div id="tides-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
       <!-- People in Space -->
       <div id="section-space" class="card">
         <span class="card-label">People in Space</span>
+        <span class="card-updated" id="space-content-updated"></span>
         <div class="space-iss" id="space-iss"></div>
         <div id="space-content"><div class="wotd-missing">Loading…</div></div>
       </div>
@@ -383,6 +393,7 @@
       <!-- Last.fm -->
       <div id="section-lastfm" class="card">
         <span class="card-label">Last.fm</span>
+        <span class="card-updated" id="lastfm-content-updated"></span>
         <div id="lastfm-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
@@ -391,16 +402,18 @@
         <span class="card-label" style="display:flex;justify-content:space-between;align-items:center">
           RTÉ Headlines
           <button onclick="loadNews()" style="background:none;border:none;cursor:pointer;font-size:10px;color:var(--hint);font-family:var(--sans);display:flex;align-items:center;gap:3px">
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M8.5 5A3.5 3.5 0 1 1 5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M6.5 1.5H8.5V3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M8.5 5A3.5 3.5 0 1 1 5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M6.5 1.5H8.5V3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Refresh
           </button>
         </span>
+        <span class="card-updated" id="news-list-updated"></span>
         <div id="news-list"><div class="wotd-missing">Loading…</div></div>
       </div>
 
       <!-- UK Number 1 — this week through the years -->
       <div id="section-uk1s" class="card">
         <span class="card-label">UK Number 1 · This Week Through the Years</span>
+        <span class="card-updated" id="uk1s-content-updated"></span>
         <div id="uk1s-content"><div class="wotd-missing">Loading…</div></div>
       </div>
 
