@@ -1,7 +1,28 @@
 // ── FLIGHT.JS ──
-// Nearest flight overhead via airplanes.live point-radius feed (keyless).
+// Nearest flight overhead via airplanes.live point-radius feed (keyless),
+// with adsb.lol (same schema, separate keyless mirror) as a fallback for
+// when airplanes.live rate-limits or blocks a source IP.
 import { getToggle } from './setup.js';
 import { showLoading, showError, stampUpdated } from './dom-utils.js';
+
+const AIRCRAFT_APIS = [
+  'https://api.airplanes.live/v2/point',
+  'https://api.adsb.lol/v2/point',
+];
+
+// Try each keyless point-radius feed in turn; only give up once all have failed.
+async function fetchAircraft(lat, lon, radius) {
+  let lastErr;
+  for (const base of AIRCRAFT_APIS) {
+    try {
+      const r = await fetch(`${base}/${lat}/${lon}/${radius}`);
+      if (!r.ok) throw new Error(`${base} responded ${r.status}`);
+      const data = await r.json();
+      return data.ac || [];
+    } catch (e) { lastErr = e; }
+  }
+  throw lastErr;
+}
 
 let AIRLINES = null;
 let flightTimer = null;
@@ -185,11 +206,9 @@ export async function loadFlight() {
   showLoading('flight-content');
   try {
     const airlines = await getAirlines();
-    const r = await fetch(`https://api.airplanes.live/v2/point/${lat}/${lon}/${radius}`);
-    if (!r.ok) throw new Error();
-    const data = await r.json();
+    const ac = await fetchAircraft(lat, lon, radius);
     // Airborne aircraft with a position, nearest first (dst = nautical miles).
-    const planes = (data.ac || [])
+    const planes = ac
       .filter(a => a.lat != null && a.alt_baro !== 'ground' && a.dst != null)
       .sort((a, b) => a.dst - b.dst);
 
@@ -244,6 +263,7 @@ export async function loadFlight() {
         Track flight</a>` : ''}`;
     stampUpdated('flight-content-updated', new Date(lastFetch));
   } catch(e) {
+    console.error('Flight data fetch failed:', e);
     showError('flight-content', 'Flight data unavailable right now.');
   }
 }
