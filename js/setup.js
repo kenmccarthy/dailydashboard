@@ -169,6 +169,7 @@ export function openSettings() {
   document.getElementById('settings-flight-lat').value    = localStorage.getItem('dd_flight_lat')    || '';
   document.getElementById('settings-flight-lon').value    = localStorage.getItem('dd_flight_lon')    || '';
   document.getElementById('settings-flight-radius').value = localStorage.getItem('dd_flight_radius') || '';
+  document.getElementById('settings-flight-worker').value = localStorage.getItem('dd_flight_worker_url') || '';
   document.getElementById('settings-tides-key').value = localStorage.getItem('dd_tides_key') || '';
   document.getElementById('settings-tides-lat').value = localStorage.getItem('dd_tides_lat') || '';
   document.getElementById('settings-tides-lon').value = localStorage.getItem('dd_tides_lon') || '';
@@ -196,6 +197,7 @@ export async function saveSettings() {
   setOrClear('dd_flight_lat',    document.getElementById('settings-flight-lat').value.trim());
   setOrClear('dd_flight_lon',    document.getElementById('settings-flight-lon').value.trim());
   setOrClear('dd_flight_radius', document.getElementById('settings-flight-radius').value.trim());
+  setOrClear('dd_flight_worker_url', document.getElementById('settings-flight-worker').value.trim());
   if (window.__reloadFlight) window.__reloadFlight();
   // Tides key + optional location override persist regardless of the city field.
   setOrClear('dd_tides_key',   document.getElementById('settings-tides-key').value.trim());
