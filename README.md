@@ -126,6 +126,26 @@ All are free with instant signup (WorldTides is credit-based; the tides card
 caches results so it uses very few credits — Last.fm also needs your username).
 Enter them via the ⚙ Settings button in the dashboard.
 
+### Flight data proxy (optional, recommended)
+
+The nearest-flight card calls free ADS-B feeds (airplanes.live, adsb.lol,
+adsb.fi) directly from your browser. None of them reliably send the CORS
+header browsers require for a cross-origin site to read the response, and
+airplanes.live in particular blocks IP ranges it doesn't recognize — so a
+direct call can silently fail. `cloudflare-worker/flight-proxy.js` is a small
+script for [Cloudflare Workers](https://workers.cloudflare.com) (free tier, no
+card, no key) that fetches from those same feeds server-side — where CORS
+doesn't apply — trying each in turn, and returns the result with the right
+headers.
+
+1. Create a Worker at [workers.cloudflare.com](https://workers.cloudflare.com)
+   and paste in `cloudflare-worker/flight-proxy.js`, then deploy
+2. Copy the resulting `*.workers.dev` URL
+3. Paste it into Settings → Nearest flight → **Flight data proxy URL**
+
+Leave it blank to fall back to calling the feeds directly (works if
+airplanes.live isn't currently blocking your network).
+
 All other cards need **no key**: weather, forecast, UV and air quality use
 [Open-Meteo](https://open-meteo.com); the flight card uses the keyless
 [airplanes.live](https://airplanes.live) feed for aircraft positions and

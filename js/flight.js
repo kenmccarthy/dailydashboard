@@ -1,7 +1,11 @@
 // ── FLIGHT.JS ──
-// Nearest flight overhead via airplanes.live point-radius feed (keyless),
-// with adsb.lol (same schema, separate keyless mirror) as a fallback for
-// when airplanes.live rate-limits or blocks a source IP.
+// Nearest flight overhead via airplanes.live's point-radius feed. None of the
+// free keyless ADS-B mirrors (adsb.lol, adsb.fi, airplanes.live when it's
+// blocking a source IP) send CORS headers for a foreign origin, so a direct
+// browser fetch to them is unreliable at best. If the user has deployed the
+// companion Cloudflare Worker (cloudflare-worker/flight-proxy.js) and set its
+// URL in Settings, route through that instead — it does the same multi-source
+// fallback server-side, where CORS doesn't apply, and adds the header back.
 import { getToggle } from './setup.js';
 import { showLoading, showError, stampUpdated } from './dom-utils.js';
 
@@ -10,8 +14,19 @@ const AIRCRAFT_APIS = [
   'https://api.adsb.lol/v2/point',
 ];
 
+function flightWorkerUrl() {
+  return (localStorage.getItem('dd_flight_worker_url') || '').trim().replace(/\/$/, '');
+}
+
 // Try each keyless point-radius feed in turn; only give up once all have failed.
 async function fetchAircraft(lat, lon, radius) {
+  const worker = flightWorkerUrl();
+  if (worker) {
+    const r = await fetch(`${worker}/?lat=${lat}&lon=${lon}&radius=${radius}`);
+    if (!r.ok) throw new Error(`flight proxy responded ${r.status}`);
+    const data = await r.json();
+    return data.ac || [];
+  }
   let lastErr;
   for (const base of AIRCRAFT_APIS) {
     try {

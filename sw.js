@@ -3,7 +3,7 @@
 // "shell"), network-only for everything else (third-party APIs — weather,
 // flight, news, etc. — must never be served stale). Bump CACHE_NAME whenever
 // a shell file changes, since there's no build step to do that automatically.
-const CACHE_NAME = 'dd-shell-v2';
+const CACHE_NAME = 'dd-shell-v3';
 
 const SHELL_FILES = [
   '.',

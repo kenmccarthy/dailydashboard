@@ -103,6 +103,11 @@
         <label class="setup-label" for="settings-flight-radius">Search radius (nautical miles, max 250)</label>
         <input class="setup-input" id="settings-flight-radius" type="text" inputmode="numeric" placeholder="50" style="margin-bottom:0">
       </div>
+      <div class="settings-row">
+        <label class="setup-label" for="settings-flight-worker">Flight data proxy URL</label>
+        <input class="setup-input" id="settings-flight-worker" type="text" placeholder="https://your-worker.workers.dev" style="margin-bottom:4px">
+        <div style="font-size:11px;color:var(--hint)">Free keyless ADS-B feeds don't send CORS headers, so direct calls can silently fail. Deploy <code>cloudflare-worker/flight-proxy.js</code> on a free Cloudflare Worker and paste its URL here to fix that.</div>
+      </div>
 
       <hr class="settings-divider">
       <span class="settings-section">Tides (optional)</span>
